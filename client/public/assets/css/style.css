@@ -1,0 +1,9 @@
+body {
+    background-image: url('../images/nightCamp.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    /* border: 2px solid green; */
+    /* background: green; */
+    height: 100vh;
+}
