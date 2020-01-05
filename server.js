@@ -8,6 +8,9 @@ const users = require("./routes/api/users");
 
 const app = express();
 
+// make public folder available
+app.use('/client/public', express.static(path.join(__dirname + "/public")));
+
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -44,7 +47,7 @@ require("./config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   //Set a static folder
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
