@@ -75,6 +75,7 @@ class Login extends Component {
                   className={classnames("", {
                     invalid: errors.email || errors.emailnotfound
                   })}
+                  style={{ margin: "0px" }}
                 />
                 <label htmlFor="email">Email</label>
                 <span className="red-text">
@@ -82,7 +83,7 @@ class Login extends Component {
                   {errors.emailnotfound}
                 </span>
               </div>
-              <div className="input-field col s12">
+              <div className="input-field col s12" style={{ "margin-bottom": "28px" }}>
                 <input
                   onChange={this.onChange}
                   value={this.state.password}
@@ -92,6 +93,7 @@ class Login extends Component {
                   className={classnames("", {
                     invalid: errors.password || errors.passwordincorrect
                   })}
+                  style={{ margin: "0px" }}
                 />
                 <label htmlFor="password">Password</label>
                 <span className="red-text">
