@@ -1,9 +1,60 @@
 body {
-    background-image: url('../images/nightCamp.jpeg');
-    background-size: cover;
+    background-image: url('../images/dayCamp.jpeg');
+    /* background-size: cover;
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: bottom; */
     /* border: 2px solid green; */
     /* background: green; */
-    height: 100vh;
+    /* height: 100vh; */
+}
+
+.whiteBackground {
+    background: transparent;
+    border: 1px solid white;
+}
+
+#landingCard {
+    height: 400px;
+    width: 350px;
+    border-radius: 30px;
+    /* padding-bottom: 20px; */
+    /* display: flex;
+    align-items: flex-end; */
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#landingForm {
+    padding-top: 40px;
+    margin-bottom: 20px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* border: 2px solid red; */
+}
+
+#landingForm > input {
+    width: 95%;
+    padding-left: 10px;
+    background: white;
+    color: black;
+    border-radius: 5px;
+}
+
+input::placeholder {
+    color: darkslategrey;
+
+}
+
+#cardboxParent {
+    height: 100%;
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#cardParent {
+    /* width: 100%; */
+    padding-top: 40px;
 }
