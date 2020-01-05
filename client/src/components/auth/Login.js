@@ -60,7 +60,7 @@ class Login extends Component {
               <h4>
                 <b>Login</b> below
               </h4>
-              <p className="grey-text text-darken-1">
+              <p className="grey-text text-darken-1" style={{ "margin-bottom": "0px" }}>
                 Don't have an account? <Link to="/register">Register</Link>
               </p>
             </div>
@@ -83,7 +83,7 @@ class Login extends Component {
                   {errors.emailnotfound}
                 </span>
               </div>
-              <div className="input-field col s12" style={{ "margin-bottom": "28px" }}>
+              <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
                   value={this.state.password}
