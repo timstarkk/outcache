@@ -8,25 +8,32 @@ body {
     /* height: 100vh; */
 }
 
+.theNavbar {
+    background-color: transparent;
+    /* border: 2px solid green; */
+    /* display: flex;
+    align-items: flex-start; */
+}
+
 .whiteBackground {
-    background: transparent;
-    border: 1px solid white;
+    /* background: transparent; */
+    /* border: 1px solid white; */
 }
 
 #landingCard {
     height: 400px;
     width: 350px;
-    border-radius: 30px;
+    border-radius: 10px;
     /* padding-bottom: 20px; */
     /* display: flex;
     align-items: flex-end; */
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
 }
 
 #landingForm {
-    padding-top: 40px;
+    margin-top: 0px;
     margin-bottom: 20px;
-    height: 300px;
+    height: 210px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -55,6 +62,14 @@ input::placeholder {
 }
 
 #cardParent {
-    /* width: 100%; */
+    width: 100%;
     padding-top: 40px;
+}
+
+#cardHeader {
+    color: darkslategray;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
