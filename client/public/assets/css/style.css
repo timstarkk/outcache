@@ -72,3 +72,10 @@ input::placeholder {
     margin-top: 20px;
     margin-bottom: 0px;
 }
+
+#registerCard {
+    /* border: 2px solid darkred; */
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+}
