@@ -33,7 +33,7 @@ class Landing extends Component {
                 to="/register"
                 style={{
                   width: "140px",
-                  borderRadius: "10px",
+                  borderRadius: "3px",
                   letterSpacing: "1.5px"
                 }}
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
@@ -46,7 +46,7 @@ class Landing extends Component {
                 to="/login"
                 style={{
                   width: "140px",
-                  borderRadius: "10px",
+                  borderRadius: "3px",
                   letterSpacing: "1.5px",
                   border: "1px solid grey"
                 }}
