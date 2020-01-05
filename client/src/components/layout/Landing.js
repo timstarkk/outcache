@@ -17,13 +17,14 @@ class Landing extends Component {
               passport and JWTs
             </p> */}
             <div className="col s12">
+              <p id="cardHeader">Rent everything you need to get outdoors.</p>
               <form id="landingForm">
                 <input type="text" id="userName" placeholder="Username"></input>
                 <input type="text" id="userPass" placeholder="Password"></input>
                 <input type="text" id="confirmPass" placeholder="Confirm Password"></input>
                 <label>
                   <input type="checkbox" class="filled-in" style={{ color: "white" }} />
-                  <span style={{ color: "white" }} >I agree to be cool</span>
+                  <span style={{ color: "black" }} >I agree to be cool</span>
                 </label>
               </form>
             </div>
@@ -46,7 +47,8 @@ class Landing extends Component {
                 style={{
                   width: "140px",
                   borderRadius: "10px",
-                  letterSpacing: "1.5px"
+                  letterSpacing: "1.5px",
+                  border: "1px solid grey"
                 }}
                 className="btn btn-large btn-flat waves-effect white black-text"
               >
