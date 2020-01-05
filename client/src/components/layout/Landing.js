@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 class Landing extends Component {
   render() {
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
+      <div style={{ height: "75vh" }} className="container valign-wrapper" id="cardboxParent">
+        <div className="row" id="cardParent">
+          <div className="col s12 center-align whiteBackground" id="landingCard">
             {/* <h4>
               <b>Build</b> a login/auth app with the{" "}
               <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
@@ -16,13 +16,23 @@ class Landing extends Component {
               Create a (minimal) full-stack app with user authentication via
               passport and JWTs
             </p> */}
-            <br />
-            <div className="col s6">
+            <div className="col s12">
+              <form id="landingForm">
+                <input type="text" id="userName" placeholder="Username"></input>
+                <input type="text" id="userPass" placeholder="Password"></input>
+                <input type="text" id="confirmPass" placeholder="Confirm Password"></input>
+                <label>
+                  <input type="checkbox" class="filled-in" style={{ color: "white" }} />
+                  <span style={{ color: "white" }} >I agree to be cool</span>
+                </label>
+              </form>
+            </div>
+            <div className="col s6 landingButton">
               <Link
                 to="/register"
                 style={{
                   width: "140px",
-                  borderRadius: "3px",
+                  borderRadius: "10px",
                   letterSpacing: "1.5px"
                 }}
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
@@ -30,12 +40,12 @@ class Landing extends Component {
                 Register
               </Link>
             </div>
-            <div className="col s6">
+            <div className="col s6 landingButton">
               <Link
                 to="/login"
                 style={{
                   width: "140px",
-                  borderRadius: "3px",
+                  borderRadius: "10px",
                   letterSpacing: "1.5px"
                 }}
                 className="btn btn-large btn-flat waves-effect white black-text"
@@ -45,7 +55,7 @@ class Landing extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }
