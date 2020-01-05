@@ -1,11 +1,10 @@
 body {
     background-image: url('../images/dayCamp.jpeg');
-    /* background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom; */
+    /* background-size: cover;  */
+    background-position: 0% 15%;
     /* border: 2px solid green; */
     /* background: green; */
-    /* height: 100vh; */
+    height: 100vh;
 }
 
 .theNavbar {
