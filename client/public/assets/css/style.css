@@ -79,3 +79,10 @@ input::placeholder {
     border-radius: 10px;
     background: white;
 }
+
+#loginCard {
+    /* border: 2px solid darkred; */
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+}
