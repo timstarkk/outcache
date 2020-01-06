@@ -14,15 +14,11 @@ body {
     align-items: flex-start; */
 }
 
-.whiteBackground {
-    /* background: transparent; */
-    /* border: 1px solid white; */
-}
-
 #landingCard {
     height: 400px;
     width: 350px;
     border-radius: 10px;
+    padding-bottom: 35px;
     /* padding-bottom: 20px; */
     /* display: flex;
     align-items: flex-end; */
@@ -71,4 +67,25 @@ input::placeholder {
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 0px;
+}
+
+#registerCard {
+    /* border: 2px solid darkred; */
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    padding-bottom: 30px;
+}
+
+#loginCard {
+    /* border: 2px solid darkred; */
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    padding-bottom: 30px;
+}
+
+
+.registerInput {
+    margin: 0px;
 }
