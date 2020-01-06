@@ -23,6 +23,12 @@ app.use(bodyParser.json());
 // DB Config
 // const db = require("./config/keys").mongoURI;
 
+// // Connect to MongoDB
+// mongoose
+//   .connect(
+//     db,
+//     { useNewUrlParser: true }
+
 // Connect to MongoDB
 // mongoose
 //   .connect(
@@ -30,6 +36,8 @@ app.use(bodyParser.json());
 //   )
 //   .then(() => console.log("MongoDB successfully connected"))
 //   .catch(err => console.log(err));
+
+// mongoose.connect("mongodb://localhost/outcache")
 
 mongoose
   .connect(
@@ -46,6 +54,8 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+const routes = require("./routes/api/item");
+app.use(routes)
 
 if (process.env.NODE_ENV === 'production') {
   //Set a static folder
