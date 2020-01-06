@@ -89,3 +89,9 @@ input::placeholder {
 .registerInput {
     margin: 0px;
 }
+
+.dashboardCard {
+    background-color: white;
+    border-radius: 3px;
+    padding: 30px;
+}
