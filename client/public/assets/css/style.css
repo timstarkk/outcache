@@ -95,3 +95,19 @@ input::placeholder {
     border-radius: 3px;
     padding: 30px;
 }
+
+#searchContainer {
+    width: 100%;
+}
+
+#parametersBox {
+    background: white;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+#resultsBox {
+    background: white;
+    border: 1px solid black;
+    padding: 20px; 
+}
