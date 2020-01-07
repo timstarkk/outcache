@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require('path');
 
+const multer = require('multer')
+const fs = require('fs')
+
+
 const users = require("./routes/api/users");
 
 const app = express();
@@ -56,6 +60,7 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 const routes = require("./routes/api/item");
 app.use(routes)
+
 
 if (process.env.NODE_ENV === 'production') {
   //Set a static folder
