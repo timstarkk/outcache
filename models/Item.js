@@ -17,14 +17,4 @@ const itemSchema = new Schema({
 
 const Item = mongoose.model("Item", itemSchema);
 
-// To set up multer route to .upload folder
-// app.use(multer({dest:'./uploads/'}).single('photo'));
-
-// app.post('/api/photo',function(req,res){
-//   var newItem = new Item();
-//   newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
-//   newItem.img.contentType = 'image/png';
-//   newItem.save();
-//  });
-
 module.exports = Item;
