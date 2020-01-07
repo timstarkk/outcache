@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import API from "../../utils/API";
-import { Input, FormBtn } from "../../components/Form";
+import { Input, FormBtn, PicInput } from "../../components/Form";
 import Wrapper from "../../components/Wrapper";
 
 
@@ -10,6 +10,7 @@ class Form extends Component {
     itemName: "",
     category: "",
     price: "",
+    pic: "",
     toResults: false,
     results: []
   };
@@ -21,6 +22,11 @@ class Form extends Component {
     });
   };
 
+  handleSelectedFile = event => {
+
+		
+	};
+
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.itemName) {
@@ -28,8 +34,17 @@ class Form extends Component {
       let itemData = {
           itemName: this.state.itemName.trim(),
           category: this.state.category.trim(),
-          price: this.state.price.trim()
+          price: this.state.price.trim(),
+          img: this.state.img
       }
+
+      // let imageData = this.state.img
+
+      // API.saveImage(imageData)
+      //   .then(res => {
+      //     console.log(res.data);
+      //     console.log("image added")
+      //   })
 
       API.saveItem(itemData)
         .then(res => {
@@ -44,12 +59,6 @@ class Form extends Component {
   };
 
   render() {
-    // if (this.state.toResults) {
-    //   return <Redirect to={{
-    //     pathname: "/results",
-    //     data: { results: this.state.results }
-    //   }} />
-    // }
     return (
       <div>
           <Wrapper>
@@ -75,11 +84,18 @@ class Form extends Component {
               label="Price"
               placeholder="What is the cost per a day of this item"
             />
+            <PicInput 
+              value={this.state.img}
+              onChange={this.handleSelectedFile}
+              name="img"
+              label="Image"
+              placeholder="What image do you have for the item"
+            />
             <FormBtn         
               onClick={this.handleFormSubmit}
               className="btn btn-info"
             >
-              Search
+              Submit
             </FormBtn>
           </form>
           </Wrapper>

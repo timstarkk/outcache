@@ -6,52 +6,52 @@ import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 
 class Login extends Component {
-    constructor() {
-        super();
-        this.state = {
-            email: "",
-            password: "",
-            errors: {}
-        };
-    }
-
-    componentDidMount() {
-      // If logged in and user navigates to Login page, should redirect them to dashboard
-      if (this.props.auth.isAuthenticated) {
-        this.props.history.push("/dashboard");
-      }
-    }
-
-    componentWillReceiveProps(nextProps) {
-      if (nextProps.auth.isAuthenticated) {
-        this.props.history.push("/dashboard"); // push user to dashboard when they login
-      }
-      if (nextProps.errors) {
-        this.setState({
-          errors: nextProps.errors
-        });
-      }
-    }
-
-    onChange = e => {
-        this.setState({ [e.target.id]: e.target.value });
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+      errors: {}
     };
+  }
 
-    onSubmit = e => {
-        e.preventDefault();
-        const userData = {
-            email: this.state.email,
-            password: this.state.password
-        };
-        this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+  componentDidMount() {
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard"); // push user to dashboard when they login
+    }
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
     };
+    this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+  };
 
-    render() {
-        const { errors } = this.state;
+  render() {
+    const { errors } = this.state;
     return (
       <div className="container">
         <div style={{ marginTop: "4rem" }} className="row">
-          <div className="col s8 offset-s2">
+          <div className="col s8 offset-s2 z-depth-2" id="loginCard">
             <Link to="/" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
               home
@@ -60,7 +60,7 @@ class Login extends Component {
               <h4>
                 <b>Login</b> below
               </h4>
-              <p className="grey-text text-darken-1">
+              <p className="grey-text text-darken-1" style={{ "margin-bottom": "0px" }}>
                 Don't have an account? <Link to="/register">Register</Link>
               </p>
             </div>
@@ -75,6 +75,7 @@ class Login extends Component {
                   className={classnames("", {
                     invalid: errors.email || errors.emailnotfound
                   })}
+                  style={{ margin: "0px" }}
                 />
                 <label htmlFor="email">Email</label>
                 <span className="red-text">
@@ -92,6 +93,7 @@ class Login extends Component {
                   className={classnames("", {
                     invalid: errors.password || errors.passwordincorrect
                   })}
+                  style={{ margin: "0px" }}
                 />
                 <label htmlFor="password">Password</label>
                 <span className="red-text">

@@ -4,9 +4,16 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require('path');
 
+const multer = require('multer')
+const fs = require('fs')
+
+
 const users = require("./routes/api/users");
 
 const app = express();
+
+// make public folder available
+app.use('/client/public', express.static(path.join(__dirname + "/public")));
 
 // Bodyparser middleware
 app.use(
@@ -18,18 +25,16 @@ app.use(
 app.use(bodyParser.json());
 
 // DB Config
-const db = require("./config/keys").mongoURI;
+// const db = require("./config/keys").mongoURI;
 
-// // Connect to MongoDB
-// mongoose
-//   .connect(
-//     db,
-//     { useNewUrlParser: true }
-//   )
-//   .then(() => console.log("MongoDB successfully connected"))
-//   .catch(err => console.log(err));
 
-mongoose.connect("mongodb://localhost/outcache")
+mongoose
+  .connect(
+    "mongodb://localhost/outcache"
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
+  
 
 // Passport middleware
 app.use(passport.initialize());
@@ -42,7 +47,8 @@ app.use("/api/users", users);
 const routes = require("./routes/api/item");
 app.use(routes)
 
-if(process.env.NODE_ENV === 'production') {
+
+if (process.env.NODE_ENV === 'production') {
   //Set a static folder
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
