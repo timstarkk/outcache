@@ -10,8 +10,11 @@ class Form extends Component {
     itemName: "",
     category: "",
     price: "",
+    pic: "",
     toResults: false,
-    results: []
+    results: [],
+    img: '',
+    loading: false
   };
 
   handleInputChange = event => {
@@ -21,6 +24,31 @@ class Form extends Component {
     });
   };
 
+  handleChange = async e => {
+    const files = e.target.files
+    const data = new FormData()
+    data.append('file', files[0])
+    data.append('upload_preset', 'outcache')
+    this.setState({
+      loading: true
+    })
+    // setLoading(true)
+    const res = await fetch(
+      '	https://api.cloudinary.com/v1_1/outcache/image/upload',
+      {
+        method: 'POST',
+        body: data
+      }
+    )
+    const file = await res.json()
+    this.setState({
+      img: file.secure_url,
+      loading: false
+    })
+    // setImage(file.secure_url)
+    // setLoading(false)
+  }
+
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.itemName) {
@@ -28,7 +56,9 @@ class Form extends Component {
       let itemData = {
           itemName: this.state.itemName.trim(),
           category: this.state.category.trim(),
-          price: this.state.price.trim()
+          price: this.state.price.trim(),
+          img: this.state.img
+        
       }
 
       API.saveItem(itemData)
@@ -44,15 +74,23 @@ class Form extends Component {
   };
 
   render() {
-    // if (this.state.toResults) {
-    //   return <Redirect to={{
-    //     pathname: "/results",
-    //     data: { results: this.state.results }
-    //   }} />
-    // }
     return (
       <div>
           <Wrapper>
+          <div className="App">
+            <h1>Upload Image</h1>
+            <input
+              type="file"
+              name="file"
+              placeholder="Upload an image"
+              onChange={this.handleChange}
+            />
+            {this.state.loading ? (
+              <h3>Loading...</h3>
+            ) : (
+              <img src={this.state.img} style={{ width: '300px' }} />
+            )}
+          </div>
           <form>
             <Input
               value={this.state.itemName}
@@ -79,7 +117,7 @@ class Form extends Component {
               onClick={this.handleFormSubmit}
               className="btn btn-info"
             >
-              Search
+              Submit
             </FormBtn>
           </form>
           </Wrapper>
