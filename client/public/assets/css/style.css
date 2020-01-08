@@ -1,10 +1,12 @@
 body {
     background-image: url('../images/dayCamp.jpeg');
     /* background-size: cover;  */
-    background-position: 0% 15%;
+    /* background-position: 0% 15%; */
     /* border: 2px solid green; */
     /* background: green; */
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .theNavbar {
@@ -39,8 +41,6 @@ body {
     width: 95%;
     padding-left: 10px;
     background: white;
-    color: black;
-    border-radius: 5px;
 }
 
 input::placeholder {
@@ -101,13 +101,26 @@ input::placeholder {
 }
 
 #parametersBox {
+    min-height: 1000px;
     background: white;
     border: 1px solid black;
     padding: 20px;
 }
 
 #resultsBox {
+    min-height: 100vh;
     background: white;
     border: 1px solid black;
     padding: 20px; 
+}
+
+.result {
+    height: 300px;
+    border: 2px solid green;
+}
+
+.priceBox {
+    padding: 0px;
+    border: 1px solid black;
+    height: 30px;
 }
