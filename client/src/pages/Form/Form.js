@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
-import { Input, FormBtn } from "../../components/Form";
+import { Input, FormBtn, Label } from "../../components/Form";
 import Wrapper from "../../components/Wrapper";
+
 
 
 class Form extends Component {
@@ -14,11 +18,19 @@ class Form extends Component {
     toResults: false,
     results: [],
     img: '',
-    loading: false
+    description: '',
+    loading: false,
+    user: this.props.auth
   };
+
+  mapStateToProps = state => ({
+    auth: state.auth
+  });
 
   handleInputChange = event => {
     const { name, value } = event.target;
+   
+
     this.setState({
       [name]: value
     });
@@ -57,8 +69,10 @@ class Form extends Component {
           itemName: this.state.itemName.trim(),
           category: this.state.category.trim(),
           price: this.state.price.trim(),
-          img: this.state.img
-        
+          img: this.state.img,
+          description: this.state.description,
+          userId: this.props.auth.user.id,
+          userName: this.props.auth.user.name
       }
 
       API.saveItem(itemData)
@@ -74,22 +88,32 @@ class Form extends Component {
   };
 
   render() {
+    const { user } = this.props.auth;
+    console.log(user)
     return (
+      
       <div>
           <Wrapper>
           <div className="App">
-            <h1>Upload Image</h1>
+            <h3>Add an Item</h3>
+            <form>
+            <label>Add an image  </label>
+            <div>
             <input
+              className="form-control"
               type="file"
               name="file"
+              label="Upload an Image"
               placeholder="Upload an image"
               onChange={this.handleChange}
             />
+            </div>
             {this.state.loading ? (
               <h3>Loading...</h3>
             ) : (
-              <img src={this.state.img} style={{ width: '300px' }} />
+               <div><img src={this.state.img} style={{ width: '300px' }} /></div>
             )}
+            </form>
           </div>
           <form>
             <Input
@@ -113,6 +137,13 @@ class Form extends Component {
               label="Price"
               placeholder="What is the cost per a day of this item"
             />
+            <Input 
+              value={this.state.description}
+              onChange={this.handleInputChange}
+              name="description"
+              label="Description"
+              placeholder="Tell me something about the item"
+            />
             <FormBtn         
               onClick={this.handleFormSubmit}
               className="btn btn-info"
@@ -126,4 +157,17 @@ class Form extends Component {
   }
 }
 
-export default Form;
+Form.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Form);
+
