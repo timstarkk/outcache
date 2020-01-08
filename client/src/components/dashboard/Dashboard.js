@@ -2,17 +2,54 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import API from "../../utils/API";
 
 class Dashboard extends Component {
+  state = {
+    id: this.props.auth.user.id,
+    books: []
+  }
+
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
 
+  componentDidMount() {
+    this.setState({
+      id: this.props.auth.user.id
+    })
+    console.log(this.state.id)
+    this.findByUserId(this.state.id)
+  
+  }
+
+
+    findByUserId = id => {
+      console.log(id)
+      API.findByUserId(id)
+        .then(res => {
+          console.log(res.data)
+          if (res.data.length > 0) {
+            this.setState({
+              books: res.data,
+              target: "_blank"
+            });
+          } else {
+            this.setState({
+              noResults: true
+            });
+          }
+        })
+        .catch(err => console.log(err));
+    }
+
   render() {
     const { user } = this.props.auth;
-    console.log(user)
+   
     return (
+      
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row dashboardCard">
           <div className="col s12 center-align">
