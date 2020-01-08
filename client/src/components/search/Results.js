@@ -12,8 +12,32 @@ class Results extends Component {
             <wrapper>
 
                 <h5>Search Results:</h5>
-                <div className="col s3" style={{ border: "2px solid green", height: "300px" }}>
-                    {/* <Result /> */}
+                <div className="col s3 result">
+
+                </div>
+                <div className="col s3 result">
+
+                </div>
+                <div className="col s3 result">
+
+                </div>
+                <div className="col s3 result">
+
+                </div>
+                <div className="col s3 result">
+
+                </div>
+                <div className="col s3 result">
+
+                </div>
+                <div className="col s3 result">
+
+                </div>
+                <div className="col s3 result">
+
+                </div>
+                <div className="col s3 result">
+
                 </div>
             </wrapper>
 
