@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+// import { Link, Redirect } from "react-router-dom";
 import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
 import Wrapper from "../../components/Wrapper";
@@ -54,11 +54,11 @@ class Form extends Component {
     if (this.state.itemName) {
 
       let itemData = {
-          itemName: this.state.itemName.trim(),
-          category: this.state.category.trim(),
-          price: this.state.price.trim(),
-          img: this.state.img
-        
+        itemName: this.state.itemName.trim(),
+        category: this.state.category.trim(),
+        price: this.state.price.trim(),
+        img: this.state.img
+
       }
 
       API.saveItem(itemData)
@@ -67,16 +67,16 @@ class Form extends Component {
           console.log("added")
         })
         .catch(err => console.log(err));
-        
-    //   return<Redirect to={{pathname: "/" }} />
+
+      //   return<Redirect to={{pathname: "/" }} />
     }
-    
+
   };
 
   render() {
     return (
       <div>
-          <Wrapper>
+        <Wrapper>
           <div className="App">
             <h1>Upload Image</h1>
             <input
@@ -88,8 +88,8 @@ class Form extends Component {
             {this.state.loading ? (
               <h3>Loading...</h3>
             ) : (
-              <img src={this.state.img} style={{ width: '300px' }} />
-            )}
+                <img src={this.state.img} style={{ width: '300px' }} />
+              )}
           </div>
           <form>
             <Input
@@ -99,28 +99,28 @@ class Form extends Component {
               label="Item Name"
               placeholder="What is the Item"
             />
-            <Input 
+            <Input
               value={this.state.category}
               onChange={this.handleInputChange}
               name="category"
               label="Category"
               placeholder="What is the category of the item etc...Camping,Climing,Hiking"
             />
-            <Input 
+            <Input
               value={this.state.price}
               onChange={this.handleInputChange}
               name="price"
               label="Price"
               placeholder="What is the cost per a day of this item"
             />
-            <FormBtn         
+            <FormBtn
               onClick={this.handleFormSubmit}
               className="btn btn-info"
             >
               Submit
             </FormBtn>
           </form>
-          </Wrapper>
+        </Wrapper>
       </div>
     );
   }
