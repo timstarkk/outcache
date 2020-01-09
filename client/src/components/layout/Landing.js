@@ -23,7 +23,7 @@ class Landing extends Component {
                 <input type="text" id="userPass" placeholder="Password"></input>
                 <input type="text" id="confirmPass" placeholder="Confirm Password"></input>
                 <label>
-                  <input type="checkbox" class="filled-in" style={{ color: "white" }} />
+                  <input type="checkbox" className="filled-in" style={{ color: "white" }} />
                   <span style={{ color: "black" }} >I agree to be cool</span>
                 </label>
               </form>
