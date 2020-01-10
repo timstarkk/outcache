@@ -45,7 +45,9 @@ app.use(bodyParser.json());
 
 mongoose
   .connect(
-    "mongodb://localhost/outcache"
+    "mongodb://localhost/outcache",
+    { useNewUrlParser: true,
+    useUnifiedTopology: true}
   )
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
