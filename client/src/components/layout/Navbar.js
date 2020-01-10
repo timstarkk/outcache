@@ -5,20 +5,22 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
+        <nav className="z-depth-0 theNavbar">
+          <div className="nav-wrapper navbarFlex">
             <Link
               to="/"
               style={{
-                fontFamily: "monospace"
+                fontFamily: "monospace",
+                position: "absolute",
+                left: "120px"
               }}
-              className="col s5 brand-logo center black-text"
+              className="col s5 brand-logo center white-text"
             >
-                OutCache
+              OutCache
             </Link>
           </div>
         </nav>
-      </div>
+      </div >
     );
   }
 }
