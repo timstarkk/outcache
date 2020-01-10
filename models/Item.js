@@ -10,9 +10,12 @@ const app = express();
 
 const itemSchema = new Schema({
   itemName: { type: String, required: true},
-  category: String,
-  price: String, 
-  img: String
+  category: { type: String, required: true},
+  price: { type: Number, required: true}, 
+  img: String,
+  userId: { type: String, required: true},
+  userName:{ type: String, required: true},
+  description: String 
 });
 
 const Item = mongoose.model("Item", itemSchema);
