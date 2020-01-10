@@ -15,6 +15,7 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Form from "./pages/Form/Form"
+import Modal from "./pages/Modal/Modal";
 import Search from "./components/search/Search"
 
 // Check for token to keep user logged in
@@ -53,6 +54,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/form" component={Form} />
+            <Route exact path="/modal" component={Modal} />
             <Route exact path="/Search" component={Search} />
 
             <Switch>
