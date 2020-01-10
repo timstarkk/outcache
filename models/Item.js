@@ -1,11 +1,7 @@
 const express = require('express')
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const multer = require('multer')
-const fs = require('fs')
-
-const app = express();
-
+const ObjectId = Schema.UserSchema;
 
 
 const itemSchema = new Schema({
@@ -15,7 +11,7 @@ const itemSchema = new Schema({
   img: String,
   userId: { type: String, required: true},
   userName:{ type: String, required: true},
-  description: String 
+  description: String ,
 });
 
 const Item = mongoose.model("Item", itemSchema);
