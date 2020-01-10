@@ -11,6 +11,7 @@ class Register extends Component {
     this.state = {
       name: "",
       email: "",
+      zipcode: "",
       password: "",
       password2: "",
       errors: {}
@@ -41,9 +42,11 @@ class Register extends Component {
     const newUser = {
       name: this.state.name,
       email: this.state.email,
+      zipcode: this.state.zipcode,
       password: this.state.password,
       password2: this.state.password2
     };
+    console.log(newUser)
     this.props.registerUser(newUser, this.props.history);
   };
 
@@ -97,6 +100,25 @@ class Register extends Component {
                   <label htmlFor="email">Email</label>
                   <span className="red-text">{errors.email}</span>
                 </div>
+
+
+                <div className="input-field col s12">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.zipcode}
+                    error={errors.zipcode}
+                    id="zipcode"
+                    type="text"
+                    className={classnames("registerInput", {
+                      invalid: errors.zipcode
+                    })}
+                    style={{ margin: "0px" }}
+                  />
+                  <label htmlFor="zipcode">Zipcode</label>
+                  <span className="red-text">{errors.zipcode}</span>
+                </div>
+
+
                 <div className="input-field col s12">
                   <input
                     onChange={this.onChange}
