@@ -19,41 +19,13 @@ class Landing extends Component {
             <div className="col s12">
               <p id="cardHeader">Rent everything you need to get outdoors.</p>
               <form id="landingForm">
-                <input type="text" id="userName" placeholder="Username"></input>
-                <input type="text" id="userPass" placeholder="Password"></input>
-                <input type="text" id="confirmPass" placeholder="Confirm Password"></input>
+                <input type="text" id="searchTerm" placeholder="What would you like?"></input>
+                <input type="text" id="searchLocation" placeholder="Where are you (ZIP Code)?"></input>
                 <label>
                   <input type="checkbox" class="filled-in" style={{ color: "white" }} />
                   <span style={{ color: "black" }} >I agree to be cool</span>
                 </label>
               </form>
-            </div>
-            <div className="col s6 landingButton">
-              <Link
-                to="/register"
-                style={{
-                  width: "140px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-              >
-                Register
-              </Link>
-            </div>
-            <div className="col s6 landingButton">
-              <Link
-                to="/login"
-                style={{
-                  width: "140px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px",
-                  border: "1px solid grey"
-                }}
-                className="btn btn-large btn-flat waves-effect white black-text"
-              >
-                Log In
-              </Link>
             </div>
           </div>
         </div>
