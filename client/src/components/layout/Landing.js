@@ -22,7 +22,7 @@ class Landing extends Component {
                 <input type="text" id="searchTerm" placeholder="What would you like?"></input>
                 <input type="text" id="searchLocation" placeholder="Where are you (ZIP Code)?"></input>
                 <label>
-                  <input type="checkbox" class="filled-in" style={{ color: "white" }} />
+                  <input type="checkbox" className="filled-in" style={{ color: "white" }} />
                   <span style={{ color: "black" }} >I agree to be cool</span>
                 </label>
               </form>
