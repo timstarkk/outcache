@@ -25,6 +25,17 @@ class Landing extends Component {
                   <input type="checkbox" className="filled-in" style={{ color: "white" }} />
                   <span style={{ color: "black" }} >I agree to be cool</span>
                 </label>
+                <Link
+                    to="/search"
+                    style={{
+                      width: "140px",
+                      borderRadius: "3px",
+                      letterSpacing: "1.5px"
+                    }}
+                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  >
+                    Search
+                  </Link>
               </form>
             </div>
           </div>
