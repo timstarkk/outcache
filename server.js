@@ -58,8 +58,8 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
-const routes = require("./routes/api/item");
-app.use(routes)
+const item = require("./routes/api/item");
+app.use(item)
 
 
 if (process.env.NODE_ENV === 'production') {
