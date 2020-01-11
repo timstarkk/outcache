@@ -18,3 +18,5 @@ export default {
         console.log(userId)
         return axios.get("/item/" + userId)
     }
+
+};
