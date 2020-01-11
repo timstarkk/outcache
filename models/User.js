@@ -11,6 +11,10 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  zipcode: {
+    type: String,
+    required: true
+  },
   password: {
     type: String,
     required: true
@@ -18,7 +22,11 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  items: [{
+    type: Schema.Types.ObjectId,
+    ref: "Item"
+  }]
 });
 
 module.exports = User = mongoose.model("users", UserSchema);

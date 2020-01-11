@@ -18,6 +18,35 @@ class Navbar extends Component {
             >
               OutCache
             </Link>
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <li>              
+                <Link
+                  to="/register"
+                  style={{
+                    width: "140px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px"
+                  }}
+                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                >
+                  Register
+                </Link>
+              </li>
+              <li>              
+                <Link
+                  to="/login"
+                  style={{
+                    width: "140px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    border: "1px solid grey"
+                  }}
+                  className="btn btn-large btn-flat waves-effect white black-text"
+                >
+                  Log In
+                </Link>
+              </li>
+            </ul>
           </div>
         </nav>
       </div >

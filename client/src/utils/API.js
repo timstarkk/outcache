@@ -13,5 +13,8 @@ export default {
         console.log('we made it to requestItems')
         // console.log(itemName);
         return axios.get("/item")
+    },
+    findByUserId: function (userId) {
+        console.log(userId)
+        return axios.get("/item/" + userId)
     }
-};
