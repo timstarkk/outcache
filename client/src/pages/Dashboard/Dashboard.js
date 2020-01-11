@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
-import { List, ListItem } from "../List";
+import { List, ListItem } from "../../components/List";
 
 class Dashboard extends Component {
   state = {
