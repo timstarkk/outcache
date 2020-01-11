@@ -17,10 +17,10 @@ body {
 }
 
 #landingCard {
-    height: 400px;
+    /* height: 400px; */
     width: 350px;
     border-radius: 10px;
-    padding-bottom: 35px;
+    /* padding-bottom: 35px; */
     /* padding-bottom: 20px; */
     /* display: flex;
     align-items: flex-end; */
