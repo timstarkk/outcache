@@ -53,10 +53,8 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-
-            <Route exact path="/form" component={Form} />
             <Route exact path="/modal" component={Modal} />
-            <Route exact path="/Search" component={Search} />
+            <Route exact path="/search" component={Search} />
 
 
             <Switch>
