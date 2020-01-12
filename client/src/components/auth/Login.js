@@ -60,7 +60,7 @@ class Login extends Component {
               <h4>
                 <b>Login</b> below
               </h4>
-              <p className="grey-text text-darken-1" style={{ "margin-bottom": "0px" }}>
+              <p className="grey-text text-darken-1" style={{ "marginBottom": "0px" }}>
                 Don't have an account? <Link to="/register">Register</Link>
               </p>
             </div>

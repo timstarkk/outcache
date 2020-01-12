@@ -29,7 +29,7 @@ class Form extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
-   
+
 
     this.setState({
       [name]: value
@@ -66,13 +66,13 @@ class Form extends Component {
     if (this.state.itemName) {
 
       let itemData = {
-          itemName: this.state.itemName.trim(),
-          category: this.state.category.trim(),
-          price: this.state.price.trim(),
-          img: this.state.img,
-          description: this.state.description,
-          userId: this.props.auth.user.id,
-          userName: this.props.auth.user.name
+        itemName: this.state.itemName.trim(),
+        category: this.state.category.trim(),
+        price: this.state.price.trim(),
+        img: this.state.img,
+        description: this.state.description,
+        userId: this.props.auth.user.id,
+        userName: this.props.auth.user.name
       }
 
       API.saveItem(itemData)
@@ -81,38 +81,38 @@ class Form extends Component {
           console.log("added")
         })
         .catch(err => console.log(err));
-        
-    //   return<Redirect to={{pathname: "/" }} />
+
+      //   return<Redirect to={{pathname: "/" }} />
     }
-    
+
   };
 
   render() {
     const { user } = this.props.auth;
     console.log(user)
     return (
-      
+
       <div>
-          <Wrapper>
+        <Wrapper>
           <div className="App">
             <h3>Add an Item</h3>
             <form>
-            <label>Add an image  </label>
-            <div>
-            <input
-              className="form-control"
-              type="file"
-              name="file"
-              label="Upload an Image"
-              placeholder="Upload an image"
-              onChange={this.handleChange}
-            />
-            </div>
-            {this.state.loading ? (
-              <h3>Loading...</h3>
-            ) : (
-               <div><img src={this.state.img} style={{ width: '300px' }} /></div>
-            )}
+              <label>Add an image  </label>
+              <div>
+                <input
+                  className="form-control"
+                  type="file"
+                  name="file"
+                  label="Upload an Image"
+                  placeholder="Upload an image"
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.loading ? (
+                <h3>Loading...</h3>
+              ) : (
+                  <div><img src={this.state.img} style={{ width: '300px' }} /></div>
+                )}
             </form>
           </div>
           <form>
@@ -123,35 +123,35 @@ class Form extends Component {
               label="Item Name"
               placeholder="What is the Item"
             />
-            <Input 
+            <Input
               value={this.state.category}
               onChange={this.handleInputChange}
               name="category"
               label="Category"
               placeholder="What is the category of the item etc...Camping,Climing,Hiking"
             />
-            <Input 
+            <Input
               value={this.state.price}
               onChange={this.handleInputChange}
               name="price"
               label="Price"
               placeholder="What is the cost per a day of this item"
             />
-            <Input 
+            <Input
               value={this.state.description}
               onChange={this.handleInputChange}
               name="description"
               label="Description"
               placeholder="Tell me something about the item"
             />
-            <FormBtn         
+            <FormBtn
               onClick={this.handleFormSubmit}
               className="btn btn-info"
             >
               Submit
             </FormBtn>
           </form>
-          </Wrapper>
+        </Wrapper>
       </div>
     );
   }

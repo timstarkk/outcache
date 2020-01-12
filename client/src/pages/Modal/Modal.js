@@ -95,12 +95,45 @@ class ModalElement extends Component {
     }
     
     closeModal() {
-    this.setState({modalIsOpen: false});
+      this.setState({modalIsOpen: false});
     }
     
     render() {
     return (
         <div>
+        <button className="btn" onClick={this.openModal}>Rent This Item</button>
+        <Modal
+            isOpen={this.state.modalIsOpen}
+            onAfterOpen={this.afterOpenModal}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+        > 
+    
+            {/* <h2 ref={subtitle => this.subtitle = subtitle}>Hello {this.state.user}</h2> */}
+            {/* <button className="btn" onClick={this.closeModal}>close</button> */}
+            {/* <div>this is a title //${itemName}</div> */}
+            <form>
+              <Input
+                value={this.state.startDate}
+                onChange={this.handleInputChange}
+                name="startDate"
+                label="Start Date"
+                placeholder="When day would you like to rent this item"
+                type="date"
+              />
+                <Input
+                value={this.state.endDate}
+                onChange={this.handleInputChange}
+                name="endDate"
+                label="End Date"
+                placeholder="When day would you like to rent this item"
+                type="date"
+              />
+                {/* <input id="modal-input" className="input-field" placeholder="Enter some text" />
+                <button className="btn" onClick={this.handleRentalSubmit}>Request Rental</button> */}
+            </form>
+        </Modal>
         <button className="btn" onClick={this.openModal}>Rent This Item</button>
         <Modal
             isOpen={this.state.modalIsOpen}
