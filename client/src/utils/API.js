@@ -9,6 +9,10 @@ export default {
         console.log(typeof imageDate)
         return axios.post("/image", imageData)
     },
+    saveRented: function (rentedData) {
+        console.log(rentedData)
+        return axios.post("/rented", rentedData)
+    },
     requestItems: function () {
         console.log('we made it to requestItems')
         // console.log(itemName);
@@ -18,3 +22,4 @@ export default {
         console.log(userId)
         return axios.get("/item/" + userId)
     }
+}

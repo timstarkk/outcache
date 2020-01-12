@@ -13,7 +13,7 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Form from "./pages/Form/Form"
 import Search from "./pages/Search/Search";
 import Modal from "./pages/Modal/Modal";
@@ -55,6 +55,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/modal" component={Modal} />
             <Route exact path="/search" component={Search} />
+            {/* <Route exact path="/results" component={Results} /> */}
 
 
 
