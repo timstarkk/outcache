@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 
 
 const rentedSchema = new Schema({
-    startDate: {type:Date, required: true},
-    endDate: {type:Date, required: true},
-    approved: {type: Boolean, reqiured: true},
-    itemId: {type: String, required: true},
-    renterId: {type: String, required: true}
+    startDate: {type:Date, required: false},
+    endDate: {type:Date, required: false},
+    approved: {type: Boolean, reqiured: false},
+    itemId: {type: String, required: false},
+    renterId: {type: String, required: false}
 });
 
 const Rented = mongoose.model("Rented", rentedSchema);

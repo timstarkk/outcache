@@ -70,8 +70,10 @@ class Search extends Component {
             endDate: this.state.endDate,
             renterId: this.props.auth.user.id,
             approved: false,
-            // itemId: this.state.itemId
+            itemId: this.state.itemId
           }
+
+          console.log(rentedData)
     
           API.saveRented(rentedData)
             .then(res => {
@@ -98,6 +100,7 @@ class Search extends Component {
         console.log(modalInfo)
         this.setState({
             itemName: modalInfo.itemName,
+            itemId: modalInfo.itemId,
 
         })
         console.log("modalButton!!")

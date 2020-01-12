@@ -5,7 +5,7 @@ module.exports = {
 
 
 createRented: function(req, res) {
-    
+    console.log("-------")
     console.log(req.body)
     // console.log(db.Item)
     db.Rented
