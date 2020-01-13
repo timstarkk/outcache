@@ -5,8 +5,8 @@ export default {
         console.log(itemData)
         return axios.post("/item", itemData)
     },
-    saveImage: function(imageData) {
-        console.log(typeof imageDate)
-        return axios.post("/image", imageData)
+    findByUserId: function(userId) {
+        console.log(userId)
+        return axios.get("/item/" + userId)
     }
 };
