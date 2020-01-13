@@ -50,7 +50,7 @@ module.exports = {
   },
   findByTerm: function(req, res) {
     db.Item
-      .find({itemName: new RegExp(req.params.term)})
+      .find({itemName: new RegExp(req.body.term)})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }

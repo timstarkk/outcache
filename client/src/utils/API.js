@@ -17,4 +17,9 @@ export default {
     findByUserId: function (userId) {
         console.log(userId)
         return axios.get("/item/" + userId)
+    },
+    findByTerm: function (searchTerm) {
+        console.log(searchTerm)
+        return axios.get("/searchTerm", searchTerm)
     }
+};

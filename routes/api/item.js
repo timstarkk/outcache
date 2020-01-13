@@ -6,6 +6,9 @@ router.route("/item")
   .post(itemsController.create)
   .get(itemsController.findAll);
 
+router.route("/searchTerm")
+  .get(itemsController.findByTerm);
+
 // router.route("/:term")
 //   .get(itemsController.findByTerm);
 
@@ -14,9 +17,6 @@ router.route("/item")
 
   router.route("/item/:userId")
   .get(itemsController.findByUserId)
-
-  router.route("/:term")
-  .get(itemsController.findByTerm);
   
 
 module.exports = router;

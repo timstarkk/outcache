@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import LocationSearchInput from "../search-autocomplete/search-autocomplete";
 
 class Landing extends Component {
   render() {
@@ -19,6 +20,7 @@ class Landing extends Component {
             <div className="col s12">
               <p id="cardHeader">Rent everything you need to get outdoors.</p>
               <form id="landingForm">
+                <LocationSearchInput/>
                 <input type="text" id="searchTerm" placeholder="What would you like?"></input>
                 <input type="text" id="searchLocation" placeholder="Where are you (ZIP Code)?"></input>
                 <label>

@@ -17,6 +17,7 @@ class Search extends Component {
     };
 
     loadItems = () => {
+        console.log('loading items')
         API.requestItems()
             .then(res => {
                 // this.setState({ results: res.data });
@@ -52,10 +53,9 @@ class Search extends Component {
         //     .then(res => this.setState({ books: res.data.items }))
         //     .catch(err => console.log(err));
 
-        API.requestItems()
+        API.findByTerm(query)
             .then(res => {
-                for (const item in res) {
-                }
+                this.createResultCard(res);
             })
             .catch(err => console.log(err));
     };
