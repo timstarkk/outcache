@@ -118,7 +118,12 @@ class Search extends Component {
     
 
     componentDidMount = () => {
-        this.loadItems();
+        if (this.props.match.params.term) {
+            this.makeSearch(this.props.match.params.term);
+            this.setState({searchTerm: this.props.match.params.term})
+        } else {
+            this.loadItems();
+        }
         console.log(this.state.results)
     };
 
