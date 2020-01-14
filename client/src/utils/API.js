@@ -18,8 +18,8 @@ export default {
         console.log(userId)
         return axios.get("/item/" + userId)
     },
-    findByTerm: function (searchTerm) {
-        console.log(searchTerm)
-        return axios.get("/searchTerm", searchTerm)
+    findByTerm: function (term) {
+        console.log(term)
+        return axios.get("/item/" + term)
     }
 };

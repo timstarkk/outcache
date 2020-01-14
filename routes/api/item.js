@@ -6,7 +6,7 @@ router.route("/item")
   .post(itemsController.create)
   .get(itemsController.findAll);
 
-router.route("/searchTerm")
+router.route("/item/:term")
   .get(itemsController.findByTerm);
 
 // router.route("/:term")
@@ -15,7 +15,7 @@ router.route("/searchTerm")
 // router.route("/getAll")
 //   .get(itemsController.findAll);
 
-  router.route("/item/:userId")
+router.route("/item/:userId")
   .get(itemsController.findByUserId)
   
 

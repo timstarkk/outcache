@@ -55,6 +55,7 @@ class Search extends Component {
 
         API.findByTerm(query)
             .then(res => {
+                this.setState({results: res.data})
                 this.createResultCard(res);
             })
             .catch(err => console.log(err));

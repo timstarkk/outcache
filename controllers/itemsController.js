@@ -49,8 +49,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByTerm: function(req, res) {
+    console.log("made it to search")
     db.Item
-      .find({itemName: new RegExp(req.body.term)})
+      .find({$text: {$search: req.params.term}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
