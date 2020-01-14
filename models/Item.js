@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const ObjectId = Schema.UserSchema;
+
 
 
 const itemSchema = new Schema({
@@ -11,7 +11,11 @@ const itemSchema = new Schema({
   img: String,
   userId: { type: String, required: true},
   userName:{ type: String, required: true},
-  description: {type: String, trim: true}
+  description: {type: String, trim: true},
+  rented: [{
+    type: Schema.Types.ObjectId,
+    ref: "Rented"
+  }]
 });
 
 itemSchema.index({
