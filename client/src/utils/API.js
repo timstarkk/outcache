@@ -21,5 +21,9 @@ export default {
     findByUserId: function (userId) {
         console.log(userId)
         return axios.get("/item/" + userId)
+    },
+    findByRented: function (userId) {
+        console.log(userId + "findByRented API.js")
+        return axios.get("/rented/" + userId)
     }
 }

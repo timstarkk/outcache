@@ -7,12 +7,6 @@ router.route("/item")
   .post(itemsController.createItem)
   .get(itemsController.findAll);
 
-// router.route("/:term")
-//   .get(itemsController.findByTerm);
-
-// router.route("/getAll")
-//   .get(itemsController.findAll);
-
   router.route("/item/:userId")
   .get(itemsController.findByUserId)
 
@@ -20,7 +14,10 @@ router.route("/item")
   .get(itemsController.findByTerm);
 
   router.route("/rented")
-  .post(rentedController.createRented);
+  .post(rentedController.createRented)
+  
+  router.route("/rented/:userId")
+  .get(rentedController.findByRented);
   
 
 module.exports = router;
