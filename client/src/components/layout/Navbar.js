@@ -22,6 +22,7 @@ const Navbar = () => {
             id="navbarLink"
           >
             OutCache
+
             </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
@@ -58,4 +59,16 @@ const Navbar = () => {
   );
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Navbar);

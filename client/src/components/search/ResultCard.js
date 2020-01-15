@@ -1,4 +1,5 @@
 import React from "react";
+import { FormBtn } from "../Form";
 
 function ResultCard(props) {
     const { id, name, price, img } = props;
