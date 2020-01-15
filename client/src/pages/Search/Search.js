@@ -111,8 +111,10 @@ class Search extends Component {
                                     handleFormSubmit={this.handleFormSubmit} />
                             </div>
                         </div>
-
-                        <div className="row" style={{ border: "2px solid black" }}>
+                        <div className="row">
+                            <p className="col s7">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>
+                        </div>
+                        <div className="row">
                             {this.state.results.map((result) => {
                                 // <ResultCard results={this.state.results} />
 
