@@ -12,6 +12,7 @@ const itemSchema = new Schema({
   userId: { type: String, required: true},
   userName:{ type: String, required: true},
   description: {type: String, trim: true},
+  zipcode: {type: String, required: true},
   rented: [{
     type: Schema.Types.ObjectId,
     ref: "Rented"

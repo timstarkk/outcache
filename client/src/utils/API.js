@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export default {
+    getUser: function(id){
+        console.log(id)
+        return axios.get("/user/" + id)
+    },
     saveItem: function (itemData) {
         console.log(itemData)
         return axios.post("/item", itemData)
@@ -21,6 +25,10 @@ export default {
     findByUserId: function (userId) {
         console.log(userId)
         return axios.get("/item/" + userId)
+    },
+    findByRented: function (userId) {
+        console.log(userId + "findByRented API.js")
+        return axios.get("/rented/" + userId)
     },
     findByTerm: function (term) {
         console.log(term)
