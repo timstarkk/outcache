@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-    getUser: function(id){
+    getUser: function (id) {
         console.log(id)
         return axios.get("/user/" + id)
     },
