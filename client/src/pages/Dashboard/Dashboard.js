@@ -8,7 +8,8 @@ import { List, ListItem } from "../../components/List";
 class Dashboard extends Component {
   state = {
     id: this.props.auth.user.id,
-    items: []
+    items: [],
+    rentedItems: []
   }
 
 
@@ -23,6 +24,7 @@ class Dashboard extends Component {
     })
     console.log(this.state.id)
     this.findByUserId(this.state.id)
+    this.findbyRented(this.state.id)
   
   }
 
@@ -44,6 +46,23 @@ class Dashboard extends Component {
           }
         })
         .catch(err => console.log(err));
+    }
+
+    findbyRented = id => {
+      console.log('rented call function')
+      API.findByRented(id)
+        .then(res => {
+          console.log(res.data)
+          // console.log(res.data[0].rented)
+          if(res.data.length > 0) {
+            this.setState({
+              rentedItems: res.data,
+              target: "_blank"
+            })
+          }
+          console.log(this.state.rentedItems)
+
+        })
     }
 
   render() {
@@ -76,9 +95,17 @@ class Dashboard extends Component {
           </div>
         </div>
           <div>
-          <List>
-              {this.state.items.map(item => (
+            <List>
+              {/* {this.state.rentedItems.map(item => 
+                <ListItem key={item._id}>
+                  <p>{item}</p>
+
+                </ListItem>
+                )} */}
               
+            </List>
+          {/* <List>
+              {this.state.items.map(item => (
                 <ListItem key={item._id}>
                   
                   <div className="date-div">
@@ -98,19 +125,10 @@ class Dashboard extends Component {
                     </p>
                   </div>
                   <div className="item-btn-div">
-                    {/* <BookBtn
-                      key={book._id + "btn"}
-                      btntype="info"
-                      id={book._id}
-                      disabled={book.link === "/"}
-                      onClick={() => this.deleteBook(book._id)}
-                    >
-                      Delete
-                  </BookBtn> */}
                   </div>
                 </ListItem>
               ))}
-            </List>
+            </List> */}
         </div>
       </div>
      

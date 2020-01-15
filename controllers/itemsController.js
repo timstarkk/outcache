@@ -10,7 +10,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByUserId: function(req, res) {
-    console.log(req.params.userId)
+    console.log("findByUserId:" + req.params.userId)
     db.Item
       .find({userId: req.params.userId})
       .then(dbModel => res.json(dbModel))
@@ -18,11 +18,12 @@ module.exports = {
   },
   createItem: function(req, res) {
     console.log(req.body)
+    console.log(req.params)
     // console.log(db.Item)
     db.Item
       .create(req.body)
       .then(function(dbUser) {
-        return db.User.findOneAndUpdate({}, { $push: { items: dbUser._id } }, { new: true });
+        return db.User.findOneAndUpdate({_id: req.body.userId}, { $push: { items: dbUser._id } }, { new: true });
       })
       .then(function(dbModel) {
         // If we were able to successfully update a Product, send it back to the client

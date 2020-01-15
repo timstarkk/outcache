@@ -100,7 +100,7 @@ class Search extends Component {
         console.log(modalInfo)
         this.setState({
             itemName: modalInfo.itemName,
-            itemId: modalInfo.itemId,
+            itemId: modalInfo.key,
 
         })
         console.log("modalButton!!")

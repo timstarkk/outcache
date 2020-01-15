@@ -23,6 +23,19 @@ class Form extends Component {
     user: this.props.auth
   };
 
+  componentDidMount(){
+    let id = this.props.auth.user.id
+    API.getUser(id)
+    .then(res => {
+      console.log(res.data[0].zipcode)
+      this.setState({
+        userInfo: res.data,
+        zipcode: res.data[0].zipcode
+      })
+      console.log(this.state.zipcode)
+    })
+  }
+
   mapStateToProps = state => ({
     auth: state.auth
   });
@@ -72,7 +85,8 @@ class Form extends Component {
         img: this.state.img,
         description: this.state.description,
         userId: this.props.auth.user.id,
-        userName: this.props.auth.user.name
+        userName: this.props.auth.user.name,
+        zipcode: this.state.zipcode
       }
 
       API.saveItem(itemData)
