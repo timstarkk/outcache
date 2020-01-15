@@ -23,10 +23,13 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  items: [{
+  rentals: {
+    type: Array
+  },
+  items: {
     type: Schema.Types.ObjectId,
     ref: "Item"
-  }]
+  }
 });
 
 module.exports = User = mongoose.model("users", UserSchema);

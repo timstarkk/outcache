@@ -4,20 +4,22 @@ const db = require("../models");
 module.exports = {
 
 
-createRented: function(req, res) {
+createRented: async function(req, res) {
     console.log("-------")
     console.log(req.body)
-    // console.log(db.Item)
-    db.Rented
-      .create(req.body)
-      .then(function(dbItem) {
-        return db.Item.findOneAndUpdate({_id: req.body.itemId}, { $push: { rented: dbItem._id } }, { new: true });
-      })
-      .then(function(dbModel) {
-        // If we were able to successfully update a Product, send it back to the client
-        res.json(dbModel);
-      })
-      .catch(err => res.status(422).json(err));
+    console.log(req.body.renterId)
+    try{
+      const userPromise = db.User.findOneAndUpdate({_id: req.body.renterId}, { $push: { rentals: req.body.itemId   }}, {new: true })
+      const itemPromise = db.Item.findOneAndUpdate({_id: req.body.itemId}, { $push: { rented: req.body }}, { new: true })
+      const [userResp, itemResp] = await Promise.all([userPromise, itemPromise]);
+      console.log("user", userResp);
+console.log()
+      console.log("item", itemResp)
+
+        return res.json({user: userResp, item:itemResp})
+      
+    }
+      catch(err) { res.status(422).json(err)};
     },
     findByRented: function(req, res) {
       console.log("+++++++++++++")
