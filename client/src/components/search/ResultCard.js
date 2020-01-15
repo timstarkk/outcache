@@ -1,18 +1,38 @@
 import React from "react";
 
 function ResultCard(props) {
-    const { id, name, category, price, img } = props;
+    const { id, name, price, img } = props;
+
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // I'm trying to add one space to price.
+    // price += " "
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     return (
-        < div className="col s3" style={{ border: "2px solid gold", height: "300px" }}>
-            <div>
-                <img src={img} />
-            </div>
-            <h5>{name}</h5>
-            <div className="container" style={{ border: "1px solid purple", height: "100px" }}>
-                <p>category: {category}</p>
-                <p>price: {price}</p>
-                <p>key: {id}</p>
-            </div>
+        <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
+            padding: "0px",
+            "margin-bottom": "10px",
+        }}>
+            < div className="resultCard z-depth-1">
+                <div className="cardImageContainer">
+                    <img className="cardImage" src={img} alt={name} />
+                </div>
+                <div className="cardInfoContainer">
+                    <h6 className="cardName">{name}</h6>
+                    <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>location</p>
+                    <div classNme="row">
+                        <p className="col s3 cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
+                        <p className="col s3 perDayText" style={{ padding: "0px" }}>{' '}/ day</p>
+                        <button className="col offset-s1 s5 btn cardButton" style={{ "margin-bottom": "5px" }}>click</button>
+                    </div>
+                </div>
+
+                {/* <p>key: {id}</p> */}
+            </div >
         </div >
     );
 }
