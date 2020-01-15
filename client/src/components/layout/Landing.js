@@ -1,7 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Input } from "../Form";
+import LocationSearchInput from "../search-autocomplete/search-autocomplete";
 
 class Landing extends Component {
+  state = {
+    searchTerm: "",
+    zipCode: ""
+  }
+
+  handleInputChange = event => {
+    // console.log('handle input change');
+    // console.log(event);
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+        [name]: value
+    });
+  };
+
+
   render() {
     return (
       <div style={{ height: "75vh" }} className="container valign-wrapper" id="cardboxParent">
@@ -19,14 +37,15 @@ class Landing extends Component {
             <div className="col s12">
               <p id="cardHeader">Rent everything you need to get outdoors.</p>
               <form id="landingForm">
-                <input type="text" id="searchTerm" placeholder="What would you like?"></input>
-                <input type="text" id="searchLocation" placeholder="Where are you (ZIP Code)?"></input>
+                {/* <LocationSearchInput/> */}
+                <Input type="text" name="searchTerm" value={this.state.searchTerm} onChange={this.handleInputChange} placeholder="What would you like?"/>
+                <Input type="text" name="zipCode" value={this.state.zipCode} onChange={this.handleInputChange} placeholder="Where (Zip Code)?"/>
                 <label>
                   <input type="checkbox" className="filled-in" style={{ color: "white" }} />
                   <span style={{ color: "black" }} >I agree to be cool</span>
                 </label>
                 <Link
-                    to="/search"
+                    to={`/search/${this.state.searchTerm}`}
                     style={{
                       width: "140px",
                       borderRadius: "3px",

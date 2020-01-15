@@ -118,11 +118,17 @@ class Search extends Component {
     
 
     componentDidMount = () => {
-        this.loadItems();
+        if (this.props.match.params.term) {
+            this.makeSearch(this.props.match.params.term);
+            this.setState({searchTerm: this.props.match.params.term})
+        } else {
+            this.loadItems();
+        }
         console.log(this.state.results)
     };
 
     loadItems = () => {
+        console.log('loading items')
         API.requestItems()
             .then(res => {
                 // this.setState({ results: res.data });
@@ -159,10 +165,10 @@ class Search extends Component {
         //     .then(res => this.setState({ books: res.data.items }))
         //     .catch(err => console.log(err));
 
-        API.requestItems()
+        API.findByTerm(query)
             .then(res => {
-                for (const item in res) {
-                }
+                this.setState({results: res.data})
+                this.createResultCard(res);
             })
             .catch(err => console.log(err));
     };

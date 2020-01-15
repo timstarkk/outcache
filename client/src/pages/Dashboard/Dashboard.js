@@ -53,7 +53,7 @@ class Dashboard extends Component {
       API.findByRented(id)
         .then(res => {
           console.log(res.data)
-          console.log(res.data[0].rented)
+          // console.log(res.data[0].rented)
           if(res.data.length > 0) {
             this.setState({
               rentedItems: res.data,
