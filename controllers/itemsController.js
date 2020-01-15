@@ -49,5 +49,13 @@ module.exports = {
       .find({$text: {$search: req.params.term}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  findByZipCode: function(req, res) {
+    console.log("made it to search")
+    db.Item
+      .find({zipCode: req.params.zipCode})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
+
 };

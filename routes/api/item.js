@@ -7,8 +7,11 @@ router.route("/item")
   .post(itemsController.createItem)
   .get(itemsController.findAll);
 
-router.route("/item/:term")
+router.route("/search/:term")
   .get(itemsController.findByTerm);
+
+// router.route("/search/:zipCode")
+//   .get(itemsController.findByZip);
 
 // router.route("/:term")
 //   .get(itemsController.findByTerm);
