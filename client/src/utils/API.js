@@ -32,6 +32,10 @@ export default {
     },
     findByTerm: function (term) {
         console.log(term)
-        return axios.get("/item/" + term)
+        return axios.get("/search/" + term)
+    },
+    findByZipCode: function (zip) {
+        console.log(zip)
+        return axios.get("/search/" + zip)
     }
 };
