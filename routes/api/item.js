@@ -11,10 +11,10 @@ const userController = require("../../controllers/userController")
   .post(itemsController.createItem)
   .get(itemsController.findAll);
 
-router.route("/search/:term")
+router.route("/search/:term/:zip")
   .get(itemsController.findByTerm);
 
-// router.route("/search/:zipCode")
+// router.route("/zip/:zipCode")
 //   .get(itemsController.findByZip);
 
 router.route("/item/:userId")
