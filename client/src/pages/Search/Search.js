@@ -231,7 +231,7 @@ class Search extends Component {
                         </div>
                         <div className="row">
                             {this.state.results.map((result, index) => (
-                                <div className="col s3" style={{ border: "2px solid gold", height: "300px" }}>
+                                <div>
                                     <ResultCard
                                         key={result.key + index}
                                         id={result.key}
@@ -240,7 +240,7 @@ class Search extends Component {
                                         price={result.price}
                                         img={result.img}
                                     />
-                                    <FormBtn
+                                    {/* <FormBtn
                                         key={result.key}
                                         onClick={() => this.openModal(result)}
                                         // onClick={this.openModal}
@@ -248,7 +248,7 @@ class Search extends Component {
                                         className="btn btn-info"
                                     >
                                         Rent
-                                    </FormBtn>
+                                    </FormBtn> */}
                                     {/* <FormBtn 
                                     OnClick={() => this.openModal}
                                     OnClick={() => this.handleModalItem(result)}
