@@ -37,7 +37,7 @@ const Navbar = (logoutUser) => {
           <div className="nav-wrapper navbarFlex">
 
             <Link
-              to="/"
+              to="/search"
               className="col s5 brand-logo center white-text"
               id="navbarLink"
             >

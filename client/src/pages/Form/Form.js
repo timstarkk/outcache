@@ -106,75 +106,74 @@ class Form extends Component {
     const { user } = this.props.auth;
     console.log(user)
     return (
-
-      <div>
-        <Wrapper>
-          <div className="App">
-            <h3>Add an Item</h3>
-            <form>
-              <label>Add an image  </label>
-              <div>
-                <input
-                  className="form-control"
-                  type="file"
-                  name="file"
-                  label="Upload an Image"
-                  placeholder="Upload an image"
-                  onChange={this.handleChange}
-                />
+          <div className="container">
+            <div style={{ marginTop: "4rem" }} className="row">
+              <div className="col s12 m8 offset-m2 z-depth-2 anyCard">
+                  <h3>Add an Item</h3>
+                  <form>
+                    <label>Add an image  </label>
+                    <div>
+                      <input
+                        className="form-control"
+                        type="file"
+                        name="file"
+                        label="Upload an Image"
+                        placeholder="Upload an image"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    {this.state.loading ? (
+                      <h3>Loading...</h3>
+                    ) : (
+                        <div><img src={this.state.img} style={{ width: '300px' }} /></div>
+                      )}
+                  </form>
+                <form>
+                  <Input
+                    value={this.state.itemName}
+                    onChange={this.handleInputChange}
+                    name="itemName"
+                    label="Item Name"
+                    placeholder="What is the Item"
+                  />
+                  <Input
+                    value={this.state.category}
+                    onChange={this.handleInputChange}
+                    name="category"
+                    label="Category"
+                    placeholder="What is the category of the item etc...Camping,Climing,Hiking"
+                  />
+                  <Input
+                    value={this.state.zipcode}
+                    onChange={this.handleInputChange}
+                    name="zipcode"
+                    label="Zipcode"
+                    placeholder="Where is the item located? (5-Digit Zip Code)"
+                  />
+                  <Input
+                    value={this.state.price}
+                    onChange={this.handleInputChange}
+                    name="price"
+                    label="Price"
+                    placeholder="What is the cost per a day of this item"
+                  />
+                  <Input
+                    value={this.state.description}
+                    onChange={this.handleInputChange}
+                    name="description"
+                    label="Description"
+                    placeholder="Tell me something about the item"
+                  />
+                  <FormBtn
+                    onClick={this.handleFormSubmit}
+                    className="btn btn-info"
+                  >
+                    Submit
+                  </FormBtn>
+                </form>
               </div>
-              {this.state.loading ? (
-                <h3>Loading...</h3>
-              ) : (
-                  <div><img src={this.state.img} style={{ width: '300px' }} /></div>
-                )}
-            </form>
-          </div>
-          <form>
-            <Input
-              value={this.state.itemName}
-              onChange={this.handleInputChange}
-              name="itemName"
-              label="Item Name"
-              placeholder="What is the Item"
-            />
-            <Input
-              value={this.state.category}
-              onChange={this.handleInputChange}
-              name="category"
-              label="Category"
-              placeholder="What is the category of the item etc...Camping,Climing,Hiking"
-            />
-            <Input
-              value={this.state.zipcode}
-              onChange={this.handleInputChange}
-              name="zipcode"
-              label="Zipcode"
-              placeholder="Where is the item located? (5-Digit Zip Code)"
-            />
-            <Input
-              value={this.state.price}
-              onChange={this.handleInputChange}
-              name="price"
-              label="Price"
-              placeholder="What is the cost per a day of this item"
-            />
-            <Input
-              value={this.state.description}
-              onChange={this.handleInputChange}
-              name="description"
-              label="Description"
-              placeholder="Tell me something about the item"
-            />
-            <FormBtn
-              onClick={this.handleFormSubmit}
-              className="btn btn-info"
-            >
-              Submit
-            </FormBtn>
-          </form>
-        </Wrapper>
-      </div>
+              </div>
+              </div>
     );
   }
 }
