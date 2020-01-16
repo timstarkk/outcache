@@ -4,13 +4,15 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
+import ResultCard from "../../components/search/ResultCard"
 
 class Dashboard extends Component {
   state = {
     id: this.props.auth.user.id,
     items: [],
     rentedItems: [],
-    rentalItemsArray: []
+    rentalItemsArray: [],
+    display: 0
   }
 
 
@@ -18,6 +20,14 @@ class Dashboard extends Component {
     e.preventDefault();
     this.props.logoutUser();
   };
+
+  
+  display = value => {
+    this.setState({
+      display: value
+    })
+    console.log(this.state.display)
+  }
 
   componentDidMount() {
     const id = this.props.auth.user.id
@@ -46,6 +56,7 @@ class Dashboard extends Component {
 
     findByUserId = id => {
       console.log(id)
+      const rentedItems = []
       API.findByUserId(id)
         .then(res => {
           console.log(res.data)
@@ -54,6 +65,16 @@ class Dashboard extends Component {
               items: res.data,
               target: "_blank"
             });
+            for (let item of this.state.items) {
+              console.log(item)
+              if (item.rented.length > 0) {
+                rentedItems.push(item)
+              }
+              this.setState({
+                rentedItems: rentedItems
+              })
+              console.log(this.state.rentedItems)
+            }
           } else {
             this.setState({
               noResults: true
@@ -62,6 +83,8 @@ class Dashboard extends Component {
         })
         .catch(err => console.log(err));
     }
+
+  
 
     findByRentals = rentals => {
       console.log('rentals call function')
@@ -87,22 +110,14 @@ class Dashboard extends Component {
         console.log(this.state.rentalItemsArray)
       }  
       something()
-    //   API.findByRentals(rentals)
-    //         .then(res => {
-    //           console.log(1)
-    //           // console.log(res.data)
-    //           // console.log(res.data[0].rented)
-    //           rentalItemsArray.push(res.data)
-    //           console.log(rentalItemsArray)
-    //         })
-    //         this.setState({
-    //               rentalItemsArray: rentalItemsArray
-    //             })
-    //             console.log(this.state.rentalItemsArray)
     }
+
+
+  
 
   render() {
     const { user } = this.props.auth;
+    const display = this.state.display
    
     return (
       // <!-- Navbar goes here -->
@@ -110,14 +125,97 @@ class Dashboard extends Component {
       // <!-- Page Layout here -->
       <div class="row">
   
-        <div class="col s3 grey lighten-2 height-auto">
-          <div class="row text-center"><a>Your Items</a></div>
-          <div class="row"><a>Items Rented Out</a></div>
-          <div class="row"><a>Items Youur Rented</a></div>
+        <div className="col s2 grey lighten-2">
+          <div className="row">
+            <a onClick={() => this.display(0)}>Your Items</a>
+          </div>
+          <div className="row">
+            <a onClick={() => this.display(1)}>Items Rented Out</a>
+          </div>
+          <div className="row">
+            <a onClick={() => this.display(2)}>Items You Have Rented</a>
+          </div>
           {/* <!-- Grey navigation panel --> */}
         </div>
   
         <div class="col s9">
+        {display===0  &&  
+          <h2>this display is 0</h2>
+        }
+         {display===1 && 
+          <h2>this display is 1</h2>
+        }
+         {display===2 && 
+          <h2>this display is 2</h2>
+        }
+         
+           <div className="row">  
+            {(this.state.display === 0) &&
+                <p className="col s7">Showing results 1-{this.state.items.length} of {this.state.items.length}:</p>
+            }
+            {display === 1 &&
+              <p className="col s7">Showing results 1-{this.state.rentedItems.length} of {this.state.rentedItems.length}:</p>
+            }
+            {display===2 && 
+              <p className="col s7">Showing results 1-{this.state.rentalItemsArray.length} of {this.state.rentalItemsArray.length}:</p>
+            }
+            </div>
+
+           <div className="row">
+             { display === 0 && 
+               this.state.items.map((result, index) => (
+                   <div>
+                       <ResultCard
+                           key={result.key + index}
+                           id={result.key}
+                           name={result.itemName}
+                           category={result.category}
+                           price={result.price}
+                           img={result.img}
+                           // onClick={() => this.openModal(result)}
+                       />
+                   </div>
+               ))
+              }
+              { display === 1 && 
+               this.state.rentedItems.map((result, index) => (
+                   <div>
+                       <ResultCard
+                           key={result.key + index}
+                           id={result.key}
+                           name={result.itemName}
+                           category={result.category}
+                           price={result.price}
+                           img={result.img}
+                           // onClick={() => this.openModal(result)}
+                       />
+                   </div>
+               ))
+              }
+               { display === 2 && 
+               
+               this.state.rentalItemsArray.map((result, index) => (
+                   <div>
+                       <ResultCard
+                           key={result.key + index}
+                           id={result.key}
+                           name={result.itemName}
+                           category={result.category}
+                           price={result.price}
+                           img={result.img}
+                           // onClick={() => this.openModal(result)}
+                       />
+                   </div>
+               ))
+              }
+              
+           </div>
+       
+
+
+
+
+
         <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row dashboardCard">
           <div className="col s12 center-align">
@@ -141,42 +239,6 @@ class Dashboard extends Component {
               Logout
             </button>
           </div>
-        </div>
-          <div>
-            <List>
-              {/* {this.state.rentedItems.map(item => 
-                <ListItem key={item._id}>
-                  <p>{item}</p>
-
-                </ListItem>
-                )} */}
-              
-            </List>
-          {/* <List>
-              {this.state.items.map(item => (
-                <ListItem key={item._id}>
-                  
-                  <div className="date-div">
-                    <a                  >
-                      {item.itemName}
-                    </a>
-                    <p>Category {item.category} </p>
-                    <p>Price: {item.price} </p>
-                    
-                    <img align="left" 
-                      src={item.img}
-                      style={{paddingRight:10, width: '300px' }}
-                      alt="new"
-                      />
-                    <p>
-                      {item.description}
-                    </p>
-                  </div>
-                  <div className="item-btn-div">
-                  </div>
-                </ListItem>
-              ))}
-            </List> */}
         </div>
       </div>
           {/* <!-- Teal page content  --> */}
