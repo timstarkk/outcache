@@ -88,8 +88,9 @@ input::placeholder {
     padding-bottom: 30px;
 }
 
-#loginCard {
+.anyCard {
     /* border: 2px solid darkred; */
+    margin: 20px;
     padding: 20px;
     border-radius: 10px;
     background: white;
