@@ -21,23 +21,12 @@ console.log()
     }
       catch(err) { res.status(422).json(err)};
     },
-    findByRented: function(req, res) {
-      console.log("+++++++++++++")
-      console.log(req.params.userId + "   >>>>findByRented")
+    findByRentals: function(req, res) {
+      console.log("findByUserId:" + req.params.userId)
       db.Item
-        .find({userId: req.params.userId})
-        .where('rented').exists()
-        .populate('rented')
+        .find({_id: req.params.itemId})
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
-    // findByRented: function(req, res) {
-    //   console.log("rented")
-    //   console.log(req.params)
-    //   db.Rented
-    //     .find({userId: req.params.userId})
-    //     .then(dbModel => jes.json(dbModel))
-    //     .catch(err => res.status(422).json(err))
-    // }
 }
     

@@ -14,7 +14,6 @@ const itemSchema = new Schema({
   description: {type: String, trim: true},
   zipcode: {type: String, required: true},
   rented: [{ type:Object
-    
   }]
 });
 
