@@ -162,7 +162,8 @@ class Dashboard extends Component {
             </div>
 
            <div className="row">
-               {this.state.items.map((result, index) => (
+             { display === 0 && 
+               this.state.items.map((result, index) => (
                    <div>
                        <ResultCard
                            key={result.key + index}
@@ -174,7 +175,40 @@ class Dashboard extends Component {
                            // onClick={() => this.openModal(result)}
                        />
                    </div>
-               ))}
+               ))
+              }
+              { display === 1 && 
+               this.state.rentedItems.map((result, index) => (
+                   <div>
+                       <ResultCard
+                           key={result.key + index}
+                           id={result.key}
+                           name={result.itemName}
+                           category={result.category}
+                           price={result.price}
+                           img={result.img}
+                           // onClick={() => this.openModal(result)}
+                       />
+                   </div>
+               ))
+              }
+               { display === 2 && 
+               
+               this.state.rentalItemsArray.map((result, index) => (
+                   <div>
+                       <ResultCard
+                           key={result.key + index}
+                           id={result.key}
+                           name={result.itemName}
+                           category={result.category}
+                           price={result.price}
+                           img={result.img}
+                           // onClick={() => this.openModal(result)}
+                       />
+                   </div>
+               ))
+              }
+              
            </div>
        
 
