@@ -46,9 +46,19 @@ module.exports = {
   },
   findByTerm: function(req, res) {
     console.log("made it to search")
+    console.log(req.params.term);
+    console.log(req.params.zip);
     db.Item
-      .find({$text: {$search: req.params.term}})
+      .find({$text: {$search: `${req.params.term} ${req.params.zip}`}})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findByZipCode: function(req, res) {
+    console.log("made it to search")
+    db.Item
+      .find({zipCode: req.params.zipCode})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
+
 };

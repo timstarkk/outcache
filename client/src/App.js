@@ -56,6 +56,7 @@ class App extends Component {
             <Route exact path="/modal" component={Modal} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/search/:term" component={Search} />
+            <Route exact path="/search/:term/:zip" component={Search} />
             {/* <Route exact path="/results" component={Results} /> */}
 
 

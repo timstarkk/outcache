@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-    getUser: function(id){
+    getUser: function (id) {
         console.log(id)
         return axios.get("/user/" + id)
     },
@@ -30,8 +30,12 @@ export default {
         console.log(itemId + "findByRentals API.js")
         return axios.get("/rentals/" + itemId)
     },
-    findByTerm: function (term) {
-        console.log(term)
-        return axios.get("/item/" + term)
+    findByTerm: function (term, zip) {
+        console.log(`${term} & ${zip}`);
+        return axios.get("/search/" + term + "/" + zip)
     }
+    // findByZipCode: function (zip) {
+    //     console.log(zip)
+    //     return axios.get("/search/" + zip)
+    // }
 };

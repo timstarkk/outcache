@@ -105,8 +105,20 @@ class Dashboard extends Component {
     const { user } = this.props.auth;
    
     return (
-      
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
+      // <!-- Navbar goes here -->
+
+      // <!-- Page Layout here -->
+      <div class="row">
+  
+        <div class="col s3 grey lighten-2 height-auto">
+          <div class="row text-center"><a>Your Items</a></div>
+          <div class="row"><a>Items Rented Out</a></div>
+          <div class="row"><a>Items Youur Rented</a></div>
+          {/* <!-- Grey navigation panel --> */}
+        </div>
+  
+        <div class="col s9">
+        <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row dashboardCard">
           <div className="col s12 center-align">
             <h4>
@@ -167,6 +179,11 @@ class Dashboard extends Component {
             </List> */}
         </div>
       </div>
+          {/* <!-- Teal page content  --> */}
+        </div>
+  
+      </div>
+      
      
     );
   }
