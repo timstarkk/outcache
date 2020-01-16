@@ -23,8 +23,8 @@ router.route("/item/:userId")
   router.route("/rented")
   .post(rentedController.createRented)
   
-  router.route("/rented/:userId")
-  .get(rentedController.findByRented);
+  router.route("/rentals/:itemId")
+  .get(rentedController.findByRentals);
 
 
 

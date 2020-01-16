@@ -26,9 +26,9 @@ export default {
         console.log(userId)
         return axios.get("/item/" + userId)
     },
-    findByRented: function (userId) {
-        console.log(userId + "findByRented API.js")
-        return axios.get("/rented/" + userId)
+    findByRentals: function (itemId) {
+        console.log(itemId + "findByRentals API.js")
+        return axios.get("/rentals/" + itemId)
     },
     findByTerm: function (term, zip) {
         console.log(`${term} & ${zip}`);

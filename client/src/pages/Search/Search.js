@@ -239,6 +239,8 @@ class Search extends Component {
                                         category={result.category}
                                         price={result.price}
                                         img={result.img}
+                                        // onClick={() => this.handleModalItem(result)}
+                                        onClick={() => this.openModal(result)}
                                     />
                                     {/* <FormBtn
                                         key={result.key}
