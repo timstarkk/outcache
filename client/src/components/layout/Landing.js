@@ -46,7 +46,8 @@ class Landing extends Component {
                 </label>
                 {this.state.searchTerm ? (
                   <Link
-                    to={`/search/${this.state.searchTerm}/${this.state.zipCode}`}
+                    to={this.state.zipCode ? (`/search/${this.state.searchTerm}/${this.state.zipCode}`) : (`/search/${this.state.searchTerm}/0`)}
+                    // to={`/search/${this.state.searchTerm}/${this.state.zipCode}`}
                     style={{
                       width: "140px",
                       borderRadius: "3px",
@@ -58,7 +59,7 @@ class Landing extends Component {
                   </Link>
                 ) : (
                   <Link
-                  to={`/search/?/${this.state.zipCode}`}
+                  to={`/search/a/${this.state.zipCode}`}
                   style={{
                     width: "140px",
                     borderRadius: "3px",

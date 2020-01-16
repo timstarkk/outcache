@@ -94,6 +94,7 @@ class Form extends Component {
           console.log(res.data);
           console.log("added")
         })
+        .then(this.props.history.push("/dashboard"))
         .catch(err => console.log(err));
 
       //   return<Redirect to={{pathname: "/" }} />
@@ -143,6 +144,13 @@ class Form extends Component {
               name="category"
               label="Category"
               placeholder="What is the category of the item etc...Camping,Climing,Hiking"
+            />
+            <Input
+              value={this.state.zipcode}
+              onChange={this.handleInputChange}
+              name="zipcode"
+              label="Zipcode"
+              placeholder="Where is the item located? (5-Digit Zip Code)"
             />
             <Input
               value={this.state.price}

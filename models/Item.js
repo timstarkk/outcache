@@ -22,14 +22,12 @@ const itemSchema = new Schema({
 itemSchema.index({
   itemName: 'text',
   zipcode: 'text',
-  category: 'text',
-  description: 'text',
+  category: 'text'
 }, {
   weights: {
     itemName: 5,
     zipcode: 4,
     category: 3,
-    description: 1,
   },
 });
 

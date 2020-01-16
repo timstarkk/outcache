@@ -37,6 +37,7 @@ class Search extends Component {
         approved: false,
         itemId: "",
         searchTerm: "",
+        zipCode: "",
         results: [],
         modalIsOpen: false,
         itemName: "",
@@ -118,9 +119,11 @@ class Search extends Component {
 
 
     componentDidMount = () => {
-        if (this.props.match.params.term) {
-            this.makeSearch(this.props.match.params.term);
+        console.log(this.props.match.params)
+        if (this.props.match.params.term || this.props.match.params.zip) {
+            this.makeSearch(this.props.match.params.term, this.props.match.params.zip);
             this.setState({ searchTerm: this.props.match.params.term })
+            this.setState({ zipCode: this.props.match.params.zip})
         } else {
             this.loadItems();
         }
@@ -158,14 +161,14 @@ class Search extends Component {
             .catch(err => console.log(err));
     };
 
-    makeSearch = query => {
+    makeSearch = (term, zip) => {
         console.log('makeSearch')
-        console.log(query)
+        console.log(`${term} & ${zip}`);
         // items.findByTerm(query)
         //     .then(res => this.setState({ books: res.data.items }))
         //     .catch(err => console.log(err));
 
-        API.findByTerm(query)
+        API.findByTerm(term, zip)
             .then(res => {
                 this.setState({ results: res.data })
                 this.createResultCard(res);
@@ -224,6 +227,20 @@ class Search extends Component {
                                     handleInputChange={this.handleInputChange}
                                     handleFormSubmit={this.handleFormSubmit} />
                             </div>
+                        </div>
+
+                        <div className="row">
+                            <Link
+                                to={`/form`}
+                                style={{
+                                    width: "140px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px"
+                                }}
+                                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                                >
+                                Add Item
+                            </Link>
                         </div>
 
                         <div className="row">
