@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
 import ResultCard from "../../components/search/ResultCard"
+import RentedOutCard from "../../components/Dashboard/RentedOutCard"
 
 class Dashboard extends Component {
   state = {
@@ -27,6 +29,11 @@ class Dashboard extends Component {
       display: value
     })
     console.log(this.state.display)
+  }
+
+  approveRental = rentalInfo => {
+    console.log("rentalInfo")
+    console.log(rentalInfo)
   }
 
   componentDidMount() {
@@ -112,6 +119,8 @@ class Dashboard extends Component {
       something()
     }
 
+   
+      
 
   
 
@@ -135,39 +144,46 @@ class Dashboard extends Component {
           <div className="row">
             <a onClick={() => this.display(2)}>Items You Have Rented</a>
           </div>
+          <div className="row">
+                            <Link
+                                to={`/form`}
+                                style={{
+                                    width: "140px",
+                                    borderRadius: "3px",
+                                    letterSpacing: "1.5px"
+                                }}
+                                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                                >
+                                Add Item
+                            </Link>
+                        </div>
           {/* <!-- Grey navigation panel --> */}
         </div>
   
         <div class="col s9">
-        {display===0  &&  
-          <h2>this display is 0</h2>
-        }
-         {display===1 && 
-          <h2>this display is 1</h2>
-        }
-         {display===2 && 
-          <h2>this display is 2</h2>
-        }
-         
            <div className="row">  
-            {(this.state.display === 0) &&
-                <p className="col s7">Showing results 1-{this.state.items.length} of {this.state.items.length}:</p>
-            }
-            {display === 1 &&
-              <p className="col s7">Showing results 1-{this.state.rentedItems.length} of {this.state.rentedItems.length}:</p>
-            }
-            {display===2 && 
-              <p className="col s7">Showing results 1-{this.state.rentalItemsArray.length} of {this.state.rentalItemsArray.length}:</p>
-            }
+              {(this.state.display === 0) &&
+                <><h2>this display is 0</h2>
+                <p className="col s7">Showing results 1-{this.state.items.length} of {this.state.items.length}:</p></>
+              }
+              {display === 1 &&
+                <><h2>this display is 1</h2>
+                <p className="col s7">Showing results 1-{this.state.rentedItems.length} of {this.state.rentedItems.length}:</p></>
+              }
+              {display===2 && 
+                <><h2>this is display 2</h2>
+                <p className="col s7">Showing results 1-{this.state.rentalItemsArray.length} of {this.state.rentalItemsArray.length}:</p></>
+              }
             </div>
+          
 
            <div className="row">
              { display === 0 && 
                this.state.items.map((result, index) => (
                    <div>
                        <ResultCard
-                           key={result.key + index}
-                           id={result.key}
+                           key={result._id + index}
+                           id={result._id}
                            name={result.itemName}
                            category={result.category}
                            price={result.price}
@@ -178,27 +194,29 @@ class Dashboard extends Component {
                ))
               }
               { display === 1 && 
+              // console.log(this.state.rentedItems),
                this.state.rentedItems.map((result, index) => (
                    <div>
-                       <ResultCard
-                           key={result.key + index}
-                           id={result.key}
+                       <RentedOutCard
+                           key={result._id + index}
+                           id={result._id}
                            name={result.itemName}
                            category={result.category}
                            price={result.price}
                            img={result.img}
-                           // onClick={() => this.openModal(result)}
+                           rented={result.rented}
+                           onClick={() => this.approveRental(result.rented)}
                        />
                    </div>
                ))
               }
                { display === 2 && 
-               
+              //  console.log(this.state.rentalItemsArray),
                this.state.rentalItemsArray.map((result, index) => (
                    <div>
                        <ResultCard
-                           key={result.key + index}
-                           id={result.key}
+                           key={result._id + index}
+                           id={result._id}
                            name={result.itemName}
                            category={result.category}
                            price={result.price}
@@ -207,46 +225,10 @@ class Dashboard extends Component {
                        />
                    </div>
                ))
-              }
-              
+              }  
            </div>
-       
-
-
-
-
-
-        <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row dashboardCard">
-          <div className="col s12 center-align">
-            <h4>
-              <b>Hey there,</b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
-              </p>
-            </h4>
-            <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
-            </button>
-          </div>
         </div>
       </div>
-          {/* <!-- Teal page content  --> */}
-        </div>
-  
-      </div>
-      
-     
     );
   }
 }
