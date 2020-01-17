@@ -24,7 +24,7 @@ createRented: async function(req, res) {
   approveRental: function(req, res) {
     console.log(req.body)
     let update = { $set: {'rented.$[elem].approved': 'true'}};
-    let options = {new: true, arrayFilters: [{ 'elem.renterId' : req.body.renterId }]}
+    let options = {new: true, arrayFilters: [{ 'elem._id' : req.body.rentalId }]}
     db.Item 
     .findOneAndUpdate({_id: req.body.itemId}, update, options, (err,doc) => {
       if (err) {

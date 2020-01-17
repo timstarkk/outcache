@@ -19,12 +19,12 @@ function ResultCard(props) {
             <p>Start Date: {pendingRental.startDate}</p>
             <p>End Date: {pendingRental.endDate}</p>
             <p>Approved: {pendingRental.approved ? "approved" : "unapproved"}</p>
-            <button className="col offset-s1 s5 btn cardButton" onClick={() => onApproveRental(index, subIndex)} style={{ "margin-bottom": "5px" }}>Approve</button>
+            <button className="" onClick={() => onApproveRental(index, subIndex)} style={{ "margin-bottom": "5px" }}>Approve</button>
         </>
     ))
 
     return (
-        <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
+        <div className="col offset-s2 s8 m6 l4 resultCardContainer" style={{
             padding: "0px",
             "margin-bottom": "10px",
         }}>

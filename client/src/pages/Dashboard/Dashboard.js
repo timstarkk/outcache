@@ -36,7 +36,8 @@ class Dashboard extends Component {
     const rentalInfo = {
       renterId: rentedItems[index].rented[subIndex].renterId,
       itemId: rentedItems[index]._id,
-      rentedIndex: subIndex
+      rentedIndex: subIndex,
+      rentalId: rentedItems[index].rented[subIndex]._id
     }
 
     API.approveRental(rentalInfo)
