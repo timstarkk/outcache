@@ -232,20 +232,6 @@ class Search extends Component {
                         </div>
 
                         <div className="row">
-                            <Link
-                                to={`/form`}
-                                style={{
-                                    width: "140px",
-                                    borderRadius: "3px",
-                                    letterSpacing: "1.5px"
-                                }}
-                                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                                >
-                                Add Item
-                            </Link>
-                        </div>
-
-                        <div className="row">
                             <p className="col s7">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>
                         </div>
                         <div className="row">
