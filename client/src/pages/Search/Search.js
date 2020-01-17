@@ -21,7 +21,8 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        width: '40%'
+        width: '70%',
+        height: 'auto'
     }
 
 };
@@ -47,6 +48,7 @@ class Search extends Component {
         price: 0,
         img: "",
         modalIsOpen: false,
+        description: ""
     }
 
 
@@ -104,7 +106,10 @@ class Search extends Component {
         this.setState({
             itemName: modalInfo.itemName,
             itemId: modalInfo.key,
-
+            img: modalInfo.img,
+            price: modalInfo.price,
+            zipCode: modalInfo.zipcode,
+            description: modalInfo.description
         })
         console.log("modalButton!!")
         this.setState({ modalIsOpen: true });
@@ -125,7 +130,7 @@ class Search extends Component {
         if (this.props.match.params.term || this.props.match.params.zip) {
             this.makeSearch(this.props.match.params.term, this.props.match.params.zip);
             this.setState({ searchTerm: this.props.match.params.term })
-            this.setState({ zipCode: this.props.match.params.zip})
+            this.setState({ zipCode: this.props.match.params.zip })
         } else {
             this.loadItems();
         }
@@ -139,7 +144,7 @@ class Search extends Component {
                 // this.setState({ results: res.data });
                 console.log(res.data);
                 for (const item in res.data) {
-                    const { itemName, category, price, img } = res.data[item]
+                    const { itemName, category, price, img, description, zipcode } = res.data[item]
                     const resultsArray = this.state.results
                     const key = res.data[item]._id;
                     // console.log(key);
@@ -149,7 +154,9 @@ class Search extends Component {
                         itemName,
                         category,
                         price,
-                        img
+                        img,
+                        description,
+                        zipcode
                     }
                     console.log(result)
 
@@ -236,7 +243,7 @@ class Search extends Component {
                         </div>
                         <div className="row">
                             {this.state.results.map((result, index) => (
-                                <div>
+                                < div >
                                     <ResultCard
                                         key={result.key + index}
                                         id={result.key}
@@ -276,34 +283,55 @@ class Search extends Component {
                     contentLabel="Example Modal"
                 >
 
-                    {/* <h2 ref={subtitle => this.subtitle = subtitle}>Hello {this.state.user}</h2> */}
-                    {/* <button className="btn" onClick={this.closeModal}>close</button> */}
-                    {/* <div>this is a title //${itemName}</div> */}
-                    <h2>hello {this.props.auth.user.name}</h2>
-                    <p>Rent {this.state.itemName}</p>
-                    <form>
+                    {/* <h2>hello {this.props.auth.user.name}</h2>
+                    <p>Rent {this.state.itemName}</p> */}
 
-                        <Input
-                            value={this.state.startDate}
-                            onChange={this.handleInputChange}
-                            name="startDate"
-                            label="Start Date"
-                            placeholder="When day would you like to rent this item"
-                            type="date"
-                        />
-                        <Input
-                            value={this.state.endDate}
-                            onChange={this.handleInputChange}
-                            name="endDate"
-                            label="End Date"
-                            placeholder="When day would you like to rent this item"
-                            type="date"
-                        />
-                        {/* <input id="modal-input" className="input-field" placeholder="Enter some text" /> */}
-                        <button className="btn" onClick={this.handleRentalSubmit}>Request Rental</button>
-                    </form>
+                    <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
+                        <div className="col s6" style={{}}>
+                            <div className="detailsImageContainer">
+                                <img src={`${this.state.img}`} />
+                            </div>
+                        </div>
+                        <div className="col s6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
+                            <div className="row" style={{ margin: "0px" }}>
+                                <h4 style={{ "margin-top": "0px" }}>{this.state.itemName}</h4>
+                            </div>
+                            <div className="row" style={{ margin: "0px" }}>
+                                <p>${this.state.price} / day</p>
+                            </div>
+                            <div className="row" style={{ margin: "0px" }}>
+                                <p>{this.state.description}</p>
+                            </div>
+                            <div className="row" style={{}}>
+                                <div className="col s12">
+                                    <div className="formContainer" style={{}}>
+                                        <form>
+                                            <Input
+                                                value={this.state.startDate}
+                                                onChange={this.handleInputChange}
+                                                name="startDate"
+                                                label="Start Date"
+                                                placeholder="When day would you like to rent this item"
+                                                type="date"
+                                            />
+                                            <Input
+                                                value={this.state.endDate}
+                                                onChange={this.handleInputChange}
+                                                name="endDate"
+                                                label="End Date"
+                                                placeholder="When day would you like to rent this item"
+                                                type="date"
+                                            />
+                                            <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </Modal>
-            </div>
+            </div >
 
         )
     }

@@ -15,12 +15,12 @@ const navMap = {
 };
 
 const logoMap = {
-  '/': 'white',
-  '/search': 'black',
-  '/register': 'white',
-  '/login': 'white',
-  '/dashboard': 'white',
-  '/modal': 'white'
+  '/': 'grey',
+  '/search': 'grey',
+  '/register': 'grey',
+  '/login': 'grey',
+  '/dashboard': 'grey',
+  '/modal': 'grey'
 }
 
 const buttonMap = {
@@ -46,7 +46,7 @@ const Navbar = (logoutUser) => {
 
             <Link
               to="/"
-              className={`col s5 brand-logo center ${logoMap[pathname]}-text`}
+              className={`col s5 brand-logo center ${logoMap[pathname]}-text text-darken-3`}
               id={`${navMap[pathname]}`}
             >
               OutCache
@@ -55,13 +55,13 @@ const Navbar = (logoutUser) => {
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
                 <Link
-                    to={`/search`}
-                    style={{
-                      margin: "0px 15px"
-                    }}
-                    className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
-                    >
-                    Search
+                  to={`/search`}
+                  style={{
+                    margin: "0px 15px"
+                  }}
+                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
+                >
+                  Search
                 </Link>
               </li>
               <li>
@@ -77,13 +77,13 @@ const Navbar = (logoutUser) => {
               </li>
               <li>
                 <Link
-                    to={`/form`}
-                    style={{
-                      margin: "0px 15px"
-                    }}
-                    className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
-                    >
-                    Add Item
+                  to={`/form`}
+                  style={{
+                    margin: "0px 15px"
+                  }}
+                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
+                >
+                  Add Item
                 </Link>
               </li>
               <li>
@@ -93,7 +93,7 @@ const Navbar = (logoutUser) => {
                   style={{
                     margin: "0px 15px"
                   }}
-                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
                 >
                   Log Out
                   </Link>
@@ -119,13 +119,13 @@ const Navbar = (logoutUser) => {
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
               <Link
-                  to={`/search`}
-                  style={{
-                    margin: "0px 15px"
-                  }}
-                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
-                  >
-                  Search
+                to={`/search`}
+                style={{
+                  margin: "0px 15px"
+                }}
+                className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+              >
+                Search
               </Link>
             </li>
             <li>

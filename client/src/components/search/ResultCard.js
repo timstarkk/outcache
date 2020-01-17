@@ -14,7 +14,7 @@ function ResultCard(props) {
                 <div className="cardImageContainer">
                     <img className="cardImage" src={img} alt={name} />
 
-                    <div className="littleSquare"></div>
+                    <div className="littleSquare" style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>
                 </div>
                 <div className="cardInfoContainer">
                     <h6 className="cardName">{name}</h6>
