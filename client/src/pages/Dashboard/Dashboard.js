@@ -33,9 +33,22 @@ class Dashboard extends Component {
 
   approveRental = (index, subIndex) => {
     const  {rentedItems } = this.state;
+    const rentalInfo = {
+      renterId: rentedItems[index].rented[subIndex].renterId,
+      itemId: rentedItems[index]._id,
+      rentedIndex: subIndex
+    }
 
+    API.approveRental(rentalInfo)
+    .then(res => {
+      console.log(res.data)
+      this.findByUserId(this.state.id)
+    })
+    .catch(err => console.log(err));
+    
     console.log("rentalInfo aaaa")
-    console.log(rentedItems[index].rented[subIndex], index, subIndex)
+    console.log("renter ID: " + rentedItems[index].rented[subIndex].renterId, index, subIndex)
+    console.log("item ID: " + rentedItems[index]._id)
   }
 
   componentDidMount() {
@@ -121,29 +134,12 @@ class Dashboard extends Component {
       something()
     }
 
-   
-    buttonMaker = rented => {
-      const rentedArray = []
-      for (let i = 0; i < rented.length; i++) {
-          let singleItem = 
-          <><p>Start Date: {rented[i].startDate}</p>
-          <p>End Date: {rented[i].endDate}</p>
-          <p>Aprroved: {rented[i].approved ? "approved" : "unapproved"}</p>
-          <button className="col offset-s1 s5 btn cardButton" data={i}  style={{ "margin-bottom": "5px" }}>Approve</button></>
-          rentedArray.push(singleItem)
-      }
-    }
-
-  
-
   render() {
     const { user } = this.props.auth;
     const display = this.state.display
     const rentedoutSection = {}
     
 
-  
-   
     return (
       // <!-- Navbar goes here -->
 
