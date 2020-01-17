@@ -25,7 +25,7 @@ app.use(
 app.use(bodyParser.json());
 
 // DB Config
-const db = require("./config/keys").mongoURI;
+// const db = require("./config/keys").mongoURI;
 
 // // Connect to MongoDB
 // mongoose
@@ -36,7 +36,7 @@ const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(
-    db,{ useNewUrlParser: true } || "mongodb://localhost/outcache"
+    process.env.MONGODB_URI ,{ useNewUrlParser: true } || "mongodb://localhost/outcache"
   )
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
