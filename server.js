@@ -25,7 +25,7 @@ app.use(
 app.use(bodyParser.json());
 
 // DB Config
-// const db = require("./config/keys").mongoURI;
+const db = require("./config/keys").mongoURI;
 
 // // Connect to MongoDB
 // mongoose
@@ -34,23 +34,23 @@ app.use(bodyParser.json());
 //     { useNewUrlParser: true }
 
 // Connect to MongoDB
-// mongoose
-//   .connect(
-//     db,{ useNewUrlParser: true } || "mongodb://localhost/outcache"
-//   )
-//   .then(() => console.log("MongoDB successfully connected"))
-//   .catch(err => console.log(err));
-
-// mongoose.connect("mongodb://localhost/outcache")
-
 mongoose
   .connect(
-    "mongodb://localhost/outcache",
-    { useNewUrlParser: true,
-    useUnifiedTopology: true}
+    db,{ useNewUrlParser: true } || "mongodb://localhost/outcache"
   )
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
+
+// mongoose.connect("mongodb://localhost/outcache")
+
+// mongoose
+//   .connect(
+//     "mongodb://localhost/outcache",
+//     { useNewUrlParser: true,
+//     useUnifiedTopology: true}
+//   )
+//   .then(() => console.log("MongoDB successfully connected"))
+//   .catch(err => console.log(err));
 
 // Passport middleware
 app.use(passport.initialize());
