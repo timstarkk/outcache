@@ -11,6 +11,7 @@ import API from "../../utils/API";
 import SearchForm from "../../components/search/SearchForm";
 import ResultCard from "../../components/search/ResultCard"
 import { FormBtn, Input } from "../../components/Form";
+import './style.css';
 
 const customStyles = {
     content: {
@@ -19,7 +20,8 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        width: '40%'
     }
 
 };
