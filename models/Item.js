@@ -13,21 +13,19 @@ const itemSchema = new Schema({
   userName:{ type: String, required: true},
   description: {type: String, trim: true},
   zipcode: {type: String, required: true},
-  rented: [{
-    type: Schema.Types.ObjectId,
-    ref: "Rented"
+  rented: [{ type:Object
   }]
 });
 
 itemSchema.index({
   itemName: 'text',
-  category: 'text',
-  description: 'text',
+  zipcode: 'text',
+  category: 'text'
 }, {
   weights: {
     itemName: 5,
+    zipcode: 4,
     category: 3,
-    description: 1,
   },
 });
 

@@ -4,12 +4,15 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
+import ResultCard from "../../components/search/ResultCard"
 
 class Dashboard extends Component {
   state = {
     id: this.props.auth.user.id,
     items: [],
-    rentedItems: []
+    rentedItems: [],
+    rentalItemsArray: [],
+    display: 0
   }
 
 
@@ -18,19 +21,42 @@ class Dashboard extends Component {
     this.props.logoutUser();
   };
 
+  
+  display = value => {
+    this.setState({
+      display: value
+    })
+    console.log(this.state.display)
+  }
+
   componentDidMount() {
+    const id = this.props.auth.user.id
+    API.getUser(id)
+    .then(res => {
+      console.log(res.data)
+      if (res.data !== []) {
+        
+        this.setState({
+          userInfo: res.data,
+          rentals: res.data[0].rentals
+        })
+        
+        console.log(this.state.rentals)
+        this.findByRentals(this.state.rentals)
+      }
+    })
+   
     this.setState({
       id: this.props.auth.user.id
     })
     console.log(this.state.id)
     this.findByUserId(this.state.id)
-    this.findbyRented(this.state.id)
-  
   }
 
 
     findByUserId = id => {
       console.log(id)
+      const rentedItems = []
       API.findByUserId(id)
         .then(res => {
           console.log(res.data)
@@ -39,6 +65,16 @@ class Dashboard extends Component {
               items: res.data,
               target: "_blank"
             });
+            for (let item of this.state.items) {
+              console.log(item)
+              if (item.rented.length > 0) {
+                rentedItems.push(item)
+              }
+              this.setState({
+                rentedItems: rentedItems
+              })
+              console.log(this.state.rentedItems)
+            }
           } else {
             this.setState({
               noResults: true
@@ -48,29 +84,139 @@ class Dashboard extends Component {
         .catch(err => console.log(err));
     }
 
-    findbyRented = id => {
-      console.log('rented call function')
-      API.findByRented(id)
-        .then(res => {
-          console.log(res.data)
-          // console.log(res.data[0].rented)
-          if(res.data.length > 0) {
-            this.setState({
-              rentedItems: res.data,
-              target: "_blank"
-            })
-          }
-          console.log(this.state.rentedItems)
+  
 
+    findByRentals = rentals => {
+      console.log('rentals call function')
+      const rentalItemsArray = []
+      console.log(rentals) 
+      const something = async _ => {
+        console.log('start')
+        const promises = await rentals.map(async item => {
+          const getItem = await API.findByRentals(item)
+            .then(res => {
+              console.log(res.data[0])
+              // console.log(res.data)
+              // console.log(res.data[0].rented)
+              rentalItemsArray.push(res.data[0])
+              console.log(rentalItemsArray)
+            })
         })
+        const returnitems = await Promise.all(promises)
+        console.log("end")
+        this.setState({
+          rentalItemsArray: rentalItemsArray
+        })
+        console.log(this.state.rentalItemsArray)
+      }  
+      something()
     }
+
+
+  
 
   render() {
     const { user } = this.props.auth;
+    const display = this.state.display
    
     return (
-      
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
+      // <!-- Navbar goes here -->
+
+      // <!-- Page Layout here -->
+      <div class="row">
+  
+        <div className="col s2 grey lighten-2">
+          <div className="row">
+            <a onClick={() => this.display(0)}>Your Items</a>
+          </div>
+          <div className="row">
+            <a onClick={() => this.display(1)}>Items Rented Out</a>
+          </div>
+          <div className="row">
+            <a onClick={() => this.display(2)}>Items You Have Rented</a>
+          </div>
+          {/* <!-- Grey navigation panel --> */}
+        </div>
+  
+        <div class="col s9">
+        {display===0  &&  
+          <h2>this display is 0</h2>
+        }
+         {display===1 && 
+          <h2>this display is 1</h2>
+        }
+         {display===2 && 
+          <h2>this display is 2</h2>
+        }
+         
+           <div className="row">  
+            {(this.state.display === 0) &&
+                <p className="col s7">Showing results 1-{this.state.items.length} of {this.state.items.length}:</p>
+            }
+            {display === 1 &&
+              <p className="col s7">Showing results 1-{this.state.rentedItems.length} of {this.state.rentedItems.length}:</p>
+            }
+            {display===2 && 
+              <p className="col s7">Showing results 1-{this.state.rentalItemsArray.length} of {this.state.rentalItemsArray.length}:</p>
+            }
+            </div>
+
+           <div className="row">
+             { display === 0 && 
+               this.state.items.map((result, index) => (
+                   <div>
+                       <ResultCard
+                           key={result.key + index}
+                           id={result.key}
+                           name={result.itemName}
+                           category={result.category}
+                           price={result.price}
+                           img={result.img}
+                           // onClick={() => this.openModal(result)}
+                       />
+                   </div>
+               ))
+              }
+              { display === 1 && 
+               this.state.rentedItems.map((result, index) => (
+                   <div>
+                       <ResultCard
+                           key={result.key + index}
+                           id={result.key}
+                           name={result.itemName}
+                           category={result.category}
+                           price={result.price}
+                           img={result.img}
+                           // onClick={() => this.openModal(result)}
+                       />
+                   </div>
+               ))
+              }
+               { display === 2 && 
+               
+               this.state.rentalItemsArray.map((result, index) => (
+                   <div>
+                       <ResultCard
+                           key={result.key + index}
+                           id={result.key}
+                           name={result.itemName}
+                           category={result.category}
+                           price={result.price}
+                           img={result.img}
+                           // onClick={() => this.openModal(result)}
+                       />
+                   </div>
+               ))
+              }
+              
+           </div>
+       
+
+
+
+
+
+        <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row dashboardCard">
           <div className="col s12 center-align">
             <h4>
@@ -94,43 +240,12 @@ class Dashboard extends Component {
             </button>
           </div>
         </div>
-          <div>
-            <List>
-              {/* {this.state.rentedItems.map(item => 
-                <ListItem key={item._id}>
-                  <p>{item}</p>
-
-                </ListItem>
-                )} */}
-              
-            </List>
-          {/* <List>
-              {this.state.items.map(item => (
-                <ListItem key={item._id}>
-                  
-                  <div className="date-div">
-                    <a                  >
-                      {item.itemName}
-                    </a>
-                    <p>Category {item.category} </p>
-                    <p>Price: {item.price} </p>
-                    
-                    <img align="left" 
-                      src={item.img}
-                      style={{paddingRight:10, width: '300px' }}
-                      alt="new"
-                      />
-                    <p>
-                      {item.description}
-                    </p>
-                  </div>
-                  <div className="item-btn-div">
-                  </div>
-                </ListItem>
-              ))}
-            </List> */}
-        </div>
       </div>
+          {/* <!-- Teal page content  --> */}
+        </div>
+  
+      </div>
+      
      
     );
   }

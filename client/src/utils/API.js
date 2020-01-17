@@ -26,16 +26,16 @@ export default {
         console.log(userId)
         return axios.get("/item/" + userId)
     },
-    findByRented: function (userId) {
-        console.log(userId + "findByRented API.js")
-        return axios.get("/rented/" + userId)
+    findByRentals: function (itemId) {
+        console.log(itemId + "findByRentals API.js")
+        return axios.get("/rentals/" + itemId)
     },
-    findByTerm: function (term) {
-        console.log(term)
-        return axios.get("/search/" + term)
-    },
-    findByZipCode: function (zip) {
-        console.log(zip)
-        return axios.get("/search/" + zip)
+    findByTerm: function (term, zip) {
+        console.log(`${term} & ${zip}`);
+        return axios.get("/search/" + term + "/" + zip)
     }
+    // findByZipCode: function (zip) {
+    //     console.log(zip)
+    //     return axios.get("/search/" + zip)
+    // }
 };

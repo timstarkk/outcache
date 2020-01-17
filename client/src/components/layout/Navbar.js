@@ -1,5 +1,9 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect, useSelector, useReducer } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
+
 
 const navMap = {
   '/search': 'theSearchNavbar',
@@ -28,9 +32,45 @@ const buttonMap = {
   '/modal': 'modalNavButton'
 }
 
-const Navbar = () => {
+const Navbar = (logoutUser) => {
+
   const location = useLocation();
+  const auth = useSelector(state => state.auth);
   const { pathname } = location;
+
+  if (auth.isAuthenticated) {
+    return (
+      <div className="navbar-fixed">
+        <nav className={`z-depth-0 ${navMap[pathname]}`}>
+          <div className="nav-wrapper navbarFlex">
+
+            <Link
+              to="/"
+              className={`col s5 brand-logo center ${logoMap[pathname]}-text`}
+              id={`${navMap[pathname]}`}
+            >
+              OutCache
+
+              </Link>
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <li>
+                <Link
+                  onClick={logoutUser.logoutUser}
+                  to="/"
+                  style={{
+                    margin: "0px 15px"
+                  }}
+                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                >
+                  Log Out
+                  </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div >
+    )
+  }
   return (
     <div className="navbar-fixed">
       <nav className={`z-depth-0 ${navMap[pathname]}`}>
@@ -71,7 +111,19 @@ const Navbar = () => {
         </div>
       </nav>
     </div >
-  );
+  )
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Navbar);

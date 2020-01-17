@@ -23,6 +23,9 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  rentals: [{
+    type: String
+  }],
   items: [{
     type: Schema.Types.ObjectId,
     ref: "Item"
