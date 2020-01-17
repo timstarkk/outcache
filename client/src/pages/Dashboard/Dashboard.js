@@ -31,9 +31,11 @@ class Dashboard extends Component {
     console.log(this.state.display)
   }
 
-  approveRental = rentalInfo => {
-    console.log("rentalInfo")
-    console.log(rentalInfo)
+  approveRental = (index, subIndex) => {
+    const  {rentedItems } = this.state;
+
+    console.log("rentalInfo aaaa")
+    console.log(rentedItems[index].rented[subIndex], index, subIndex)
   }
 
   componentDidMount() {
@@ -120,13 +122,27 @@ class Dashboard extends Component {
     }
 
    
-      
+    buttonMaker = rented => {
+      const rentedArray = []
+      for (let i = 0; i < rented.length; i++) {
+          let singleItem = 
+          <><p>Start Date: {rented[i].startDate}</p>
+          <p>End Date: {rented[i].endDate}</p>
+          <p>Aprroved: {rented[i].approved ? "approved" : "unapproved"}</p>
+          <button className="col offset-s1 s5 btn cardButton" data={i}  style={{ "margin-bottom": "5px" }}>Approve</button></>
+          rentedArray.push(singleItem)
+      }
+    }
 
   
 
   render() {
     const { user } = this.props.auth;
     const display = this.state.display
+    const rentedoutSection = {}
+    
+
+  
    
     return (
       // <!-- Navbar goes here -->
@@ -195,20 +211,21 @@ class Dashboard extends Component {
               }
               { display === 1 && 
               // console.log(this.state.rentedItems),
-               this.state.rentedItems.map((result, index) => (
-                   <div>
-                       <RentedOutCard
-                           key={result._id + index}
-                           id={result._id}
-                           name={result.itemName}
-                           category={result.category}
-                           price={result.price}
-                           img={result.img}
-                           rented={result.rented}
-                           onClick={() => this.approveRental(result.rented)}
-                       />
-                   </div>
-               ))
+                this.state.rentedItems.map((result, index) => (
+                  <div>
+                      <RentedOutCard
+                          key={result._id + index}
+                          id={result._id}
+                          name={result.itemName}
+                          category={result.category}
+                          price={result.price}
+                          img={result.img}
+                          rented={result.rented}
+                          index={index}
+                          onApproveRental={this.approveRental}
+                      />
+                      </div>
+                    ))
               }
                { display === 2 && 
               //  console.log(this.state.rentalItemsArray),

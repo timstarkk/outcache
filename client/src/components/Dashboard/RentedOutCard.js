@@ -2,7 +2,7 @@ import React from "react";
 import { FormBtn } from "../Form";
 
 function ResultCard(props) {
-    const { id, name, price, img, rented, onClick } = props;
+    const { id, name, price, img, rented, onApproveRental, index } = props;
     console.log(props)
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -13,15 +13,15 @@ function ResultCard(props) {
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    const rentedArray = []
-    for (let item of rented) {
-        let singleItem = 
-        <><p>Start Date: {item.startDate}</p>
-        <p>End Date: {item.endDate}</p>
-        <p>Aprroved: {item.approved ? "approved" : "unapproved"}</p>
-        <button className="col offset-s1 s5 btn cardButton" onClick={onClick} style={{ "margin-bottom": "5px" }}>Approve</button></>
-        rentedArray.push(singleItem)
-    }
+
+    const renderPendingRentals = () => rented.map((pendingRental, subIndex) => (
+        <>
+            <p>Start Date: {pendingRental.startDate}</p>
+            <p>End Date: {pendingRental.endDate}</p>
+            <p>Approved: {pendingRental.approved ? "approved" : "unapproved"}</p>
+            <button className="col offset-s1 s5 btn cardButton" onClick={() => onApproveRental(index, subIndex)} style={{ "margin-bottom": "5px" }}>Approve</button>
+        </>
+    ))
 
     return (
         <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
@@ -38,11 +38,9 @@ function ResultCard(props) {
                     <div className="row">
                         <p className="col s3 cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
                         <p className="col s3 perDayText" style={{ padding: "0px" }}>{' '}/ day</p>
-                        {rentedArray}
+                        {renderPendingRentals()}
                     </div>
                 </div>
-
-                {/* <p>key: {id}</p> */}
             </div >
         </div >
     );
