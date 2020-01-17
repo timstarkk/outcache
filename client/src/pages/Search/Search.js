@@ -11,6 +11,7 @@ import API from "../../utils/API";
 import SearchForm from "../../components/search/SearchForm";
 import ResultCard from "../../components/search/ResultCard"
 import { FormBtn, Input } from "../../components/Form";
+import './style.css';
 
 const customStyles = {
     content: {
@@ -19,7 +20,8 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        width: '40%'
     }
 
 };
@@ -227,20 +229,6 @@ class Search extends Component {
                                     handleInputChange={this.handleInputChange}
                                     handleFormSubmit={this.handleFormSubmit} />
                             </div>
-                        </div>
-
-                        <div className="row">
-                            <Link
-                                to={`/form`}
-                                style={{
-                                    width: "140px",
-                                    borderRadius: "3px",
-                                    letterSpacing: "1.5px"
-                                }}
-                                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                                >
-                                Add Item
-                            </Link>
                         </div>
 
                         <div className="row">

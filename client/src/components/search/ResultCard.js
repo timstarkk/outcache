@@ -6,7 +6,7 @@ function ResultCard(props) {
     console.log(props)
 
     return (
-        <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
+        <div className="col offset-s2 s8 m3 l2 resultCardContainer" onClick={onClick} style={{
             padding: "0px",
             "margin-bottom": "10px",
         }}>
@@ -22,7 +22,7 @@ function ResultCard(props) {
                     <div className="row">
                         <p className="col s3 cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
                         <p className="col s3 perDayText" style={{ padding: "0px" }}>{' '}/ day</p>
-                        <button className="col offset-s1 s5 btn cardButton" onClick={onClick} style={{ "margin-bottom": "5px" }}>click</button>
+                        {/* <button className="col offset-s1 s5 btn cardButton" onClick={onClick} style={{ "margin-bottom": "5px" }}>click</button> */}
                         {/* OnClick={() => this.openModal} OnClick={() => this.handleModalItem()} */}
                     </div>
                 </div>

@@ -55,6 +55,28 @@ const Navbar = (logoutUser) => {
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
                 <Link
+                    to={`/search`}
+                    style={{
+                      margin: "0px 15px"
+                    }}
+                    className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                    >
+                    Search
+                </Link>
+              </li>
+              <li>
+                <Link
+                    to={`/form`}
+                    style={{
+                      margin: "0px 15px"
+                    }}
+                    className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                    >
+                    Add Item
+                </Link>
+              </li>
+              <li>
+                <Link
                   onClick={logoutUser.logoutUser}
                   to="/"
                   style={{
@@ -84,6 +106,17 @@ const Navbar = (logoutUser) => {
 
             </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <li>
+              <Link
+                  to={`/search`}
+                  style={{
+                    margin: "0px 15px"
+                  }}
+                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                  >
+                  Search
+              </Link>
+            </li>
             <li>
               <Link
                 to="/register"
