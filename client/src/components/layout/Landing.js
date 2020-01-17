@@ -15,14 +15,14 @@ class Landing extends Component {
     const value = event.target.value;
     const name = event.target.name;
     this.setState({
-        [name]: value
+      [name]: value
     });
   };
 
 
   render() {
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper" id="cardboxParent">
+      <div style={{ height: "75vh" }} className=" valign-wrapper" id="cardboxParent">
         <div className="row" id="cardParent">
           <div className="col s12 center-align z-depth-2" id="landingCard">
             {/* <h4>
@@ -38,22 +38,22 @@ class Landing extends Component {
               <p id="cardHeader">Rent everything you need to get outdoors.</p>
               <form id="landingForm">
                 {/* <LocationSearchInput/> */}
-                <Input type="text" name="searchTerm" value={this.state.searchTerm} onChange={this.handleInputChange} placeholder="What would you like?"/>
-                <Input type="text" name="zipCode" value={this.state.zipCode} onChange={this.handleInputChange} placeholder="Where (Zip Code)?"/>
+                <Input type="text" name="searchTerm" value={this.state.searchTerm} onChange={this.handleInputChange} placeholder="What would you like?" />
+                <Input type="text" name="zipCode" value={this.state.zipCode} onChange={this.handleInputChange} placeholder="Where (Zip Code)?" />
                 <label>
                   <input type="checkbox" className="filled-in" style={{ color: "white" }} />
                   <span style={{ color: "black" }} >I agree to be cool</span>
                 </label>
                 <Link
-                    to={`/search/${this.state.searchTerm}`}
-                    style={{
-                      width: "140px",
-                      borderRadius: "3px",
-                      letterSpacing: "1.5px"
-                    }}
-                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                  >
-                    Search
+                  to={`/search/${this.state.searchTerm}`}
+                  style={{
+                    width: "140px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px"
+                  }}
+                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                >
+                  Search
                   </Link>
               </form>
             </div>

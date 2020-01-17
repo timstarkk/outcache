@@ -6,8 +6,27 @@ const navMap = {
   '/register': 'theRegisterNavbar',
   '/login': 'theLoginNavbar',
   '/dashboard': 'theDashboardNavbar',
+  '/modal': 'theModalNavbar',
   '/': 'theNavbar',
 };
+
+const logoMap = {
+  '/': 'white',
+  '/search': 'black',
+  '/register': 'white',
+  '/login': 'white',
+  '/dashboard': 'white',
+  '/modal': 'white'
+}
+
+const buttonMap = {
+  '/': 'homeNavButton',
+  '/search': 'searchNavButton',
+  '/register': 'homeNavButton',
+  '/login': 'homeNavButton',
+  '/dashboard': 'homeNavButton',
+  '/modal': 'modalNavButton'
+}
 
 const Navbar = () => {
   const location = useLocation();
@@ -18,8 +37,8 @@ const Navbar = () => {
         <div className="nav-wrapper navbarFlex">
           <Link
             to="/"
-            className="col s5 brand-logo center white-text"
-            id="navbarLink"
+            className={`col s5 brand-logo center ${logoMap[pathname]}-text`}
+            id={`${navMap[pathname]}`}
           >
             OutCache
 
@@ -29,11 +48,10 @@ const Navbar = () => {
               <Link
                 to="/register"
                 style={{
-                  width: "140px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
+                  margin: "0px 15px"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className={`btn btn-large waves-effect waves-light ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                id="registerButton"
               >
                 Register
                 </Link>
@@ -42,12 +60,9 @@ const Navbar = () => {
               <Link
                 to="/login"
                 style={{
-                  width: "140px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px",
-                  border: "1px solid grey"
+                  margin: "0px 15px"
                 }}
-                className="btn btn-large btn-flat waves-effect white black-text"
+                className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
               >
                 Log In
                 </Link>
