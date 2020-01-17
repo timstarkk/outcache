@@ -33,6 +33,10 @@ export default {
     findByTerm: function (term, zip) {
         console.log(`${term} & ${zip}`);
         return axios.get("/search/" + term + "/" + zip)
+    },
+    approveRental: function (rentalInfo) {
+        console.log(rentalInfo)
+        return axios.post("/rentalApprove", rentalInfo)
     }
     // findByZipCode: function (zip) {
     //     console.log(zip)
