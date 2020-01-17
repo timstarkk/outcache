@@ -5,23 +5,16 @@ function ResultCard(props) {
     const { id, name, price, img, onClick } = props;
     console.log(props)
 
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // I'm trying to add one space to price.
-    // price += " "
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     return (
         <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
             padding: "0px",
             "margin-bottom": "10px",
         }}>
-            < div className="resultCard z-depth-1">
+            < div className="resultCard z-depth-2">
                 <div className="cardImageContainer">
                     <img className="cardImage" src={img} alt={name} />
+
+                    <div className="littleSquare"></div>
                 </div>
                 <div className="cardInfoContainer">
                     <h6 className="cardName">{name}</h6>
@@ -33,8 +26,6 @@ function ResultCard(props) {
                         {/* OnClick={() => this.openModal} OnClick={() => this.handleModalItem()} */}
                     </div>
                 </div>
-
-                {/* <p>key: {id}</p> */}
             </div >
         </div >
     );

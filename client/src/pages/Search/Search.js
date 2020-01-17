@@ -222,7 +222,7 @@ class Search extends Component {
                     <div className="col s12" id="resultsBox">
                         {/* will pass the search terms/parameters into Results*/}
                         <div className="container">
-                            <div className="row">
+                            <div>
                                 {/* <input className="col s9" type="text" placeholder="Search..."></input> */}
                                 <SearchForm
                                     value={this.state.searchTerm}
