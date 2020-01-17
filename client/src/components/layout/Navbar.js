@@ -66,6 +66,17 @@ const Navbar = (logoutUser) => {
               </li>
               <li>
                 <Link
+                    to={`/dashboard`}
+                    style={{
+                      margin: "0px 15px"
+                    }}
+                    className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                    >
+                    Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link
                     to={`/form`}
                     style={{
                       margin: "0px 15px"
