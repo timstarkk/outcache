@@ -8,6 +8,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: bottom;
 }
 
 .theNavbar {
@@ -309,27 +310,27 @@ img {
 }
 
 .homeNavButton:hover {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #616161;
     background: transparent;
 }
 
 .searchNavButton:hover {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #616161;
     background: transparent;
 }
 
 .modalNavButton:hover {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #616161;
     background: transparent;
 }
 
 .dashboardNavButton:hover {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #616161;
     background: transparent;
 }
 
 .loginNavButton:hover {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #616161;
     background: transparent;
 }
 
@@ -337,14 +338,18 @@ img {
 /* === */
 
 .littleSquare {
+    background-image: url('../images/heart.png');
     z-index: 10;
     position: absolute;
     top: 0;
     right: 0;
-    height: 35px;
-    width: 35px;
-    border: 2px solid gold;
+    height: 40px;
+    width: 40px;
+    border: 5px solid transparent;
     visibility: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
 }
 
 .resultCard:hover .littleSquare {
@@ -352,5 +357,48 @@ img {
 }
 
 .littleSquare:hover {
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    background-image: url('../images/filledHeart.png');
+}
+
+.littleSquare:focus {
+    background-image: url('../images/filledHeart.png');
+}
+
+/* .fontColor {
+    color: #484848;
+} */
+
+.productDetails {
+    height: 450px;
+}
+
+.rentalButton {
+    width: 100%;
+    background-color: black;
+    letter-spacing: 1.5px;
+}
+
+.rentalButton:hover {
+    background-color: black;
+    opacity: 85%;
+}
+
+.rentalButton:focus {
+    background-color: black;
+}
+
+.landingButton {
+    width: 100%;
+    background-color: black;
+    letter-spacing: 1.5px;
+}
+
+.landingButton:hover {
+    background-color: black;
+    opacity: 85%;
+}
+
+.landingButton:focus {
+    background-color: black;
 }

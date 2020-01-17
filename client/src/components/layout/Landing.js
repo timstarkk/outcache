@@ -65,7 +65,7 @@ class Landing extends Component {
                         borderRadius: "3px",
                         letterSpacing: "1.5px"
                       }}
-                      className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                      className="btn btn-large waves-effect waves-light accent-3 landingButton"
                     >
                       Search
                 </Link>
