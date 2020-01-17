@@ -84,6 +84,7 @@ class Search extends Component {
             .then(res => {
                 console.log(res.data);
                 console.log("added")
+                this.setState({ modalIsOpen: false });
             })
             .catch(err => console.log(err));
 
