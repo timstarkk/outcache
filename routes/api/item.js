@@ -11,13 +11,13 @@ const userController = require("../../controllers/userController")
   .post(itemsController.createItem)
   .get(itemsController.findAll);
 
-router.route("/search/:term/:zip")
+  router.route("/search/:term/:zip")
   .get(itemsController.findByTerm);
 
 // router.route("/zip/:zipCode")
 //   .get(itemsController.findByZip);
 
-router.route("/item/:userId")
+  router.route("/item/:userId")
   .get(itemsController.findByUserId)
 
   router.route("/rented")
@@ -25,6 +25,9 @@ router.route("/item/:userId")
   
   router.route("/rentals/:itemId")
   .get(rentedController.findByRentals);
+
+  router.route("/rentalApprove")
+  .post(rentedController.approveRental);
 
 
 
