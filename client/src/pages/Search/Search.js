@@ -11,6 +11,7 @@ import API from "../../utils/API";
 import SearchForm from "../../components/search/SearchForm";
 import ResultCard from "../../components/search/ResultCard"
 import { FormBtn, Input } from "../../components/Form";
+import './style.css';
 
 const customStyles = {
     content: {
@@ -19,7 +20,8 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        width: '40%'
     }
 
 };
@@ -220,7 +222,7 @@ class Search extends Component {
                     <div className="col s12" id="resultsBox">
                         {/* will pass the search terms/parameters into Results*/}
                         <div className="container">
-                            <div className="row">
+                            <div>
                                 {/* <input className="col s9" type="text" placeholder="Search..."></input> */}
                                 <SearchForm
                                     value={this.state.searchTerm}
@@ -228,8 +230,6 @@ class Search extends Component {
                                     handleFormSubmit={this.handleFormSubmit} />
                             </div>
                         </div>
-
-                        
 
                         <div className="row">
                             <p className="col s7">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>

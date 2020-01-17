@@ -1,5 +1,5 @@
 body {
-    /* background-image: url('../images/dayCamp.jpeg'); */
+    background-image: url('../images/dayCamp3.jpg');
     /* background-size: cover;  */
     /* background-position: 0% 15%; */
     /* border: 2px solid green; */
@@ -12,25 +12,70 @@ body {
 
 .theNavbar {
     background-color: transparent;
-    /* border: 2px solid green; */
-    /* display: flex;
-    align-items: flex-start; */
 }
 
 .theSearchNavbar {
-    background-color: green;
+    background-color: white;
+    border-bottom: 1px solid rgba(129, 129, 129, 0.247);
 }
 
-#navbarLink {
+.theRegisterNavbar {
+    background-color: transparent;
+}
+
+.theLoginNavbar {
+    background-color: transparent;
+}
+
+.theDashboardNavbar {
+    background-color: transparent;
+}
+
+.theModalNavbar {
+    background-color: transparent;
+}
+
+#theNavbar {
+    font-family: monospace;
+    position: absolute;
+    left: 120px;
+}
+
+#theDashboardNavbar {
+    font-family: monospace;
+    position: absolute;
+    left: 120px;
+}
+
+#theLoginNavbar {
+    font-family: monospace;
+    position: absolute;
+    left: 120px;
+}
+
+#theRegisterNavbar {
+    font-family: monospace;
+    position: absolute;
+    left: 120px;
+}
+
+#theSearchNavbar {
+    font-family: monospace;
+}
+
+#theModalNavbar {
     font-family: monospace;
     position: absolute;
     left: 120px;
 }
 
 #landingCard {
-    /* height: 400px; */
-    width: 350px;
-    border-radius: 10px;
+    height: 500px;
+    width: 400px;
+    border-radius: 4px;
+    padding: 30px;
+    /* position: relative;
+    right: 120px; */
     /* padding-bottom: 35px; */
     /* padding-bottom: 20px; */
     /* display: flex;
@@ -41,11 +86,13 @@ body {
 #landingForm {
     margin-top: 0px;
     margin-bottom: 20px;
-    height: 210px;
+    height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    /* border: 2px solid red; */
+    justify-content: space-evenly;
+    /* border: 2px solid red;  */
+    position: relative;
+    top: 30px;
 }
 
 #landingForm > input {
@@ -68,13 +115,13 @@ input::placeholder {
 }
 
 #cardParent {
-    width: 100%;
+    width: 90%;
     padding-top: 40px;
 }
 
 #cardHeader {
-    color: darkslategray;
-    font-size: 24px;
+    color: #484848;
+    font-size: 30px;
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 0px;
@@ -149,7 +196,7 @@ input::placeholder {
     /* border: 2px solid blue; */
     overflow: auto;
     height: 90%;
-    border-radius: 2px;
+    border-radius: 5px;
     margin: 10px;
 }
 
@@ -167,11 +214,20 @@ input::placeholder {
     overflow: hidden;
     display: flex;
     align-items: center;
+    overflow: contain;
+    position: relative;
 }
 
 .cardImage {
     overflow: hidden;
     max-height: 340px;
+    display: block;
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .cardPrice {
@@ -198,6 +254,7 @@ img {
     max-height: 100%;
     width: auto;
     height: auto;   
+    /* display: block; */
 }
 
 .cardInfoContainer {
@@ -214,4 +271,86 @@ img {
 .cardButton {
     position: relative;
     bottom: 4px;
+    letter-spacing: 1.5px;
+    background-color: rgb(255, 187, 0);
+    font-weight: 500;
+    visibility: hidden;
+}
+
+#searchButton {
+    position: relative;
+    top: 8px;
+    background-color: black;
+    margin-bottom: 8px;
+    letter-spacing: 1.5px;
+}
+
+#searchButton:hover {
+    background-color: black;
+    opacity: 85%;
+}
+
+#registerButton {
+    background-color: transparent;
+    color: black;
+    box-shadow: none;
+}
+
+.navButton {
+    background: transparent;
+    border: 0px;
+    height: 64px;
+    font-size: 12px;
+    border-bottom: 2px solid transparent;
+    width: auto;
+    letter-spacing: 1.5px;
+    padding: 0px;
+    font-weight: 600;
+}
+
+.homeNavButton:hover {
+    border-bottom: 2px solid white;
+    background: transparent;
+}
+
+.searchNavButton:hover {
+    border-bottom: 2px solid black;
+    background: transparent;
+}
+
+.modalNavButton:hover {
+    border-bottom: 2px solid white;
+    background: transparent;
+}
+
+.dashboardNavButton:hover {
+    border-bottom: 2px solid white;
+    background: transparent;
+}
+
+.loginNavButton:hover {
+    border-bottom: 2px solid white;
+    background: transparent;
+}
+
+
+/* === */
+
+.littleSquare {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 35px;
+    width: 35px;
+    border: 2px solid gold;
+    visibility: hidden;
+}
+
+.resultCard:hover .littleSquare {
+    visibility: visible;
+}
+
+.littleSquare:hover {
+    border: 2px solid red;
 }
