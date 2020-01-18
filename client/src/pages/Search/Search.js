@@ -47,7 +47,6 @@ class Search extends Component {
         category: "",
         price: 0,
         img: "",
-        modalIsOpen: false,
         description: ""
     }
 
@@ -152,7 +151,7 @@ class Search extends Component {
         API.requestItems()
             .then(res => {
                 // this.setState({ results: res.data });
-                this.setState({results: []});
+                this.setState({ results: [] });
                 console.log(res.data);
                 for (const item in res.data) {
                     const { itemName, category, price, img, description, zipcode } = res.data[item]
@@ -209,7 +208,7 @@ class Search extends Component {
         } else {
             this.loadItems();
         }
-        
+
         console.log('handle form submit');
     };
 
@@ -249,16 +248,16 @@ class Search extends Component {
                             </div>
                         </div>
 
-                        <div className="container">
+                        {/* <div className="container">
                             <div>
-                                {/* <input className="col s9" type="text" placeholder="Search..."></input> */}
+                                <input className="col s9" type="text" placeholder="Search..."></input>
                                 <SearchForm
                                     value={this.state.zipCode}
                                     name="zipCode"
                                     handleInputChange={this.handleInputChange}
                                     handleFormSubmit={this.handleFormSubmit} />
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="row">
                             <p className="col s7">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>
@@ -322,7 +321,8 @@ class Search extends Component {
                                 <p>${this.state.price} / day</p>
                             </div>
                             <div className="row" style={{ margin: "0px" }}>
-                                <p>{this.state.description}</p>
+                                <p className="descriptionText" style={{ margin: "0px" }}>Description: </p>
+                                <p style={{ marginTop: "0px" }}>{this.state.description}</p>
                             </div>
                             <div className="row" style={{}}>
                                 <div className="col s12">
