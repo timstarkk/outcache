@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
-import { List, ListItem } from "../../components/List";
+// import { List, ListItem } from "../../components/List";
 import ResultCard from "../../components/search/ResultCard"
 import RentedOutCard from "../../components/Dashboard/RentedOutCard"
 import RentalCard from "../../components/Dashboard/RentalCard";

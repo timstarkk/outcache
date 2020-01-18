@@ -1,8 +1,8 @@
 import React from "react";
-import { FormBtn } from "../Form";
+// import { FormBtn } from "../Form";
 
 function ResultCard(props) {
-    const { id, name, price, img, onClick } = props;
+    const { name, price, img, onClick } = props;
     console.log(props)
 
     return (

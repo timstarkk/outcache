@@ -1,9 +1,9 @@
 import React from "react";
-import { FormBtn } from "../Form";
+// import { FormBtn } from "../Form";
 import Moment from "react-moment"
 
 function ResultCard(props) {
-    const { id, name, price, img, rented, onApproveRental, index, description } = props;
+    const { name, price, img, rented, onApproveRental, index, description } = props;
     console.log(props)
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
