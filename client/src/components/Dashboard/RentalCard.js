@@ -6,22 +6,22 @@ function RentalCard(props) {
     const { id, name, price, img, rentalId, rentals } = props;
     console.log(props)
 
-    const rentalForCard = rentals.filter(function(ele){
+    const rentalForCard = rentals.filter(function (ele) {
         console.log(ele)
         return ele._id === rentalId
     })
 
-   console.log(rentalForCard[0].startDate) 
-   const startDate  = rentalForCard[0].startDate
-   const endDate = rentalForCard[0].endDate
-   const approved = rentalForCard[0].approved
+    console.log(rentalForCard[0].startDate)
+    const startDate = rentalForCard[0].startDate
+    const endDate = rentalForCard[0].endDate
+    const approved = rentalForCard[0].approved
 
 
 
     return (
-        <div className="col offset-s2 s8 m3 l2 resultCardContainer"  style={{
+        <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
             padding: "0px",
-            "margin-bottom": "10px",
+            "margin-bottom": "10px"
         }}>
             < div className="resultCard z-depth-2">
                 <div className="cardImageContainer">

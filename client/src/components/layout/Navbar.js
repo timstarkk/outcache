@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect, useSelector, useReducer} from "react-redux";
+import { connect, useSelector, useReducer } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import 'materialize-css/dist/css/materialize.min.css';
-import M, { AutoInit } from  'materialize-css/dist/js/materialize.min.js';
+import M, { AutoInit } from 'materialize-css/dist/js/materialize.min.js';
 import useWindowSize from './windowSize';
 
 
@@ -38,7 +38,7 @@ const buttonMap = {
 const Navbar = (logoutUser) => {
   useEffect(() => {
     let sidenav = document.querySelector('#slide-out');
-    M.Sidenav.init(sidenav, {edge:'right'});
+    M.Sidenav.init(sidenav, { edge: 'right' });
   });
 
   const location = useLocation();
@@ -76,13 +76,13 @@ const Navbar = (logoutUser) => {
               </li>
               <li>
                 <Link
-                    to={`/dashboard`}
-                    style={{
-                      margin: "0px 15px"
-                    }}
-                    className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
-                    >
-                    Dashboard
+                  to={`/dashboard`}
+                  style={{
+                    margin: "0px 15px"
+                  }}
+                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
+                >
+                  Dashboard
                 </Link>
               </li>
               <li>
@@ -112,69 +112,69 @@ const Navbar = (logoutUser) => {
           </div>
         </nav>
         <div
-        className="sidenav-overlay"
-        onClick={() => setSlider(s => !s)}
-        style={{
-          display: slider && size.width < 980 ? "block" : "none",
-          opacity: "1"
-        }}
+          className="sidenav-overlay"
+          onClick={() => setSlider(s => !s)}
+          style={{
+            display: slider && size.width < 980 ? "block" : "none",
+            opacity: "1"
+          }}
         />
-        <ul id="slide-out" className="sidenav" 
-        style={{
-          height: "auto",
-          transform: slider || size.width > 980 ? "translateX(0%)" : "",
-          transitionProperty: "transform",
-          transitionDuration: ".1s"
-        }}>
-              <li>
-                <Link
-                  to={`/search`}
-                  style={{
-                    margin: "0px 15px"
-                  }}
-                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
-                  onClick={() => setSlider(s => !s)}
-                >
-                  Search
+        <ul id="slide-out" className="sidenav"
+          style={{
+            height: "auto",
+            transform: slider || size.width > 980 ? "translateX(0%)" : "",
+            transitionProperty: "transform",
+            transitionDuration: ".1s"
+          }}>
+          <li>
+            <Link
+              to={`/search`}
+              style={{
+                margin: "0px 15px"
+              }}
+              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
+              onClick={() => setSlider(s => !s)}
+            >
+              Search
                 </Link>
-              </li>
-              <li>
-                <Link
-                    to={`/dashboard`}
-                    style={{
-                      margin: "0px 15px"
-                    }}
-                    className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
-                    onClick={() => setSlider(s => !s)}
-                    >
-                    Dashboard
+          </li>
+          <li>
+            <Link
+              to={`/dashboard`}
+              style={{
+                margin: "0px 15px"
+              }}
+              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+              onClick={() => setSlider(s => !s)}
+            >
+              Dashboard
                 </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/form`}
-                  style={{
-                    margin: "0px 15px"
-                  }}
-                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
-                  onClick={() => setSlider(s => !s)}
-                >
-                  Add Item
+          </li>
+          <li>
+            <Link
+              to={`/form`}
+              style={{
+                margin: "0px 15px"
+              }}
+              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
+              onClick={() => setSlider(s => !s)}
+            >
+              Add Item
                 </Link>
-              </li>
-              <li>
-                <Link
-                  onClick={() => {logoutUser.logoutUser(); setSlider(s => !s);}}
-                  to="/"
-                  style={{
-                    margin: "0px 15px"
-                  }}
-                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
-                >
-                  Log Out
+          </li>
+          <li>
+            <Link
+              onClick={() => { logoutUser.logoutUser(); setSlider(s => !s); }}
+              to="/"
+              style={{
+                margin: "0px 15px"
+              }}
+              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
+            >
+              Log Out
                   </Link>
-              </li>
-            </ul>
+          </li>
+        </ul>
       </div >
     )
   }
@@ -190,7 +190,7 @@ const Navbar = (logoutUser) => {
             OutCache
 
             </Link>
-            <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons">menu</i></a>
+          <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
               <Link
@@ -236,52 +236,52 @@ const Navbar = (logoutUser) => {
           display: slider && size.width < 980 ? "block" : "none",
           opacity: "1"
         }}
-        />
-        <ul id="slide-out" className="sidenav" 
+      />
+      <ul id="slide-out" className="sidenav"
         style={{
           height: "auto",
           transform: slider || size.width > 980 ? "translateX(0%)" : "",
           transitionProperty: "transform",
           transitionDuration: ".1s"
         }}>
-            <li>
-              <Link
-                to={`/search`}
-                style={{
-                  margin: "0px 15px"
-                }}
-                className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
-                onClick={() => setSlider(s => !s)}
-              >
-                Search
+        <li>
+          <Link
+            to={`/search`}
+            style={{
+              margin: "0px 15px"
+            }}
+            className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+            onClick={() => setSlider(s => !s)}
+          >
+            Search
               </Link>
-            </li>
-            <li>
-              <Link
-                to="/register"
-                style={{
-                  margin: "0px 15px"
-                }}
-                className={`btn btn-large waves-effect waves-light ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
-                onClick={() => setSlider(s => !s)}
-                id="registerButton"
-              >
-                Register
+        </li>
+        <li>
+          <Link
+            to="/register"
+            style={{
+              margin: "0px 15px"
+            }}
+            className={`btn btn-large waves-effect waves-light ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+            onClick={() => setSlider(s => !s)}
+            id="registerButton"
+          >
+            Register
                 </Link>
-            </li>
-            <li>
-              <Link
-                to="/login"
-                style={{
-                  margin: "0px 15px"
-                }}
-                className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
-                onClick={() => setSlider(s => !s)}
-              >
-                Log In
+        </li>
+        <li>
+          <Link
+            to="/login"
+            style={{
+              margin: "0px 15px"
+            }}
+            className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+            onClick={() => setSlider(s => !s)}
+          >
+            Log In
                 </Link>
-            </li>
-          </ul>
+        </li>
+      </ul>
     </div >
   )
 }

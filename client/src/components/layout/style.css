@@ -1,5 +1,5 @@
 body {
-    background-image: url('../images/dayCamp3.jpg');
+    /* background-image: url('../images/dayCamp3.jpg'); */
     /* background-size: cover;  */
     /* background-position: 0% 15%; */
     /* border: 2px solid green; */
@@ -45,8 +45,6 @@ body {
 
 #theDashboardNavbar {
     font-family: monospace;
-    position: absolute;
-    left: 120px;
 }
 
 #theLoginNavbar {
@@ -123,7 +121,7 @@ input::placeholder {
 
 #cardHeader {
     color: #484848;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 0px;
@@ -343,7 +341,7 @@ img {
 /* === */
 
 .littleSquare {
-    background-image: url('../images/heart.png');
+    /* background-image: url('../images/heart.png'); */
     z-index: 10;
     position: absolute;
     top: 0;
@@ -363,11 +361,11 @@ img {
 
 .littleSquare:hover {
     /* border: 2px solid red; */
-    background-image: url('../images/filledHeart.png');
+    /* background-image: url('../images/filledHeart.png'); */
 }
 
 .littleSquare:focus {
-    background-image: url('../images/filledHeart.png');
+    /* background-image: url('../images/filledHeart.png'); */
 }
 
 /* .fontColor {
@@ -408,6 +406,16 @@ img {
     background-color: black;
 }
 
+.dashboardButton {
+    background-color: black;
+    color: white;
+    letter-spacing: 1.5px;
+}
+
+.dashboardButton:hover {
+    background-color: black;
+    opacity: 85%;
+}
 
 .dashboardButton:focus {
     background-color: white;

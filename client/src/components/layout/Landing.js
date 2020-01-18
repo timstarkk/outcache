@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "../Form";
 import LocationSearchInput from "../search-autocomplete/search-autocomplete";
+import "./style.css";
 
 class Landing extends Component {
   state = {
@@ -53,7 +54,7 @@ class Landing extends Component {
                       borderRadius: "3px",
                       letterSpacing: "1.5px"
                     }}
-                    className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                    className="btn btn-large waves-effect waves-light hoverable blue accent-3 landingButton"
                   >
                     Search
                   </Link>
