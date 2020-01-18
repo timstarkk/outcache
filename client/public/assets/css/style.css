@@ -149,6 +149,10 @@ input::placeholder {
     padding-bottom: 30px;
 }
 
+.btn:hover {
+    opacity: 85% !important;
+}
+
 .anyCard {
     /* border: 2px solid darkred; */
     margin: 20px;
