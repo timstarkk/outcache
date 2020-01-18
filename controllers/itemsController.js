@@ -10,15 +10,14 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByUserId: function(req, res) {
-    console.log("findByUserId:" + req.params.userId)
+    // console.log("findByUserId:" + req.params.userId)
     db.Item
       .find({userId: req.params.userId})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   createItem: function(req, res) {
-    console.log(req.body)
-    console.log(req.params)
+    // console.log(req.body)
     // console.log(db.Item)
     db.Item
       .create(req.body)

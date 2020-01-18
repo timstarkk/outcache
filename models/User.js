@@ -26,6 +26,9 @@ const UserSchema = new Schema({
   rentals: [{
     type: String
   }],
+  rentalId: [{
+    type: String
+  }],
   items: [{
     type: Schema.Types.ObjectId,
     ref: "Item"

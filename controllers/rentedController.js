@@ -23,8 +23,8 @@ createRented: async function(req, res) {
   },
   approveRental: function(req, res) {
     console.log(req.body)
-    let update = { $set: {'rented.$[elem].approved': 'true'}};
-    let options = {new: true, arrayFilters: [{ 'elem._id' : req.body.rentalId }]}
+    let update = { $set: {'rented.$[elem].approved': 'true'} };
+    let options = {new: true, arrayFilters: [{ 'elem._id' : req.body.rentalId } ]}
     db.Item 
     .findOneAndUpdate({_id: req.body.itemId}, update, options, (err,doc) => {
       if (err) {
@@ -34,15 +34,27 @@ createRented: async function(req, res) {
     })
     .catch(err => res.status(422).json(err));
   },
-    
-  
-findByRentals: function(req, res) {
-  console.log("findByUserId:" + req.params.userId)
-  db.Item
-    .find({_id: req.params.itemId})
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
+  saveRentalIdInUser: function(req, res) {
+    console.log(req.body)
+      db.User.findOneAndUpdate({_id: req.body.userId}, { $push: { rentalId: req.body.rentalId }})
+      .then(function(dbModel) {
+        // If we were able to successfully update a Product, send it back to the client
+        res.json(dbModel);
+      })
+      .catch(err => res.status(422).json(err));
   },
-}
+  // findRentalIdInUser: function(req, res) {
+  //   console.log(req.params)
+  //   db.User.findOne({})
+  // },
+  findByRentals: function(req, res) {
+    console.log("findByUserId:" + req.params.userId)
+    db.Item
+      .find({_id: req.params.itemId})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+    },
+  }
+  
 
     
