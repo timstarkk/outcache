@@ -1,5 +1,5 @@
 body {
-    /* background-image: url('../images/dayCamp3.jpg'); */
+    background-image: url('../images/dayCamp3.jpg');
     /* background-size: cover;  */
     /* background-position: 0% 15%; */
     /* border: 2px solid green; */
@@ -126,6 +126,10 @@ input::placeholder {
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 0px;
+}
+
+#slide-out {
+    position: absolute;
 }
 
 #registerCard {
