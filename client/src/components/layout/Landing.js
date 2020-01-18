@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "../Form";
-import LocationSearchInput from "../search-autocomplete/search-autocomplete";
+// import LocationSearchInput from "../search-autocomplete/search-autocomplete";
 import "./style.css";
 
 class Landing extends Component {
@@ -50,11 +50,11 @@ class Landing extends Component {
                     to={this.state.zipCode ? (`/search/${this.state.searchTerm}/${this.state.zipCode}`) : (`/search/${this.state.searchTerm}/0`)}
                     // to={`/search/${this.state.searchTerm}/${this.state.zipCode}`}
                     style={{
-                      width: "140px",
+                      // width: "140px",
                       borderRadius: "3px",
                       letterSpacing: "1.5px"
                     }}
-                    className="btn btn-large waves-effect waves-light hoverable blue accent-3 landingButton"
+                    className="btn btn-large waves-effect waves-light accent-3 landingButton"
                   >
                     Search
                   </Link>
@@ -62,6 +62,7 @@ class Landing extends Component {
                     <Link
                       to={`/search/camping/${this.state.zipCode}`}
                       style={{
+                        // width: "140p,
                         borderRadius: "3px",
                         letterSpacing: "1.5px"
                       }}

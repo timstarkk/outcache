@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import { Results } from "../../components/Results/Results"
-import Wrapper from "../../components/Wrapper";
-import ReactDOM from 'react-dom';
+// import { Results } from "../../components/Results/Results"
+// import Wrapper from "../../components/Wrapper";
+// import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import API from "../../utils/API";
 import SearchForm from "../../components/search/SearchForm";
 import ResultCard from "../../components/search/ResultCard"
-import { FormBtn, Input } from "../../components/Form";
+import { Input } from "../../components/Form";
 import './style.css';
 
 const customStyles = {
@@ -30,7 +30,7 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root')
 
-const itemName = "tent"
+// const itemName = "tent"
 
 class Search extends Component {
     state = {

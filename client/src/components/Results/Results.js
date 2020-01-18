@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import React from "react";
+// import { Link } from "react-router-dom";
+// import PropTypes from "prop-types";
 import Modal from 'react-modal';
-import { Input, FormBtn } from "../../components/Form";
+import { Input } from "../../components/Form";
 
 export const Results = props => ( 
         <div>

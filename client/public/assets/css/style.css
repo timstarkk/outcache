@@ -401,7 +401,7 @@ img {
     background-color: black;
 }
 
-.landingButton {
+/* .landingButton {
     width: 100%;
     background-color: black;
     letter-spacing: 1.5px;
@@ -414,7 +414,7 @@ img {
 
 .landingButton:focus {
     background-color: black;
-}
+} */
 
 
 .dashboardButton:focus {

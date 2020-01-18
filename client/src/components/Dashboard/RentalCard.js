@@ -1,9 +1,9 @@
 import React from "react";
-import { FormBtn } from "../Form";
+// import { FormBtn } from "../Form";
 import Moment from 'react-moment';
 
 function RentalCard(props) {
-    const { id, name, price, img, rentalId, rentals } = props;
+    const { name, price, img, rentalId, rentals } = props;
     console.log(props)
 
     const rentalForCard = rentals.filter(function (ele) {
