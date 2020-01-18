@@ -16,7 +16,7 @@ function ResultCard(props) {
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     const renderPendingRentals = () => rented.map((pendingRental, subIndex) => (
-        <>
+        <div style={{ border: "1px solid black", padding: "20px", overflow: "auto" }}>
             <div className="row">
                 <p className="col s3" style={{ padding: "0px" }}>Start Date: <Moment format="MM/DD/YYYY">{pendingRental.startDate}</Moment></p>
                 <p className="col s3" style={{ padding: "0px" }}>End Date: <Moment format="MM/DD/YYYY">{pendingRental.endDate}</Moment></p>
@@ -27,7 +27,7 @@ function ResultCard(props) {
                     padding: "0px"
                 }} onClick={() => onApproveRental(index, subIndex)} style={{ "margin-bottom": "5px" }}>Approve</button>
             </div>
-        </>
+        </div>
     ))
 
 
@@ -67,11 +67,13 @@ function ResultCard(props) {
                     <p>${price} / day</p>
                 </div>
                 <div className="row" style={{ margin: "0px" }}>
-                    <p>{description}</p>
+                    <p className="descriptionText" style={{ margin: "0px" }}>Description: </p>
+                    <p style={{ marginTop: "0px" }}>{description}</p>
                 </div>
                 <div className="row" style={{}}>
                     <div className="col s12">
-                        <div className="formContainer" style={{ padding: "20px" }}>
+                        <div className="formContainer" style={{}}>
+                            <p className="descriptionText" style={{ margin: "0px" }}>Requests: </p>
                             {renderPendingRentals()}
                         </div>
                     </div>

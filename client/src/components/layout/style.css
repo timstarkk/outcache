@@ -422,3 +422,10 @@ img {
     border: 2px solid black;
     color: black;
 }
+
+.descriptionText {
+    color: gray;
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px;
+}

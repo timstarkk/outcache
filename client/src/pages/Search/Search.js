@@ -321,7 +321,8 @@ class Search extends Component {
                                 <p>${this.state.price} / day</p>
                             </div>
                             <div className="row" style={{ margin: "0px" }}>
-                                <p>{this.state.description}</p>
+                                <p className="descriptionText" style={{ margin: "0px" }}>Description: </p>
+                                <p style={{ marginTop: "0px" }}>{this.state.description}</p>
                             </div>
                             <div className="row" style={{}}>
                                 <div className="col s12">
