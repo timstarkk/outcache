@@ -1,12 +1,25 @@
 import React from "react";
 import { FormBtn } from "../Form";
+import Moment from 'react-moment';
 
-function ResultCard(props) {
-    const { id, name, price, img, onClick } = props;
+function RentalCard(props) {
+    const { id, name, price, img, rentalId, rentals } = props;
     console.log(props)
 
+    const rentalForCard = rentals.filter(function(ele){
+        console.log(ele)
+        return ele._id === rentalId
+    })
+
+   console.log(rentalForCard[0].startDate) 
+   const startDate  = rentalForCard[0].startDate
+   const endDate = rentalForCard[0].endDate
+   const approved = rentalForCard[0].approved
+
+
+
     return (
-        <div className="col offset-s2 s8 m3 l2 resultCardContainer" onClick={onClick} style={{
+        <div className="col offset-s2 s8 m3 l2 resultCardContainer"  style={{
             padding: "0px",
             "margin-bottom": "10px",
         }}>
@@ -22,12 +35,14 @@ function ResultCard(props) {
                     <div className="row">
                         <p className="col s3 cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
                         <p className="col s3 perDayText" style={{ padding: "0px" }}>{' '}/ day</p>
-
                     </div>
+                    <p>Start Date: <Moment format="MM/DD/YYYY">{startDate}</Moment></p>
+                    <p>End Date: <Moment format="MM/DD/YYYY">{endDate}</Moment></p>
+                    <p>Approved: {approved ? "approved" : "unapproved"}</p>
                 </div>
             </div >
         </div >
     );
 }
 
-export default ResultCard;
+export default RentalCard;

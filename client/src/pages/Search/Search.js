@@ -82,8 +82,18 @@ class Search extends Component {
 
         API.saveRented(rentedData)
             .then(res => {
-                console.log(res.data);
+                const rentalIdInfo = {
+                    rentalId: res.data.item.rented.slice(-1)[0]._id,
+                    userId: this.props.auth.user.id,
+                }
+                console.log(res.data.item.rented.slice(-1)[0]);
+                console.log(res.data.item.rented.slice(-1)[0]._id);
+                API.saveRentalIdInUser(rentalIdInfo)
+                    .then(res => {
+                        console.log(res.data)
+                    })
                 console.log("added")
+                this.setState({ modalIsOpen: false });
             })
             .catch(err => console.log(err));
 

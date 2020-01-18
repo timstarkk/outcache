@@ -37,7 +37,15 @@ export default {
     approveRental: function (rentalInfo) {
         console.log(rentalInfo)
         return axios.post("/rentalApprove", rentalInfo)
-    }
+    },
+    saveRentalIdInUser: function (rentalId) {
+        console.log(rentalId)
+        return axios.post("/rentalId", rentalId)
+    },
+    // findRentalIdInUser: function (userId) {
+    //     console.log(userId)
+    //     return axios.get("/rentalId/" + userId)
+    // }
     // findByZipCode: function (zip) {
     //     console.log(zip)
     //     return axios.get("/search/" + zip)
