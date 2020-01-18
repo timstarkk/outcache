@@ -14,12 +14,14 @@ const navMap = {
   '/login': 'theLoginNavbar',
   '/dashboard': 'theDashboardNavbar',
   '/modal': 'theModalNavbar',
+  '/form': 'theNavbar',
   '/': 'theNavbar',
 };
 
 const logoMap = {
   '/': 'grey',
   '/search': 'grey',
+  '/form': 'grey',
   '/register': 'grey',
   '/login': 'grey',
   '/dashboard': 'grey',
@@ -29,6 +31,7 @@ const logoMap = {
 const buttonMap = {
   '/': 'homeNavButton',
   '/search': 'searchNavButton',
+  '/form': 'homeNavButton',
   '/register': 'homeNavButton',
   '/login': 'homeNavButton',
   '/dashboard': 'homeNavButton',
@@ -40,6 +43,9 @@ const Navbar = (logoutUser) => {
     let sidenav = document.querySelector('#slide-out');
     M.Sidenav.init(sidenav, { edge: 'right' });
   });
+
+  //     let sidenav = document.querySelector('#slide-out');
+  //   M.Sidenav.init(sidenav, {edge:'right'});
 
   const location = useLocation();
   const auth = useSelector(state => state.auth);
@@ -61,7 +67,7 @@ const Navbar = (logoutUser) => {
               OutCache
 
               </Link>
-            <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons">menu</i></a>
+            <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
                 <Link
@@ -122,9 +128,7 @@ const Navbar = (logoutUser) => {
         <ul id="slide-out" className="sidenav"
           style={{
             height: "auto",
-            transform: slider || size.width > 980 ? "translateX(0%)" : "",
-            transitionProperty: "transform",
-            transitionDuration: ".1s"
+            display: slider || size.width > 980 ? "block" : "none",
           }}>
           <li>
             <Link
@@ -190,7 +194,7 @@ const Navbar = (logoutUser) => {
             OutCache
 
             </Link>
-          <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons">menu</i></a>
+          <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
               <Link
@@ -240,9 +244,7 @@ const Navbar = (logoutUser) => {
       <ul id="slide-out" className="sidenav"
         style={{
           height: "auto",
-          transform: slider || size.width > 980 ? "translateX(0%)" : "",
-          transitionProperty: "transform",
-          transitionDuration: ".1s"
+          display: slider || size.width < 980 ? "block" : "none"
         }}>
         <li>
           <Link
