@@ -9,7 +9,7 @@ import ResultCard from "../../components/search/ResultCard"
 import RentedOutCard from "../../components/Dashboard/RentedOutCard"
 import RentalCard from "../../components/Dashboard/RentalCard";
 
-class Dashboard extends Component {
+class Dashboard extends Component {  
   state = {
     id: this.props.auth.user.id,
     items: [],
@@ -19,6 +19,20 @@ class Dashboard extends Component {
     rentalIds: []
   }
 
+  componentDidMount() {
+    const id = this.props.auth.user.id
+    this.getUser(id)
+    this.findByUserId(id)
+    this.setState({
+      id: this.props.auth.user.id
+    })
+  }
+
+  constructor(props) {
+    super(props);
+   this.approveRental = this.approveRental.bind(this);
+   this.findByUserId = this.findByUserId.bind(this);
+  }
 
   onLogoutClick = e => {
     e.preventDefault();
@@ -41,120 +55,87 @@ class Dashboard extends Component {
       rentedIndex: subIndex,
       rentalId: rentedItems[index].rented[subIndex]._id
     }
-
     API.approveRental(rentalInfo)
-    .then(res => {
-      // console.log(res.data)
-    })
-    .then(this.props.history.push("/dashboard"))
-    .catch(err => console.log(err));
+      .then(res => {
+      })  
+      .catch(err => console.log(err));
     
-    // console.log("rentalInfo aaaa")
-    // console.log("renter ID: " + rentedItems[index].rented[subIndex].renterId, index, subIndex)
-    // console.log("item ID: " + rentedItems[index]._id)
-  }
-
-  componentDidMount() {
     const id = this.props.auth.user.id
-    // this.findRentalIdInUser(id)
+    this.findByUserId(id)
+  } 
+
+  getUser = id => {
     API.getUser(id)
     .then(res => {
       console.log(res.data)
       if (res.data !== []) {
-        
         this.setState({
           userInfo: res.data,
           rentals: res.data[0].rentals,
           rentalIds: res.data[0].rentalId
         })
         console.log(this.state.rentalIds)
-        
         // console.log(this.state.rentals)
         this.findByRentals(this.state.rentals)
       }
     })
-   
-    this.setState({
-      id: this.props.auth.user.id
-    })
-    // console.log(this.state.id)
-    this.findByUserId(this.state.id)
+  }
+ 
+  findByUserId = id => {
+    // console.log(id)
+    const rentedItems = []
+    API.findByUserId(id)
+      .then(res => {
+        console.log(res.data)
+        if (res.data.length > 0) {
+          this.setState({
+            items: res.data,
+            target: "_blank"
+          });
+          for (let item of this.state.items) {
+            // console.log(item)
+            if (item.rented.length > 0) {
+              rentedItems.push(item)
+            }
+            this.setState({
+              rentedItems: rentedItems
+            })
+            console.log(this.state.rentedItems)
+          }
+        }
+      })
+      .catch(err => console.log(err));
   }
 
-
-    findByUserId = id => {
-      // console.log(id)
-      const rentedItems = []
-      API.findByUserId(id)
-        .then(res => {
-          console.log(res.data)
-          if (res.data.length > 0) {
-            this.setState({
-              items: res.data,
-              target: "_blank"
-            });
-            for (let item of this.state.items) {
-              // console.log(item)
-              if (item.rented.length > 0) {
-                rentedItems.push(item)
-              }
-              this.setState({
-                rentedItems: rentedItems
-              })
-              // console.log(this.state.rentedItems)
-            }
-          } else {
-            this.setState({
-              noResults: true
-            });
-          }
-        })
-        .catch(err => console.log(err));
-    }
-
-  
-
-    findByRentals = rentals => {
-      // console.log('rentals call function')
-      const rentalItemsArray = []
-      // console.log(rentals) 
-      const something = async _ => {
-        // console.log('start')
-        const promises = await rentals.map(async item => {
-          const getItem = await API.findByRentals(item)
-            .then(res => {
-              console.log(res.data[0])
-              // console.log(res.data)
-              // console.log(res.data[0].rented)
-              rentalItemsArray.push(res.data[0])
-              // console.log(rentalItemsArray)
-            })
-        })
-        const returnitems = await Promise.all(promises)
-        // console.log("end")
-        this.setState({
-          rentalItemsArray: rentalItemsArray
-        })
-        // console.log(this.state.rentalItemsArray)
-      }  
-      something()
-    }
-
-    // findRentalIdInUser = id => {
-    //     API.findRentalIdInUser(id)
-    //     .then(res => {
-    //       console.log(res.data)
-    //       this.setState({
-    //         rentalIds: res.data
-    //       })
-    //     })
-    // }
+  findByRentals = rentals => {
+    // console.log('rentals call function')
+    const rentalItemsArray = []
+    // console.log(rentals) 
+    const something = async _ => {
+      // console.log('start')
+      const promises = await rentals.map(async item => {
+        const getItem = await API.findByRentals(item)
+          .then(res => {
+            console.log(res.data[0])
+            // console.log(res.data)
+            // console.log(res.data[0].rented)
+            rentalItemsArray.push(res.data[0])
+            // console.log(rentalItemsArray)
+          })
+      })
+      const returnitems = await Promise.all(promises)
+      // console.log("end")
+      this.setState({
+        rentalItemsArray: rentalItemsArray
+      })
+      // console.log(this.state.rentalItemsArray)
+    }  
+    something()
+  }
 
   render() {
     const { user } = this.props.auth;
-    const display = this.state.display
-    const rentedoutSection = {}
-    
+    const display = this.state.display    
 
     return (
       // <!-- Navbar goes here -->
