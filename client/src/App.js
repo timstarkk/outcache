@@ -17,7 +17,6 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Form from "./pages/Form/Form"
 import Search from "./pages/Search/Search";
 
-
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
 

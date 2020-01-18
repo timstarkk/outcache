@@ -152,6 +152,7 @@ class Search extends Component {
         API.requestItems()
             .then(res => {
                 // this.setState({ results: res.data });
+                this.setState({results: []});
                 console.log(res.data);
                 for (const item in res.data) {
                     const { itemName, category, price, img, description, zipcode } = res.data[item]
@@ -195,21 +196,20 @@ class Search extends Component {
             .catch(err => console.log(err));
     };
 
-    handleInputChange = event => {
-        // console.log('handle input change');
-        // console.log(event);
-        const value = event.target.value;
-        const name = event.target.name;
-        this.setState({
-            [name]: value
-        });
-    };
-
 
     // When the form is submitted, search the Google Books API for the value of `this.state.search`
     handleFormSubmit = event => {
         event.preventDefault();
-        this.makeSearch(this.state.searchTerm);
+        if (this.state.searchTerm && this.state.zipCode) {
+            this.makeSearch(this.state.searchTerm, this.state.zipCode);
+        } else if (this.state.searchTerm && !this.state.zipCode) {
+            this.makeSearch(this.state.searchTerm, '0');
+        } else if (!this.state.searchTerm && this.state.zipCode) {
+            this.makeSearch('camping', this.state.zipCode);
+        } else {
+            this.loadItems();
+        }
+        
         console.log('handle form submit');
     };
 
@@ -243,6 +243,18 @@ class Search extends Component {
                                 {/* <input className="col s9" type="text" placeholder="Search..."></input> */}
                                 <SearchForm
                                     value={this.state.searchTerm}
+                                    name="searchTerm"
+                                    handleInputChange={this.handleInputChange}
+                                    handleFormSubmit={this.handleFormSubmit} />
+                            </div>
+                        </div>
+
+                        <div className="container">
+                            <div>
+                                {/* <input className="col s9" type="text" placeholder="Search..."></input> */}
+                                <SearchForm
+                                    value={this.state.zipCode}
+                                    name="zipCode"
                                     handleInputChange={this.handleInputChange}
                                     handleFormSubmit={this.handleFormSubmit} />
                             </div>
