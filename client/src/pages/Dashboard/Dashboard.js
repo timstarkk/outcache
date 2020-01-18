@@ -7,6 +7,7 @@ import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
 import ResultCard from "../../components/search/ResultCard"
 import RentedOutCard from "../../components/Dashboard/RentedOutCard"
+import RentalCard from "../../components/Dashboard/RentalCard";
 
 class Dashboard extends Component {
   state = {
@@ -14,7 +15,8 @@ class Dashboard extends Component {
     items: [],
     rentedItems: [],
     rentalItemsArray: [],
-    display: 0
+    display: 0,
+    rentalIds: []
   }
 
 
@@ -28,7 +30,7 @@ class Dashboard extends Component {
     this.setState({
       display: value
     })
-    console.log(this.state.display)
+    // console.log(this.state.display)
   }
 
   approveRental = (index, subIndex) => {
@@ -42,18 +44,19 @@ class Dashboard extends Component {
 
     API.approveRental(rentalInfo)
     .then(res => {
-      console.log(res.data)
-      this.findByUserId(this.state.id)
+      // console.log(res.data)
     })
+    .then(this.props.history.push("/dashboard"))
     .catch(err => console.log(err));
     
-    console.log("rentalInfo aaaa")
-    console.log("renter ID: " + rentedItems[index].rented[subIndex].renterId, index, subIndex)
-    console.log("item ID: " + rentedItems[index]._id)
+    // console.log("rentalInfo aaaa")
+    // console.log("renter ID: " + rentedItems[index].rented[subIndex].renterId, index, subIndex)
+    // console.log("item ID: " + rentedItems[index]._id)
   }
 
   componentDidMount() {
     const id = this.props.auth.user.id
+    // this.findRentalIdInUser(id)
     API.getUser(id)
     .then(res => {
       console.log(res.data)
@@ -61,10 +64,12 @@ class Dashboard extends Component {
         
         this.setState({
           userInfo: res.data,
-          rentals: res.data[0].rentals
+          rentals: res.data[0].rentals,
+          rentalIds: res.data[0].rentalId
         })
+        console.log(this.state.rentalIds)
         
-        console.log(this.state.rentals)
+        // console.log(this.state.rentals)
         this.findByRentals(this.state.rentals)
       }
     })
@@ -72,13 +77,13 @@ class Dashboard extends Component {
     this.setState({
       id: this.props.auth.user.id
     })
-    console.log(this.state.id)
+    // console.log(this.state.id)
     this.findByUserId(this.state.id)
   }
 
 
     findByUserId = id => {
-      console.log(id)
+      // console.log(id)
       const rentedItems = []
       API.findByUserId(id)
         .then(res => {
@@ -89,14 +94,14 @@ class Dashboard extends Component {
               target: "_blank"
             });
             for (let item of this.state.items) {
-              console.log(item)
+              // console.log(item)
               if (item.rented.length > 0) {
                 rentedItems.push(item)
               }
               this.setState({
                 rentedItems: rentedItems
               })
-              console.log(this.state.rentedItems)
+              // console.log(this.state.rentedItems)
             }
           } else {
             this.setState({
@@ -110,11 +115,11 @@ class Dashboard extends Component {
   
 
     findByRentals = rentals => {
-      console.log('rentals call function')
+      // console.log('rentals call function')
       const rentalItemsArray = []
-      console.log(rentals) 
+      // console.log(rentals) 
       const something = async _ => {
-        console.log('start')
+        // console.log('start')
         const promises = await rentals.map(async item => {
           const getItem = await API.findByRentals(item)
             .then(res => {
@@ -122,18 +127,28 @@ class Dashboard extends Component {
               // console.log(res.data)
               // console.log(res.data[0].rented)
               rentalItemsArray.push(res.data[0])
-              console.log(rentalItemsArray)
+              // console.log(rentalItemsArray)
             })
         })
         const returnitems = await Promise.all(promises)
-        console.log("end")
+        // console.log("end")
         this.setState({
           rentalItemsArray: rentalItemsArray
         })
-        console.log(this.state.rentalItemsArray)
+        // console.log(this.state.rentalItemsArray)
       }  
       something()
     }
+
+    // findRentalIdInUser = id => {
+    //     API.findRentalIdInUser(id)
+    //     .then(res => {
+    //       console.log(res.data)
+    //       this.setState({
+    //         rentalIds: res.data
+    //       })
+    //     })
+    // }
 
   render() {
     const { user } = this.props.auth;
@@ -227,14 +242,21 @@ class Dashboard extends Component {
                { display === 2 && 
               //  console.log(this.state.rentalItemsArray),
                this.state.rentalItemsArray.map((result, index) => (
+                //  console.log(result.rented),
+                //  console.log(this.state.rentalIds[index]),
+                //  console.log(index)
                    <div>
-                       <ResultCard
+                       <RentalCard
                            key={result._id + index}
                            id={result._id}
                            name={result.itemName}
                            category={result.category}
                            price={result.price}
                            img={result.img}
+                           rentalId={this.state.rentalIds[index]}
+                           rentals={result.rented}
+
+                          //  startDate={result.rented[index].startDate}
                            // onClick={() => this.openModal(result)}
                        />
                    </div>

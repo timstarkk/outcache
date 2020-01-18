@@ -1,5 +1,6 @@
 import React from "react";
 import { FormBtn } from "../Form";
+import Moment from "react-moment"
 
 function ResultCard(props) {
     const { id, name, price, img, rented, onApproveRental, index } = props;
@@ -17,8 +18,8 @@ function ResultCard(props) {
     const renderPendingRentals = () => rented.map((pendingRental, subIndex) => (
         <>
             <p>Start Date: {pendingRental.startDate}</p>
-            <p>End Date: {pendingRental.endDate}</p>
-            <p>Approved: {pendingRental.approved ? "approved" : "unapproved"}</p>
+            <p>End Date: <Moment format="MM/DD/YYYY">{pendingRental.endDate}</Moment></p>
+            <p>Approved: <Moment format="MM/DD/YYYY">{pendingRental.approved ? "approved" : "unapproved"}</Moment></p>
             <button className="" onClick={() => onApproveRental(index, subIndex)} style={{ "margin-bottom": "5px" }}>Approve</button>
         </>
     ))
