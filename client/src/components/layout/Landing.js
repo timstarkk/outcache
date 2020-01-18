@@ -59,7 +59,7 @@ class Landing extends Component {
                   </Link>
                 ) : (
                     <Link
-                      to={`/search/a/${this.state.zipCode}`}
+                      to={`/search/camping/${this.state.zipCode}`}
                       style={{
                         borderRadius: "3px",
                         letterSpacing: "1.5px"
