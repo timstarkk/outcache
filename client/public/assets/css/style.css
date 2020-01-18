@@ -140,6 +140,14 @@ input::placeholder {
     padding-bottom: 30px;
 }
 
+#loginCard {
+    /* border: 2px solid darkred; */
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    padding-bottom: 30px;
+}
+
 .anyCard {
     /* border: 2px solid darkred; */
     margin: 20px;
