@@ -13,31 +13,33 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Form from "./pages/Form/Form"
+import Search from "./pages/Search/Search";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
 
-    // Set auth token header auth
-    const token = localStorage.jwtToken;
-    setAuthToken(token);
+  // Set auth token header auth
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
 
-    // Decode token and get user info and exp
-    const decoded = jwt_decode(token);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(token);
 
-    // Set user and isAuthenticated
-    store.dispatch(setCurrentUser(decoded));
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
 
-    // Check for expired token
-    const currentTime = Date.now() / 1000; // to get in milliseconds
-    if (decoded.exp < currentTime) {
+  // Check for expired token
+  const currentTime = Date.now() / 1000; // to get in milliseconds
+  if (decoded.exp < currentTime) {
 
-      // Logout user
-      store.dispatch(logoutUser());
+    // Logout user
+    store.dispatch(logoutUser());
 
-      // Redirect to login
-      window.location.href = "./login";
-    }
+    // Redirect to login
+    window.location.href = "./login";
+  }
 }
 
 class App extends Component {
@@ -50,8 +52,16 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/search/:term" component={Search} />
+            <Route exact path="/search/:term/:zip" component={Search} />
+            {/* <Route exact path="/results" component={Results} /> */}
+
+
+
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/form" component={Form} />
             </Switch>
           </div>
         </Router>
