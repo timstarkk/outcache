@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
 // import { List, ListItem } from "../../components/List";
-import ResultCard from "../../components/search/ResultCard"
-import RentedOutCard from "../../components/Dashboard/RentedOutCard"
+import ResultCard from "../../components/Dashboard/ResultCard"
+import RentedOutCard from "../../components/Dashboard/RentedOutCard";
 import RentalCard from "../../components/Dashboard/RentalCard";
 import Modal from 'react-modal';
 
@@ -50,7 +50,8 @@ class Dashboard extends Component {
     img: "",
     description: "",
     rented: "",
-    index: ""
+    index: "",
+    hearted: {}
   }
 
   openModal = (modalInfo, index) => {
@@ -136,7 +137,8 @@ class Dashboard extends Component {
           this.setState({
             userInfo: res.data,
             rentals: res.data[0].rentals,
-            rentalIds: res.data[0].rentalId
+            rentalIds: res.data[0].rentalId,
+            hearted: res.data[0].hearted
           })
           console.log(this.state.rentalIds)
           // console.log(this.state.rentals)
@@ -331,53 +333,6 @@ class Dashboard extends Component {
             onApproveRental={this.approveRental}
           // onClick={() => this.openModal(result)}
           />
-          {/* <h2>hello {this.props.auth.user.name}</h2> */}
-          {/* <p>Rent {this.state.itemName}</p> */}
-
-          {/* <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
-            <div className="col s6" style={{}}>
-              <div className="detailsImageContainer">
-                <img src={`${this.state.img}`} />
-              </div>
-            </div>
-            <div className="col s6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
-              <div className="row" style={{ margin: "0px" }}>
-                <h4 style={{ "margin-top": "0px" }}>{this.state.itemName}</h4>
-              </div>
-              <div className="row" style={{ margin: "0px" }}>
-                <p>${this.state.price} / day</p>
-              </div>
-              <div className="row" style={{ margin: "0px" }}>
-                <p>{this.state.description}</p>
-              </div>
-              <div className="row" style={{}}>
-                <div className="col s12">
-                  <div className="formContainer" style={{}}>
-                    <form>
-                      <Input
-                        value={this.state.startDate}
-                        onChange={this.handleInputChange}
-                        name="startDate"
-                        label="Start Date"
-                        placeholder="When day would you like to rent this item"
-                        type="date"
-                      />
-                      <Input
-                        value={this.state.endDate}
-                        onChange={this.handleInputChange}
-                        name="endDate"
-                        label="End Date"
-                        placeholder="When day would you like to rent this item"
-                        type="date"
-                      />
-                      <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
         </Modal>
 
       </div>

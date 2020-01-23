@@ -42,6 +42,10 @@ export default {
         console.log(rentalId)
         return axios.post("/rentalId", rentalId)
     },
+    saveHeart: function (itemId) {
+        console.log(itemId)
+        return axios.post("/heart", itemId)
+    }
     // findRentalIdInUser: function (userId) {
     //     console.log(userId)
     //     return axios.get("/rentalId/" + userId)
