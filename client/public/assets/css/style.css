@@ -1,16 +1,27 @@
-body {
-    background-image: url('../images/dayCamp3.jpg');
-    /* background-size: cover;  */
-    /* background-position: 0% 15%; */
-    /* border: 2px solid green; */
-    /* background: green; */
-    height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    background-repeat: no-repeat;
+html { 
+    background: url('../images/dayCamp3.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-position: bottom;
-}
-
+  }
+  
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: cover;
+    z-index: -10;
+    background: url('../images/dayCamp3.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
 .theNavbar {
     background-color: transparent;
 }
@@ -185,7 +196,7 @@ input::placeholder {
 }
 
 #resultsBox {
-    min-height: 100vh;
+    min-height: 100%;
     background: white;
     /* border: 1px solid black; */
     padding: 20px; 
@@ -369,7 +380,26 @@ img {
     background-position: bottom;
 }
 
+.littleSquareSelected {
+    background-image: url('../images/filledHeart.png');
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 40px;
+    width: 40px;
+    border: 5px solid transparent;
+    visibility: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+
 .resultCard:hover .littleSquare {
+    visibility: visible;
+}
+
+.resultCard:hover .littleSquareSelected {
     visibility: visible;
 }
 
@@ -378,8 +408,17 @@ img {
     background-image: url('../images/filledHeart.png');
 }
 
+.littleSquareSelected:hover {
+    /* border: 2px solid red; */
+    background-image: url('../images/heart.png');
+}
+
 .littleSquare:focus {
     background-image: url('../images/filledHeart.png');
+}
+
+.littleSquareSelected:focus {
+    background-image: url('../images/heart.png');
 }
 
 /* .fontColor {

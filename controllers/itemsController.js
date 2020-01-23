@@ -58,6 +58,14 @@ module.exports = {
       .find({zipCode: req.params.zipCode})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  saveHeart: function(req, res) {
+    console.log("save heart")
+    console.log(req.body)
+    db.User
+      .findOneAndUpdate({_id: req.body.userId}, { $push: { hearted: req.body.itemId } }, { new: true })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 
 };

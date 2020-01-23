@@ -10,3 +10,16 @@
 .ReactModal__Overlay--before-close{
     opacity: 0;
 }
+
+@media only screen and (max-width: 600px) {
+    .className {
+        top: 'auto';
+        left: 'auto';
+        right: 'auto';
+        bottom: 'auto';
+        margin-right: '-50%';
+        transform: 'translate(-50%, -50%)';
+        width: '90%';
+        height: 'auto'
+    }
+}

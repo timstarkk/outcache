@@ -23,6 +23,9 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  hearted: [{
+    type: String
+  }],
   rentals: [{
     type: String
   }],

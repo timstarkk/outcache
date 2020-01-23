@@ -33,7 +33,7 @@ Modal.setAppElement('#root')
 // const itemName = "tent"
 
 class Search extends Component {
-    state = {
+       state = {
         startDate: "",
         endDate: "",
         renterId: "",
@@ -69,6 +69,9 @@ class Search extends Component {
     handleRentalSubmit = event => {
         event.preventDefault();
 
+        console.log(this.state.itemId)
+
+
         let rentedData = {
             startDate: this.state.startDate,
             endDate: this.state.endDate,
@@ -81,10 +84,12 @@ class Search extends Component {
 
         API.saveRented(rentedData)
             .then(res => {
+                console.log(res.data)
                 const rentalIdInfo = {
                     rentalId: res.data.item.rented.slice(-1)[0]._id,
                     userId: this.props.auth.user.id,
                 }
+                console.log(rentalIdInfo.userId)
                 console.log(res.data.item.rented.slice(-1)[0]);
                 console.log(res.data.item.rented.slice(-1)[0]._id);
                 API.saveRentalIdInUser(rentalIdInfo)
@@ -95,32 +100,29 @@ class Search extends Component {
                 this.setState({ modalIsOpen: false });
             })
             .catch(err => console.log(err));
-
     };
 
     constructor() {
-        super();
-
-        // this.setState({
-        //     modalIsOpen: false
-        // }) 
-
+        super()
         this.openModal = this.openModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.heartedItem = this.heartedItem.bind(this);
     }
 
     openModal = modalInfo => {
         console.log(modalInfo)
         this.setState({
             itemName: modalInfo.itemName,
-            itemId: modalInfo.key,
+            itemId: modalInfo.id,
             img: modalInfo.img,
             price: modalInfo.price,
             zipCode: modalInfo.zipcode,
-            description: modalInfo.description
+            description: modalInfo.description,
+            userId: this.props.auth.user.id
         })
         console.log("modalButton!!")
+
         this.setState({ modalIsOpen: true });
     }
 
@@ -143,8 +145,27 @@ class Search extends Component {
         } else {
             this.loadItems();
         }
-        console.log(this.state.results)
+        console.log(this.state.results)  
+        this.getUser(this.props.auth.user.id)      
     };
+
+    getUser = id => {
+        API.getUser(id)
+          .then(res => {
+            console.log(res.data)
+            if (res.data !== []) {
+              this.setState({
+                userInfo: res.data,
+                rentals: res.data[0].rentals,
+                rentalIds: res.data[0].rentalId,
+                hearted: res.data[0].hearted
+              })
+              console.log(this.state.hearted)
+            //   console.log(this.state.rentalIds)
+              // console.log(this.state.rentals)
+            }
+          })
+    }
 
     loadItems = () => {
         console.log('loading items')
@@ -156,11 +177,11 @@ class Search extends Component {
                 for (const item in res.data) {
                     const { itemName, category, price, img, description, zipcode } = res.data[item]
                     const resultsArray = this.state.results
-                    const key = res.data[item]._id;
+                    const _id = res.data[item]._id;
                     // console.log(key);
 
                     const result = {
-                        key,
+                        _id,
                         itemName,
                         category,
                         price,
@@ -189,6 +210,7 @@ class Search extends Component {
 
         API.findByTerm(term, zip)
             .then(res => {
+                console.log(res.data)
                 this.setState({ results: res.data })
                 this.createResultCard(res);
             })
@@ -212,6 +234,7 @@ class Search extends Component {
         console.log('handle form submit');
     };
 
+
     createResultCard = x => {
         const currentResults = this.state.results;
 
@@ -231,10 +254,48 @@ class Search extends Component {
         }
     };
 
+    clickRouter = (modalInfo, route) => {
+        console.log(modalInfo)
+        if (route) {
+            console.log(route)
+            console.log("sent to hearted route")
+            this.heartedItem(modalInfo)
+        } else {
+            console.log("sent to open modal")
+            this.openModal(modalInfo)
+        }
+    }
+
+    
+
+    heartedItem = modalInfo =>  {
+        console.log(modalInfo)
+        console.log(this.props.auth.user.id)
+        const heartInfo = {
+            itemId: modalInfo.id,
+            userId: this.props.auth.user.id
+        }
+
+        
+            
+        API.saveHeart(heartInfo)
+            .then(res => {
+                console.log(res.data)
+                this.getUser(this.props.auth.user.id)
+            })
+            .catch(err => console.log(err))
+        
+        
+        console.log("hearted")
+    }
+
     render() {
+
+
+
         return (
             <div className="" id="searchContainer">
-                <div className="row">
+                <div className="row" style={{ height: "100%", "margin-bottom": "0px" }}>
                     <div className="col s12" id="resultsBox">
                         {/* will pass the search terms/parameters into Results*/}
                         <div className="container">
@@ -267,30 +328,15 @@ class Search extends Component {
                                 < div >
                                     <ResultCard
                                         key={result.key + index}
-                                        id={result.key}
+                                        id={result._id}
                                         name={result.itemName}
                                         category={result.category}
                                         price={result.price}
                                         img={result.img}
-                                        // onClick={() => this.handleModalItem(result)}
-                                        onClick={() => this.openModal(result)}
+                                        clickRouter={this.clickRouter}
+                                        hearted={this.state.hearted}
+                                        // heartClick={this.heartedItem}
                                     />
-                                    {/* <FormBtn
-                                        key={result.key}
-                                        onClick={() => this.openModal(result)}
-                                        // onClick={this.openModal}
-                                        // onClick={this.handleModalItem}
-                                        className="btn btn-info"
-                                    >
-                                        Rent
-                                    </FormBtn> */}
-                                    {/* <FormBtn 
-                                    OnClick={() => this.openModal}
-                                    OnClick={() => this.handleModalItem(result)}
-                                    className="btn btn-info"
-                                >
-                                    Rent this item
-                                <FormBtn /> */}
                                 </div>
                             ))}
                         </div>
@@ -308,12 +354,12 @@ class Search extends Component {
                     <p>Rent {this.state.itemName}</p> */}
 
                     <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
-                        <div className="col s6" style={{}}>
+                        <div className="col s12 m12 l6" style={{}}>
                             <div className="detailsImageContainer">
                                 <img src={`${this.state.img}`} />
                             </div>
                         </div>
-                        <div className="col s6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
+                        <div className="col s12 m12 l6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
                             <div className="row" style={{ margin: "0px" }}>
                                 <h4 style={{ "margin-top": "0px" }}>{this.state.itemName}</h4>
                             </div>
@@ -344,7 +390,9 @@ class Search extends Component {
                                                 placeholder="When day would you like to rent this item"
                                                 type="date"
                                             />
-                                            <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
+                                            { this.props.auth.user.id != undefined &&
+                                                <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
+                                            }
                                         </form>
                                     </div>
                                 </div>
