@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
-import email from "../../email/ses_sendemail";
+// import email from "../../email/ses_sendemail";
 // import { List, ListItem } from "../../components/List";
 import ResultCard from "../../components/search/ResultCard"
 import RentedOutCard from "../../components/Dashboard/RentedOutCard"
@@ -234,6 +234,9 @@ class Dashboard extends Component {
             </div> */}
 
             <div className="col s12">
+              <div className="row">
+                <h4 className="center">{`Welcome, ${user.name}`}</h4>
+              </div>
               <div classname="row">
                 <div className="col offset-s2 s2">
                   <a onClick={() => this.display(0)} className="btn btn-primary dashboardButton">All Items</a>

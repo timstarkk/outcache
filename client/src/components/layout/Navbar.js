@@ -77,7 +77,7 @@ const Navbar = (logoutUser) => {
                   }}
                   className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
                 >
-                  {`${auth.user.name}'s Dashboard`}
+                  Dashboard
                 </Link>
               </li>
               <li>
@@ -140,7 +140,7 @@ const Navbar = (logoutUser) => {
               className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
               onClick={() => setSlider(s => !s)}
             >
-              {`${auth.user.name}'s Dashboard`}
+              Dashboard
             </Link>
           </li>
           <li>
