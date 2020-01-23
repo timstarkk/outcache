@@ -8,15 +8,74 @@ import { List, ListItem } from "../../components/List";
 import ResultCard from "../../components/search/ResultCard"
 import RentedOutCard from "../../components/Dashboard/RentedOutCard"
 import RentalCard from "../../components/Dashboard/RentalCard";
+import Modal from 'react-modal';
 
-class Dashboard extends Component {  
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width: '70%',
+    height: '80%'
+  }
+
+};
+
+
+Modal.setAppElement('#root')
+
+class Dashboard extends Component {
   state = {
     id: this.props.auth.user.id,
     items: [],
     rentedItems: [],
     rentalItemsArray: [],
     display: 0,
-    rentalIds: []
+    rentalIds: [],
+    startDate: "",
+    endDate: "",
+    renterId: "",
+    approved: false,
+    itemId: "",
+    searchTerm: "",
+    zipCode: "",
+    results: [],
+    modalIsOpen: false,
+    itemName: "",
+    category: "",
+    price: 0,
+    img: "",
+    description: "",
+    rented: "",
+    index: ""
+  }
+
+  openModal = (modalInfo, index) => {
+    console.log(modalInfo)
+    this.setState({
+      itemName: modalInfo.itemName,
+      itemId: modalInfo.id,
+      img: modalInfo.img,
+      price: modalInfo.price,
+      zipCode: modalInfo.zipcode,
+      description: modalInfo.description,
+      rented: modalInfo.rented,
+      index: index,
+    })
+    console.log("modalButton!!")
+    this.setState({ modalIsOpen: true });
+  }
+
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    // this.subtitle.style.color = '#f00';
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
   }
 
   componentDidMount() {
@@ -30,8 +89,11 @@ class Dashboard extends Component {
 
   constructor(props) {
     super(props);
-   this.approveRental = this.approveRental.bind(this);
-   this.findByUserId = this.findByUserId.bind(this);
+    this.approveRental = this.approveRental.bind(this);
+    this.findByUserId = this.findByUserId.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   onLogoutClick = e => {
@@ -39,7 +101,7 @@ class Dashboard extends Component {
     this.props.logoutUser();
   };
 
-  
+
   display = value => {
     this.setState({
       display: value
@@ -48,7 +110,7 @@ class Dashboard extends Component {
   }
 
   approveRental = (index, subIndex) => {
-    const  {rentedItems } = this.state;
+    const { rentedItems } = this.state;
     const rentalInfo = {
       renterId: rentedItems[index].rented[subIndex].renterId,
       itemId: rentedItems[index]._id,
@@ -57,30 +119,32 @@ class Dashboard extends Component {
     }
     API.approveRental(rentalInfo)
       .then(res => {
-      })  
+      })
       .catch(err => console.log(err));
-    
+
     const id = this.props.auth.user.id
     this.findByUserId(id)
-  } 
+
+    this.closeModal()
+  }
 
   getUser = id => {
     API.getUser(id)
-    .then(res => {
-      console.log(res.data)
-      if (res.data !== []) {
-        this.setState({
-          userInfo: res.data,
-          rentals: res.data[0].rentals,
-          rentalIds: res.data[0].rentalId
-        })
-        console.log(this.state.rentalIds)
-        // console.log(this.state.rentals)
-        this.findByRentals(this.state.rentals)
-      }
-    })
+      .then(res => {
+        console.log(res.data)
+        if (res.data !== []) {
+          this.setState({
+            userInfo: res.data,
+            rentals: res.data[0].rentals,
+            rentalIds: res.data[0].rentalId
+          })
+          console.log(this.state.rentalIds)
+          // console.log(this.state.rentals)
+          this.findByRentals(this.state.rentals)
+        }
+      })
   }
- 
+
   findByUserId = id => {
     // console.log(id)
     const rentedItems = []
@@ -129,109 +193,193 @@ class Dashboard extends Component {
         rentalItemsArray: rentalItemsArray
       })
       // console.log(this.state.rentalItemsArray)
-    }  
+    }
     something()
+  }
+
+  clickRouter = id => {
+    console.log("this")
   }
 
   render() {
     const { user } = this.props.auth;
-    const display = this.state.display    
+    const display = this.state.display
 
     return (
-      // <!-- Navbar goes here -->
+      <div className="" id="searchContainer">
+        <div className="row">
+          <div className="col s12" id="resultsBox">
+            {/* <div className="container">
+              <div>
+                <SearchForm
+                  value={this.state.searchTerm}
+                  name="searchTerm"
+                  handleInputChange={this.handleInputChange}
+                  handleFormSubmit={this.handleFormSubmit} />
+              </div>
+            </div> */}
 
-      // <!-- Page Layout here -->
-      <div class="row">
-  
-        <div className="col s2 grey lighten-2">
-          <div className="row">
-            <a onClick={() => this.display(0)}>Your Items</a>
-          </div>
-          <div className="row">
-            <a onClick={() => this.display(1)}>Items Rented Out</a>
-          </div>
-          <div className="row">
-            <a onClick={() => this.display(2)}>Items You Have Rented</a>
-          </div>
-          {/* <!-- Grey navigation panel --> */}
-        </div>
-  
-        <div class="col s9">
-           <div className="row">  
-              {(this.state.display === 0) &&
-                <><h2>this display is 0</h2>
-                <p className="col s7">Showing results 1-{this.state.items.length} of {this.state.items.length}:</p></>
+            <div className="col s12">
+              <div classname="row">
+                <div className="col offset-s2 s2">
+                  <a onClick={() => this.display(0)} className="btn btn-primary dashboardButton">All Items</a>
+                </div>
+                <div className="col offset-s1 s2">
+                  <a onClick={() => this.display(1)} className="btn btn-primary dashboardButton">Requested Items</a>
+                </div>
+                <div className="col offset-s1 s2">
+                  <a onClick={() => this.display(2)} className="btn btn-primary dashboardButton">Your Rentals</a>
+                </div>
+              </div>
+              {/* <!-- Grey navigation panel --> */}
+            </div>
+
+
+            <div className="row">
+              <p className="col s7">
+                {(this.state.display === 0) &&
+                  <>
+                    <p className="col s7">Showing results 1-{this.state.items.length} of {this.state.items.length}:</p></>
+                }
+                {display === 1 &&
+                  <>
+                    <p className="col s7">Showing results 1-{this.state.rentedItems.length} of {this.state.rentedItems.length}:</p></>
+                }
+                {display === 2 &&
+                  <>
+                    <p className="col s7">Showing results 1-{this.state.rentalItemsArray.length} of {this.state.rentalItemsArray.length}:</p></>
+                }
+              </p>
+            </div>
+
+            <div className="row">
+              {display === 0 &&
+                this.state.items.map((result, index) => (
+                  <div>
+                    <ResultCard
+                      key={result._id + index}
+                      id={result._id}
+                      name={result.itemName}
+                      category={result.category}
+                      price={result.price}
+                      img={result.img}
+                      onClick={() => this.openModal(result, index)}
+                      clickRouter={() => this.openModal(result, index)}
+                    />
+                  </div>
+                ))
               }
               {display === 1 &&
-                <><h2>this display is 1</h2>
-                <p className="col s7">Showing results 1-{this.state.rentedItems.length} of {this.state.rentedItems.length}:</p></>
-              }
-              {display===2 && 
-                <><h2>this is display 2</h2>
-                <p className="col s7">Showing results 1-{this.state.rentalItemsArray.length} of {this.state.rentalItemsArray.length}:</p></>
-              }
-            </div>
-          
-
-           <div className="row">
-             { display === 0 && 
-               this.state.items.map((result, index) => (
-                   <div>
-                       <ResultCard
-                           key={result._id + index}
-                           id={result._id}
-                           name={result.itemName}
-                           category={result.category}
-                           price={result.price}
-                           img={result.img}
-                           // onClick={() => this.openModal(result)}
-                       />
-                   </div>
-               ))
-              }
-              { display === 1 && 
-              // console.log(this.state.rentedItems),
+                // console.log(this.state.rentedItems),
                 this.state.rentedItems.map((result, index) => (
                   <div>
-                      <RentedOutCard
-                          key={result._id + index}
-                          id={result._id}
-                          name={result.itemName}
-                          category={result.category}
-                          price={result.price}
-                          img={result.img}
-                          rented={result.rented}
-                          index={index}
-                          onApproveRental={this.approveRental}
-                      />
-                      </div>
-                    ))
+                    <ResultCard
+                      key={result._id + index}
+                      id={result._id}
+                      name={result.itemName}
+                      category={result.category}
+                      price={result.price}
+                      img={result.img}
+                      clickRouter={() => this.openModal(result, index)}
+                    />
+                  </div>
+                ))
               }
-               { display === 2 && 
-              //  console.log(this.state.rentalItemsArray),
-               this.state.rentalItemsArray.map((result, index) => (
-                //  console.log(result.rented),
-                //  console.log(this.state.rentalIds[index]),
-                //  console.log(index)
-                   <div>
-                       <RentalCard
-                           key={result._id + index}
-                           id={result._id}
-                           name={result.itemName}
-                           category={result.category}
-                           price={result.price}
-                           img={result.img}
-                           rentalId={this.state.rentalIds[index]}
-                           rentals={result.rented}
-
-                          //  startDate={result.rented[index].startDate}
-                           // onClick={() => this.openModal(result)}
-                       />
-                   </div>
-               ))
-              }  
-           </div>
+              {display === 2 &&
+                //  console.log(this.state.rentalItemsArray),
+                this.state.rentalItemsArray.map((result, index) => (
+                  //  console.log(result.rented),
+                  //  console.log(this.state.rentalIds[index]),
+                  //  console.log(index)
+                  <div>
+                    <RentalCard
+                      key={result._id + index}
+                      id={result._id}
+                      name={result.itemName}
+                      category={result.category}
+                      price={result.price}
+                      img={result.img}
+                      rentalId={this.state.rentalIds[index]}
+                      rentals={result.rented}
+                      onClick={() => this.openModal(result, index)}
+                    />
+                  </div>
+                ))
+              }
+            </div>
+          </div>
         </div>
+
+
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <RentedOutCard
+            key={this.state.id + this.state.index}
+            id={this.state.id}
+            name={this.state.itemName}
+            category={this.state.category}
+            price={this.state.price}
+            img={this.state.img}
+            rented={this.state.rented}
+            index={this.state.index}
+            description={this.state.description}
+            onApproveRental={this.approveRental}
+          // onClick={() => this.openModal(result)}
+          />
+          {/* <h2>hello {this.props.auth.user.name}</h2> */}
+          {/* <p>Rent {this.state.itemName}</p> */}
+
+          {/* <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
+            <div className="col s6" style={{}}>
+              <div className="detailsImageContainer">
+                <img src={`${this.state.img}`} />
+              </div>
+            </div>
+            <div className="col s6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
+              <div className="row" style={{ margin: "0px" }}>
+                <h4 style={{ "margin-top": "0px" }}>{this.state.itemName}</h4>
+              </div>
+              <div className="row" style={{ margin: "0px" }}>
+                <p>${this.state.price} / day</p>
+              </div>
+              <div className="row" style={{ margin: "0px" }}>
+                <p>{this.state.description}</p>
+              </div>
+              <div className="row" style={{}}>
+                <div className="col s12">
+                  <div className="formContainer" style={{}}>
+                    <form>
+                      <Input
+                        value={this.state.startDate}
+                        onChange={this.handleInputChange}
+                        name="startDate"
+                        label="Start Date"
+                        placeholder="When day would you like to rent this item"
+                        type="date"
+                      />
+                      <Input
+                        value={this.state.endDate}
+                        onChange={this.handleInputChange}
+                        name="endDate"
+                        label="End Date"
+                        placeholder="When day would you like to rent this item"
+                        type="date"
+                      />
+                      <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> */}
+
+        </Modal>
+
       </div>
     );
   }

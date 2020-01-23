@@ -3,31 +3,37 @@ import { FormBtn } from "../Form";
 import Moment from 'react-moment';
 
 function RentalCard(props) {
-    const { id, name, price, img, rentalId, rentals } = props;
+    const { id, name, price, img, rentalId, rentals, heartClick } = props;
     console.log(props)
 
-    const rentalForCard = rentals.filter(function(ele){
+    const rentalForCard = rentals.filter(function (ele) {
         console.log(ele)
         return ele._id === rentalId
     })
 
-   console.log(rentalForCard[0].startDate) 
-   const startDate  = rentalForCard[0].startDate
-   const endDate = rentalForCard[0].endDate
-   const approved = rentalForCard[0].approved
+    let startDate = ""
+    let endDate = ""
+    let approved = ""
+    
 
+    // console.log(rentalForCard[0].startDate)
+    if(rentalForCard > 0) {
+        startDate = rentalForCard[0].startDate
+        endDate = rentalForCard[0].endDate
+        approved = rentalForCard[0].approved
+    }
 
 
     return (
-        <div className="col offset-s2 s8 m3 l2 resultCardContainer"  style={{
+        <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
             padding: "0px",
-            "margin-bottom": "10px",
+            "margin-bottom": "10px"
         }}>
             < div className="resultCard z-depth-2">
-                <div className="cardImageContainer">
-                    <img className="cardImage" src={img} alt={name} />
+                <div className="cardImageContainer" >
+                    <img className="cardImage" onClick={() => heartClick(id, name, price)} src={img} alt={name} />
 
-                    <div className="littleSquare" style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>
+                    <div className="littleSquare"  style={{ "paddingTop": "6px", "padding-bottom": "5px" }}></div>
                 </div>
                 <div className="cardInfoContainer">
                     <h6 className="cardName">{name}</h6>
