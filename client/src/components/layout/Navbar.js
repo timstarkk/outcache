@@ -122,6 +122,7 @@ const Navbar = (logoutUser) => {
           onClick={() => setSlider(s => !s)}
           style={{
             display: slider && size.width < 980 ? "block" : "none",
+            position: "fixed",
             opacity: "1"
           }}
         />
@@ -238,6 +239,7 @@ const Navbar = (logoutUser) => {
         onClick={() => setSlider(s => !s)}
         style={{
           display: slider && size.width < 980 ? "block" : "none",
+          position: "fixed",
           opacity: "1"
         }}
       />

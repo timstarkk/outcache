@@ -4,18 +4,23 @@ const fs = require('fs');
 const path = require('path');
 const handlebars = require('handlebars');
 
+require('dotenv').config();
+
 // Set the region 
 AWS.config.update({region: 'us-east-1'});
 
-var credentials = new AWS.SharedIniFileCredentials({profile: 'personal'});
-AWS.config.credentials = credentials;
+// var credentials = new AWS.SharedIniFileCredentials({profile: 'personal'});
+// AWS.config.credentials = credentials;
 
+// const sendEmail = async(userData) => {
 exports.sendEmail = async (userData) => {
     return new Promise((resolve) => {
         try {
             let emailTemplate = fs.readFileSync(path.resolve(__dirname, './confirmation.html'), 'utf8');
             let emailSubject = 'Outcache Rental Approved';
             let sourceAddress = 'info@outcache.com';
+
+            console.log(userData);
 
             // Prepare data for template placeholders
             let emailData = {
@@ -72,3 +77,5 @@ exports.sendEmail = async (userData) => {
         }
     });
 };
+
+// sendEmail({firstName: 'Tommy', emailAddress: 'tpvinyard@gmail.com'})
