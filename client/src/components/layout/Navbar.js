@@ -71,6 +71,17 @@ const Navbar = (logoutUser) => {
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
                 <Link
+                  to={`/dashboard`}
+                  style={{
+                    margin: "0px 15px"
+                  }}
+                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
+                >
+                  {`${auth.user.name}'s Dashboard`}
+                </Link>
+              </li>
+              <li>
+                <Link
                   to={`/search`}
                   style={{
                     margin: "0px 15px"
@@ -78,17 +89,6 @@ const Navbar = (logoutUser) => {
                   className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
                 >
                   Search
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={`/dashboard`}
-                  style={{
-                    margin: "0px 15px"
-                  }}
-                  className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
-                >
-                  Dashboard
                 </Link>
               </li>
               <li>
@@ -133,6 +133,18 @@ const Navbar = (logoutUser) => {
           }}>
           <li>
             <Link
+              to={`/dashboard`}
+              style={{
+                margin: "0px 15px"
+              }}
+              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+              onClick={() => setSlider(s => !s)}
+            >
+              {`${auth.user.name}'s Dashboard`}
+            </Link>
+          </li>
+          <li>
+            <Link
               to={`/search`}
               style={{
                 margin: "0px 15px"
@@ -141,18 +153,6 @@ const Navbar = (logoutUser) => {
               onClick={() => setSlider(s => !s)}
             >
               Search
-                </Link>
-          </li>
-          <li>
-            <Link
-              to={`/dashboard`}
-              style={{
-                margin: "0px 15px"
-              }}
-              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
-              onClick={() => setSlider(s => !s)}
-            >
-              Dashboard
                 </Link>
           </li>
           <li>
