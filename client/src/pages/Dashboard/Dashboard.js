@@ -7,8 +7,8 @@ import API from "../../utils/API";
 import email from "../../email/ses_sendemail";
 // import { List, ListItem } from "../../components/List";
 import ResultCard from "../../components/search/ResultCard"
-import RentedOutCard from "../../components/dashboard/RentedOutCard"
-import RentalCard from "../../components/dashboard/RentalCard";
+import RentedOutCard from "../../components/Dashboard/RentedOutCard"
+import RentalCard from "../../components/Dashboard/RentalCard";
 import Modal from 'react-modal';
 
 const customStyles = {
