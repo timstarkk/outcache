@@ -122,6 +122,7 @@ const Navbar = (logoutUser) => {
           onClick={() => setSlider(s => !s)}
           style={{
             display: slider && size.width < 980 ? "block" : "none",
+            position: "fixed",
             opacity: "1"
           }}
         />
@@ -188,7 +189,7 @@ const Navbar = (logoutUser) => {
         <div className="nav-wrapper navbarFlex">
           <Link
             to="/"
-            className={`col s5 brand-logo center ${logoMap[pathname]}-text`}
+            className={`col s5 brand-logo center ${logoMap[pathname]}-text text-darken-3`}
             id={`${navMap[pathname]}`}
           >
             OutCache
@@ -202,7 +203,7 @@ const Navbar = (logoutUser) => {
                 style={{
                   margin: "0px 15px"
                 }}
-                className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
               >
                 Search
               </Link>
@@ -213,7 +214,7 @@ const Navbar = (logoutUser) => {
                 style={{
                   margin: "0px 15px"
                 }}
-                className={`btn btn-large waves-effect waves-light ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                className={`btn btn-large waves-effect waves-light ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
                 id="registerButton"
               >
                 Register
@@ -225,7 +226,7 @@ const Navbar = (logoutUser) => {
                 style={{
                   margin: "0px 15px"
                 }}
-                className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+                className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
               >
                 Log In
                 </Link>
@@ -238,6 +239,7 @@ const Navbar = (logoutUser) => {
         onClick={() => setSlider(s => !s)}
         style={{
           display: slider && size.width < 980 ? "block" : "none",
+          position: "fixed",
           opacity: "1"
         }}
       />
