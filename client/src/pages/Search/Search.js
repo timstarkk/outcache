@@ -255,19 +255,35 @@ class Search extends Component {
     };
 
     clickRouter = (modalInfo, route) => {
-        console.log(modalInfo)
-        if (route) {
+        console.log(route)
+        if (route === "addHeart") {
             console.log(route)
             console.log("sent to hearted route")
             this.heartedItem(modalInfo)
-        } else {
+        } else if(route === "openModal"){
             console.log("sent to open modal")
             this.openModal(modalInfo)
+        } else {
+            console.log("removeHeart")
+            this.removeHeart(modalInfo)
         }
     }
 
-    
+    removeHeart = modalInfo => {
+            console.log(modalInfo)
+            const removeHeartInfo = {
+                itemId: modalInfo.id,
+                userId: this.props.auth.user.id
+            }
 
+            API.removeHeart(removeHeartInfo)
+                .then(res => {
+                    console.log(res.data)
+                    this.getUser(this.props.auth.user.id)
+                })
+
+    }
+    
     heartedItem = modalInfo =>  {
         console.log(modalInfo)
         console.log(this.props.auth.user.id)
@@ -275,9 +291,7 @@ class Search extends Component {
             itemId: modalInfo.id,
             userId: this.props.auth.user.id
         }
-
-        
-            
+  
         API.saveHeart(heartInfo)
             .then(res => {
                 console.log(res.data)
