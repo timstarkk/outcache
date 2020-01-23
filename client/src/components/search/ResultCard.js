@@ -29,11 +29,11 @@ function ResultCard(props) {
         }}>
             < div className="resultCard z-depth-2">
                 <div className="cardImageContainer">
-                    <img className="cardImage" onClick={() => clickRouter(props, false)} src={img} alt={name} />
-                    {isHearted ? <div className="littleSquareSelected" style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div> : 
-                    <div className="littleSquare" onClick={() => clickRouter(props, true)} style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>}
+                    <img className="cardImage" onClick={() => clickRouter(props, "openModal")} src={img} alt={name} />
+                    {isHearted ? <div className="littleSquareSelected" onClick={() => clickRouter(props, "removeHeart")} style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div> : 
+                    <div className="littleSquare" onClick={() => clickRouter(props, "addHeart")} style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>}
                 </div>
-                <div className="cardInfoContainer" onClick={() => clickRouter(props, false)}>
+                <div className="cardInfoContainer" onClick={() => clickRouter(props, "openModal" )}>
                     <h6 className="cardName">{name}</h6>
                     <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>location</p>
                     <div className="row">
