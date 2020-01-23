@@ -119,17 +119,17 @@ class Dashboard extends Component {
       rentedIndex: subIndex,
       rentalId: rentedItems[index].rented[subIndex]._id
     }
-    // API.getUser(rentalInfo.renterId)
-    //   .then(res => {
-    //     console.log(res.data[0].name);
-    //     console.log(res.data[0].email);
-    //     // console.log(email.sendEmail);
-    //     // email.sendEmail({
-    //     //   firstName: `${res.data[0].name}`,
-    //     //   emailAddress: `${res.data[0].email}`
-    //     // })
-    //   })
-    //   .catch(err => console.log(err));
+    API.getUser(rentalInfo.renterId)
+      .then(res => {
+        console.log(res.data[0].name);
+        console.log(res.data[0].email);
+        // console.log(email.sendEmail);
+        email.sendEmail({
+          firstName: `${res.data[0].name}`,
+          emailAddress: `${res.data[0].email}`
+        })
+      })
+      .catch(err => console.log(err));
     API.approveRental(rentalInfo)
       .then(res => {
       })
@@ -234,6 +234,9 @@ class Dashboard extends Component {
             </div> */}
 
             <div className="col s12">
+              <div className="row">
+                <h4 className="center">{`Welcome, ${user.name}`}</h4>
+              </div>
               <div classname="row">
                 <div className="col offset-s2 s2">
                   <a onClick={() => this.display(0)} className="btn btn-primary dashboardButton">All Items</a>
