@@ -234,7 +234,7 @@ class Search extends Component {
     render() {
         return (
             <div className="" id="searchContainer">
-                <div className="row">
+                <div className="row" style={{ height: "100%", "margin-bottom": "0px" }}>
                     <div className="col s12" id="resultsBox">
                         {/* will pass the search terms/parameters into Results*/}
                         <div className="container">
