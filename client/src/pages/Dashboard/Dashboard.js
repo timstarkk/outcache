@@ -58,7 +58,7 @@ class Dashboard extends Component {
     console.log(modalInfo)
     this.setState({
       itemName: modalInfo.itemName,
-      itemId: modalInfo.key,
+      itemId: modalInfo.id,
       img: modalInfo.img,
       price: modalInfo.price,
       zipCode: modalInfo.zipcode,
@@ -209,6 +209,10 @@ class Dashboard extends Component {
     something()
   }
 
+  clickRouter = id => {
+    console.log("this")
+  }
+
   render() {
     const { user } = this.props.auth;
     const display = this.state.display
@@ -272,6 +276,7 @@ class Dashboard extends Component {
                       price={result.price}
                       img={result.img}
                       onClick={() => this.openModal(result, index)}
+                      clickRouter={() => this.openModal(result, index)}
                     />
                   </div>
                 ))
@@ -287,7 +292,7 @@ class Dashboard extends Component {
                       category={result.category}
                       price={result.price}
                       img={result.img}
-                      onClick={() => this.openModal(result, index)}
+                      clickRouter={() => this.openModal(result, index)}
                     />
                   </div>
                 ))

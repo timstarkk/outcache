@@ -5,16 +5,16 @@ module.exports = {
 
 
 createRented: async function(req, res) {
-  console.log("-------")
-  console.log(req.body)
-  console.log(req.body.renterId)
+  // console.log("-------")
+  // console.log(req.body)
+  // console.log(req.body.renterId)
   try{
     const userPromise = db.User.findOneAndUpdate({_id: req.body.renterId}, { $push: { rentals: req.body.itemId   }}, {new: true })
     const itemPromise = db.Item.findOneAndUpdate({_id: req.body.itemId}, { $push: { rented: req.body }}, { new: true })
     const [userResp, itemResp] = await Promise.all([userPromise, itemPromise]);
-    console.log("user", userResp);
-    console.log()
-    console.log("item", itemResp)
+    // console.log("user", userResp);
+    // console.log()
+    // console.log("item", itemResp)
 
       return res.json({user: userResp, item:itemResp})
     
@@ -22,7 +22,7 @@ createRented: async function(req, res) {
     catch(err) { res.status(422).json(err)};
   },
   approveRental: function(req, res) {
-    console.log(req.body)
+    // console.log(req.body)
     let update = { $set: {'rented.$[elem].approved': 'true'} };
     let options = {new: true, arrayFilters: [{ 'elem._id' : req.body.rentalId } ]}
     db.Item 
@@ -48,7 +48,7 @@ createRented: async function(req, res) {
   //   db.User.findOne({})
   // },
   findByRentals: function(req, res) {
-    console.log("findByUserId:" + req.params.userId)
+    // console.log("findByUserId:" + req.params.userId)
     db.Item
       .find({_id: req.params.itemId})
       .then(dbModel => res.json(dbModel))

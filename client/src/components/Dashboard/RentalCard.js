@@ -3,7 +3,7 @@ import React from "react";
 import Moment from 'react-moment';
 
 function RentalCard(props) {
-    const { name, price, img, rentalId, rentals } = props;
+    const { id, name, price, img, rentalId, rentals, heartClick } = props;
     console.log(props)
 
     const rentalForCard = rentals.filter(function (ele) {
@@ -11,11 +11,17 @@ function RentalCard(props) {
         return ele._id === rentalId
     })
 
-    console.log(rentalForCard[0].startDate)
-    const startDate = rentalForCard[0].startDate
-    const endDate = rentalForCard[0].endDate
-    const approved = rentalForCard[0].approved
+    let startDate = ""
+    let endDate = ""
+    let approved = ""
+    
 
+    // console.log(rentalForCard[0].startDate)
+    if(rentalForCard > 0) {
+        startDate = rentalForCard[0].startDate
+        endDate = rentalForCard[0].endDate
+        approved = rentalForCard[0].approved
+    }
 
 
     return (
@@ -24,10 +30,10 @@ function RentalCard(props) {
             "margin-bottom": "10px"
         }}>
             < div className="resultCard z-depth-2">
-                <div className="cardImageContainer">
-                    <img className="cardImage" src={img} alt={name} />
+                <div className="cardImageContainer" >
+                    <img className="cardImage" onClick={() => heartClick(id, name, price)} src={img} alt={name} />
 
-                    <div className="littleSquare" style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>
+                    <div className="littleSquare"  style={{ "paddingTop": "6px", "padding-bottom": "5px" }}></div>
                 </div>
                 <div className="cardInfoContainer">
                     <h6 className="cardName">{name}</h6>

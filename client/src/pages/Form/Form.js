@@ -15,7 +15,7 @@ class Form extends Component {
     category: "",
     price: "",
     pic: "",
-    toResults: false,
+    zipcode: "", 
     results: [],
     img: '',
     description: '',
@@ -88,23 +88,34 @@ class Form extends Component {
         userName: this.props.auth.user.name,
         zipcode: this.state.zipcode
       }
-
-      API.saveItem(itemData)
-        .then(res => {
-          console.log(res.data);
-          console.log("added")
-        })
-        .then(this.props.history.push("/dashboard"))
-        .catch(err => console.log(err));
-
-      //   return<Redirect to={{pathname: "/" }} />
+      
+      // const saveItemAwait = async _ => {
+          // const apiRequest = await
+           API.saveItem(itemData)
+            .then(res => {
+              console.log(res.data);
+              console.log("added")
+              this.props.history.push("/dashboard")
+            })
+            .catch(err => console.log(err));
+            
+            // const move = await <Redirect to={{pathname: "/dashboard" }} />
+            // const returnItems = await Promise.all(apiRequest)
+      // }
+      // saveItemAwait()
     }
-
   };
+
+  // componentDidUpdate() {
+  //   var elems = document.querySelectorAll('select');
+  //   var instances = M.FormSelect.init(elems, {});
+  // }
 
   render() {
     const { user } = this.props.auth;
     console.log(user)
+    
+    
     return (
           <div className="container">
             <div style={{ marginTop: "4rem" }} className="row">
@@ -136,6 +147,19 @@ class Form extends Component {
                     label="Item Name"
                     placeholder="What is the Item"
                   />
+                  {/* <div className="input-field col s12">
+                    <select>
+                      <option value="" disabled selected>Choose your option</option>
+                      <option value="Camping">Camping</option>
+                      <option value="Hiking">Hiking</option>
+                      <option value="Climbing">Climbing</option>
+                      <option value="Cooking">Cooking</option>
+                      <option value="Cycling">Cycling</option>
+                      <option value="Watersports">Watersports</option>
+                      <option value="Ski/Snowboard">Ski/Snowboard</option>
+                    </select>
+                    <label>Materialize Select</label>
+                  </div> */}
                   <Input
                     value={this.state.category}
                     onChange={this.handleInputChange}

@@ -4,8 +4,8 @@ const db = require("../models");
 // Defining methods for the ItemsController
 module.exports = {
     getUser: function(req, res) {
-    console.log("getUser req.prams" + req.params)
-    console.log("getUser id params:" + req.params.id)
+    // console.log("getUser req.prams" + req.params)
+    // console.log("getUser id params:" + req.params.id)
     db.User
       .find({_id: req.params.id})
       .then(dbModel => res.json(dbModel))
