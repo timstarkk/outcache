@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+// import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
-import { Input, FormBtn, Label } from "../../components/Form";
-import Wrapper from "../../components/Wrapper";
-import M from "materialize-css";
+import { Input, FormBtn } from "../../components/Form";
+// import Wrapper from "../../components/Wrapper";
 
 
 

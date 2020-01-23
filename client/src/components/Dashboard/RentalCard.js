@@ -1,5 +1,5 @@
 import React from "react";
-import { FormBtn } from "../Form";
+// import { FormBtn } from "../Form";
 import Moment from 'react-moment';
 
 function RentalCard(props) {

@@ -149,6 +149,10 @@ input::placeholder {
     padding-bottom: 30px;
 }
 
+.btn:hover {
+    opacity: 85% !important;
+}
+
 .anyCard {
     /* border: 2px solid darkred; */
     margin: 20px;
@@ -401,7 +405,7 @@ img {
     background-color: black;
 }
 
-.landingButton {
+/* .landingButton {
     width: 100%;
     background-color: black;
     letter-spacing: 1.5px;
@@ -414,7 +418,7 @@ img {
 
 .landingButton:focus {
     background-color: black;
-}
+} */
 
 
 .dashboardButton:focus {

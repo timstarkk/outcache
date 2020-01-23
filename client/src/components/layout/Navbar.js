@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect, useSelector, useReducer } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import 'materialize-css/dist/css/materialize.min.css';
-import M, { AutoInit } from 'materialize-css/dist/js/materialize.min.js';
+import M from 'materialize-css/dist/js/materialize.min.js';
 import useWindowSize from './windowSize';
 
 
