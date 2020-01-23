@@ -2,25 +2,8 @@ import React from "react";
 // import { FormBtn } from "../Form";
 
 function ResultCard(props) {
-    const { id, name, price, img, onClick, hearted, clickRouter } = props;
+    const { id, name, price, img, onClick, clickRouter } = props;
     console.log(props)
-
-    console.log(hearted)
-
-    let isHearted
-
-    function heart() {
-        isHearted = false
-        if(hearted) {
-            for (let item of hearted) {
-                if(item === id) {
-                    isHearted = true
-                }
-            }
-        }
-    }
-    heart()
-    
 
     return (
         <div className="col offset-s2 s8 m3 l2 resultCardContainer"  style={{
@@ -30,8 +13,8 @@ function ResultCard(props) {
             < div className="resultCard z-depth-2">
                 <div className="cardImageContainer">
                     <img className="cardImage" onClick={() => clickRouter(props, false)} src={img} alt={name} />
-                    {isHearted ? <div className="littleSquareSelected" style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div> : 
-                    <div className="littleSquare" onClick={() => clickRouter(props, true)} style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>}
+
+                    <div className="littleSquare" onClick={() => clickRouter(props, true)} style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>
                 </div>
                 <div className="cardInfoContainer" onClick={() => clickRouter(props, false)}>
                     <h6 className="cardName">{name}</h6>
