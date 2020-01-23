@@ -100,7 +100,6 @@ class Search extends Component {
                 this.setState({ modalIsOpen: false });
             })
             .catch(err => console.log(err));
-
     };
 
     constructor() {
@@ -146,8 +145,27 @@ class Search extends Component {
         } else {
             this.loadItems();
         }
-        console.log(this.state.results)
+        console.log(this.state.results)  
+        this.getUser(this.props.auth.user.id)      
     };
+
+    getUser = id => {
+        API.getUser(id)
+          .then(res => {
+            console.log(res.data)
+            if (res.data !== []) {
+              this.setState({
+                userInfo: res.data,
+                rentals: res.data[0].rentals,
+                rentalIds: res.data[0].rentalId,
+                hearted: res.data[0].hearted
+              })
+              console.log(this.state.hearted)
+            //   console.log(this.state.rentalIds)
+              // console.log(this.state.rentals)
+            }
+          })
+    }
 
     loadItems = () => {
         console.log('loading items')
@@ -159,11 +177,11 @@ class Search extends Component {
                 for (const item in res.data) {
                     const { itemName, category, price, img, description, zipcode } = res.data[item]
                     const resultsArray = this.state.results
-                    const key = res.data[item]._id;
+                    const _id = res.data[item]._id;
                     // console.log(key);
 
                     const result = {
-                        key,
+                        _id,
                         itemName,
                         category,
                         price,
@@ -192,6 +210,7 @@ class Search extends Component {
 
         API.findByTerm(term, zip)
             .then(res => {
+                console.log(res.data)
                 this.setState({ results: res.data })
                 this.createResultCard(res);
             })
@@ -240,7 +259,7 @@ class Search extends Component {
         if (route) {
             console.log(route)
             console.log("sent to hearted route")
-            this.heartedItem()
+            this.heartedItem(modalInfo)
         } else {
             console.log("sent to open modal")
             this.openModal(modalInfo)
@@ -249,12 +268,20 @@ class Search extends Component {
 
     
 
-    heartedItem(modalInfo) {
+    heartedItem = modalInfo =>  {
         console.log(modalInfo)
+        console.log(this.props.auth.user.id)
+        const heartInfo = {
+            itemId: modalInfo.id,
+            userId: this.props.auth.user.id
+        }
+
+        
             
-        API.saveHeart(modalInfo)
+        API.saveHeart(heartInfo)
             .then(res => {
                 console.log(res.data)
+                this.getUser(this.props.auth.user.id)
             })
             .catch(err => console.log(err))
         
@@ -301,12 +328,13 @@ class Search extends Component {
                                 < div >
                                     <ResultCard
                                         key={result.key + index}
-                                        id={result.key}
+                                        id={result._id}
                                         name={result.itemName}
                                         category={result.category}
                                         price={result.price}
                                         img={result.img}
                                         clickRouter={this.clickRouter}
+                                        hearted={this.state.hearted}
                                         // heartClick={this.heartedItem}
                                     />
                                 </div>

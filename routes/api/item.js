@@ -32,6 +32,9 @@ const userController = require("../../controllers/userController")
   router.route("/rentalId")
   .post(rentedController.saveRentalIdInUser)
 
+  router.route("/heart")
+  .post(itemsController.saveHeart)
+
   // router.route("/rentalId/:userId")
   // .get(rentedController.saveRentalIdInUser)
 
