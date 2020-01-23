@@ -13,7 +13,7 @@ AWS.config.update({region: 'us-east-1'});
 // AWS.config.credentials = credentials;
 
 // const sendEmail = async(userData) => {
-exports.sendEmail = async (userData) => {
+const sendEmail = async (userData) => {
     return new Promise((resolve) => {
         try {
             let emailTemplate = fs.readFileSync(path.resolve(__dirname, './confirmation.html'), 'utf8');
@@ -78,4 +78,5 @@ exports.sendEmail = async (userData) => {
     });
 };
 
+export default sendEmail;
 // sendEmail({firstName: 'Tommy', emailAddress: 'tpvinyard@gmail.com'})
