@@ -124,7 +124,7 @@ class Dashboard extends Component {
         console.log(res.data[0].name);
         console.log(res.data[0].email);
         // console.log(email.sendEmail);
-        email({
+        email.sendEmail({
           firstName: `${res.data[0].name}`,
           emailAddress: `${res.data[0].email}`
         })
