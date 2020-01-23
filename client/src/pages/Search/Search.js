@@ -33,7 +33,7 @@ Modal.setAppElement('#root')
 // const itemName = "tent"
 
 class Search extends Component {
-    state = {
+       state = {
         startDate: "",
         endDate: "",
         renterId: "",
@@ -69,6 +69,9 @@ class Search extends Component {
     handleRentalSubmit = event => {
         event.preventDefault();
 
+        console.log(this.state.itemId)
+
+
         let rentedData = {
             startDate: this.state.startDate,
             endDate: this.state.endDate,
@@ -81,10 +84,12 @@ class Search extends Component {
 
         API.saveRented(rentedData)
             .then(res => {
+                console.log(res.data)
                 const rentalIdInfo = {
                     rentalId: res.data.item.rented.slice(-1)[0]._id,
                     userId: this.props.auth.user.id,
                 }
+                console.log(rentalIdInfo.userId)
                 console.log(res.data.item.rented.slice(-1)[0]);
                 console.log(res.data.item.rented.slice(-1)[0]._id);
                 API.saveRentalIdInUser(rentalIdInfo)
@@ -99,28 +104,26 @@ class Search extends Component {
     };
 
     constructor() {
-        super();
-
-        // this.setState({
-        //     modalIsOpen: false
-        // }) 
-
+        super()
         this.openModal = this.openModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.heartedItem = this.heartedItem.bind(this);
     }
 
     openModal = modalInfo => {
         console.log(modalInfo)
         this.setState({
             itemName: modalInfo.itemName,
-            itemId: modalInfo.key,
+            itemId: modalInfo.id,
             img: modalInfo.img,
             price: modalInfo.price,
             zipCode: modalInfo.zipcode,
-            description: modalInfo.description
+            description: modalInfo.description,
+            userId: this.props.auth.user.id
         })
         console.log("modalButton!!")
+
         this.setState({ modalIsOpen: true });
     }
 
@@ -212,6 +215,7 @@ class Search extends Component {
         console.log('handle form submit');
     };
 
+
     createResultCard = x => {
         const currentResults = this.state.results;
 
@@ -231,7 +235,37 @@ class Search extends Component {
         }
     };
 
+    clickRouter = (modalInfo, route) => {
+        console.log(modalInfo)
+        if (route) {
+            console.log(route)
+            console.log("sent to hearted route")
+            this.heartedItem()
+        } else {
+            console.log("sent to open modal")
+            this.openModal(modalInfo)
+        }
+    }
+
+    
+
+    heartedItem(modalInfo) {
+        console.log(modalInfo)
+            
+        API.saveHeart(heartInfo)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => console.log(err))
+        
+        
+        console.log("hearted")
+    }
+
     render() {
+
+
+
         return (
             <div className="" id="searchContainer">
                 <div className="row" style={{ height: "100%", "margin-bottom": "0px" }}>
@@ -272,25 +306,9 @@ class Search extends Component {
                                         category={result.category}
                                         price={result.price}
                                         img={result.img}
-                                        // onClick={() => this.handleModalItem(result)}
-                                        onClick={() => this.openModal(result)}
+                                        clickRouter={this.clickRouter}
+                                        // heartClick={this.heartedItem}
                                     />
-                                    {/* <FormBtn
-                                        key={result.key}
-                                        onClick={() => this.openModal(result)}
-                                        // onClick={this.openModal}
-                                        // onClick={this.handleModalItem}
-                                        className="btn btn-info"
-                                    >
-                                        Rent
-                                    </FormBtn> */}
-                                    {/* <FormBtn 
-                                    OnClick={() => this.openModal}
-                                    OnClick={() => this.handleModalItem(result)}
-                                    className="btn btn-info"
-                                >
-                                    Rent this item
-                                <FormBtn /> */}
                                 </div>
                             ))}
                         </div>
@@ -344,7 +362,9 @@ class Search extends Component {
                                                 placeholder="When day would you like to rent this item"
                                                 type="date"
                                             />
-                                            <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
+                                            { this.props.auth.user.id != undefined &&
+                                                <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
+                                            }
                                         </form>
                                     </div>
                                 </div>
