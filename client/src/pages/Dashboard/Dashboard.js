@@ -4,10 +4,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
+import email from "../../email/ses_sendemail";
 // import { List, ListItem } from "../../components/List";
 import ResultCard from "../../components/search/ResultCard"
-import RentedOutCard from "../../components/Dashboard/RentedOutCard"
-import RentalCard from "../../components/Dashboard/RentalCard";
+import RentedOutCard from "../../components/dashboard/RentedOutCard"
+import RentalCard from "../../components/dashboard/RentalCard";
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -117,6 +118,17 @@ class Dashboard extends Component {
       rentedIndex: subIndex,
       rentalId: rentedItems[index].rented[subIndex]._id
     }
+    // API.getUser(rentalInfo.renterId)
+    //   .then(res => {
+    //     console.log(res.data[0].name);
+    //     console.log(res.data[0].email);
+    //     // console.log(email.sendEmail);
+    //     // email.sendEmail({
+    //     //   firstName: `${res.data[0].name}`,
+    //     //   emailAddress: `${res.data[0].email}`
+    //     // })
+    //   })
+    //   .catch(err => console.log(err));
     API.approveRental(rentalInfo)
       .then(res => {
       })

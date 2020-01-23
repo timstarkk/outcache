@@ -252,7 +252,7 @@ class Search extends Component {
     heartedItem(modalInfo) {
         console.log(modalInfo)
             
-        API.saveHeart(heartInfo)
+        API.saveHeart(modalInfo)
             .then(res => {
                 console.log(res.data)
             })
@@ -326,12 +326,12 @@ class Search extends Component {
                     <p>Rent {this.state.itemName}</p> */}
 
                     <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
-                        <div className="col s6" style={{}}>
+                        <div className="col s12 m12 l6" style={{}}>
                             <div className="detailsImageContainer">
                                 <img src={`${this.state.img}`} />
                             </div>
                         </div>
-                        <div className="col s6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
+                        <div className="col s12 m12 l6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
                             <div className="row" style={{ margin: "0px" }}>
                                 <h4 style={{ "margin-top": "0px" }}>{this.state.itemName}</h4>
                             </div>
