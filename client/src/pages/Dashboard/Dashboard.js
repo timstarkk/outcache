@@ -119,16 +119,20 @@ class Dashboard extends Component {
       rentedIndex: subIndex,
       rentalId: rentedItems[index].rented[subIndex]._id
     }
-    API.getUser(rentalInfo.renterId)
-      .then(res => {
-        console.log(res.data[0].name);
-        console.log(res.data[0].email);
-        // console.log(email.sendEmail);
-        email.sendEmail({
-          firstName: `${res.data[0].name}`,
-          emailAddress: `${res.data[0].email}`
-        })
-      })
+    // API.getUser(rentalInfo.renterId)
+    //   .then(res => {
+    //     console.log(res.data[0].name);
+    //     console.log(res.data[0].email);
+    //     console.log(email);
+    //     console.log({
+    //       firstName: `${res.data[0].name}`,
+    //       emailAddress: `${res.data[0].email}`
+    //     })
+    //     email({
+    //       firstName: `${res.data[0].name}`,
+    //       emailAddress: `${res.data[0].email}`
+    //     })
+    //   })
       .catch(err => console.log(err));
     API.approveRental(rentalInfo)
       .then(res => {
