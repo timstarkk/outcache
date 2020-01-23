@@ -278,7 +278,7 @@ class Search extends Component {
 
         
             
-        API.saveHeart(modalInfo)
+        API.saveHeart(heartInfo)
             .then(res => {
                 console.log(res.data)
                 this.getUser(this.props.auth.user.id)
