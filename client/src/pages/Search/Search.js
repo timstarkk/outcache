@@ -252,7 +252,7 @@ class Search extends Component {
     heartedItem(modalInfo) {
         console.log(modalInfo)
             
-        API.saveHeart(heartInfo)
+        API.saveHeart(modalInfo)
             .then(res => {
                 console.log(res.data)
             })
