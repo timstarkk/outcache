@@ -66,6 +66,14 @@ module.exports = {
       .findOneAndUpdate({_id: req.body.userId}, { $push: { hearted: req.body.itemId } }, { new: true })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  removeHeart: function(req, res) {
+    console.log("remove heart")
+    console.log(req.body)
+    db.User
+      .findOneAndUpdate({_id: req.body.userId}, { $pull: { hearted: req.body.itemId }}, { new: true }  )
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 
 };
