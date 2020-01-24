@@ -15,6 +15,8 @@ function ResultCard(props) {
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+    console.log(rented)
+
     const renderPendingRentals = () => rented.map((pendingRental, subIndex) => (
         <div style={{ border: "1px solid black", padding: "20px", overflow: "auto" }}>
             <div className="row">

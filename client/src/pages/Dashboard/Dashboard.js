@@ -7,7 +7,8 @@ import API from "../../utils/API";
 import email from "../../email/ses_sendemail";
 // import { List, ListItem } from "../../components/List";
 import ResultCard from "../../components/search/ResultCard"
-import RentedOutCard from "../../components/Dashboard/RentedOutCard"
+import RentedOutCard from "../../components/Dashboard/RentedOutCard";
+import RentalCardModal from "../../components/Dashboard/RentalCardModal";
 import RentalCard from "../../components/Dashboard/RentalCard";
 import Modal from 'react-modal';
 
@@ -25,8 +26,48 @@ const customStyles = {
 
 };
 
-
 Modal.setAppElement('#root')
+
+function ModalCondition(props) {
+  const { isRentalCard, key, id, name, category, price, img, rented, index, description, onApproveRental, rentalForCard } = props;
+
+  console.log()
+  console.log(rentalForCard);
+  if (isRentalCard) {
+    return (< RentalCardModal
+      key={key}
+      id={id}
+      name={name}
+      category={category}
+      price={price}
+      img={img}
+      rented={rented}
+      index={index}
+      description={description}
+      onApproveRental={onApproveRental}
+      rentalForCard={rentalForCard}
+    // onClick={() => this.openModal(result)}
+    />)
+  } else {
+    return (< RentedOutCard
+      key={key}
+      id={id}
+      name={Dashboard.itemName}
+      category={category}
+      price={price}
+      img={img}
+      rented={rented}
+      index={index}
+      description={description}
+      onApproveRental={onApproveRental}
+    // onClick={() => this.openModal(result)}
+    />)
+  }
+}
+
+let startDate = "";
+let endDate = "";
+let approved = "";
 
 class Dashboard extends Component {
   state = {
@@ -52,11 +93,15 @@ class Dashboard extends Component {
     description: "",
     rented: "",
     index: "",
-    hearted: {}
+    hearted: {},
+    isRentalCard: false
   }
 
-  openModal = (modalInfo, index) => {
-    console.log(modalInfo)
+  openModal = (modalInfo, index, isRental, rentalForCard) => {
+    console.log(modalInfo);
+    console.log(index);
+    console.log(isRental);
+    console.log(rentalForCard);
     this.setState({
       itemName: modalInfo.itemName,
       itemId: modalInfo.id,
@@ -66,8 +111,9 @@ class Dashboard extends Component {
       description: modalInfo.description,
       rented: modalInfo.rented,
       index: index,
+      isRentalCard: isRental,
+      rentalForCard: rentalForCard
     })
-    console.log("modalButton!!")
     this.setState({ modalIsOpen: true });
   }
 
@@ -79,6 +125,7 @@ class Dashboard extends Component {
   closeModal() {
     this.setState({ modalIsOpen: false });
   }
+
 
   componentDidMount() {
     const id = this.props.auth.user.id
@@ -211,8 +258,8 @@ class Dashboard extends Component {
     something()
   }
 
-  clickRouter = id => {
-    console.log("this")
+  clickRouter = (result, index, startDate, endDate, approved) => {
+    this.openModal(result, index, startDate, endDate, approved)
   }
 
   render() {
@@ -220,9 +267,9 @@ class Dashboard extends Component {
     const display = this.state.display
 
     return (
-      <div className="" id="searchContainer">
-        <div className="row">
-          <div className="col s12" id="resultsBox">
+      <div className="" id="searchContainer" style={{ height: "100%" }}>
+        <div className="row" style={{ height: "100%", marginBottom: "0px" }}>
+          <div className="col s12" id="resultsBox" style={{ height: "100%" }}>
             {/* <div className="container">
               <div>
                 <SearchForm
@@ -281,7 +328,7 @@ class Dashboard extends Component {
                       price={result.price}
                       img={result.img}
                       onClick={() => this.openModal(result, index)}
-                      clickRouter={() => this.openModal(result, index)}
+                      clickRouter={() => this.openModal(result, index, false)}
                     />
                   </div>
                 ))
@@ -297,7 +344,7 @@ class Dashboard extends Component {
                       category={result.category}
                       price={result.price}
                       img={result.img}
-                      clickRouter={() => this.openModal(result, index)}
+                      clickRouter={() => this.openModal(result, index, false)}
                     />
                   </div>
                 ))
@@ -305,11 +352,10 @@ class Dashboard extends Component {
               {display === 2 &&
                 //  console.log(this.state.rentalItemsArray),
                 this.state.rentalItemsArray.map((result, index) => (
-                  //  console.log(result.rented),
-                  //  console.log(this.state.rentalIds[index]),
-                  //  console.log(index)
                   <div>
                     <RentalCard
+                      result={result}
+                      index={index}
                       key={result._id + index}
                       id={result._id}
                       name={result.itemName}
@@ -319,6 +365,7 @@ class Dashboard extends Component {
                       rentalId={this.state.rentalIds[index]}
                       rentals={result.rented}
                       onClick={() => this.openModal(result, index)}
+                      clickRouter={this.openModal}
                     />
                   </div>
                 ))
@@ -335,7 +382,8 @@ class Dashboard extends Component {
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <RentedOutCard
+          <ModalCondition
+            isRentalCard={this.state.isRentalCard}
             key={this.state.id + this.state.index}
             id={this.state.id}
             name={this.state.itemName}
@@ -346,11 +394,11 @@ class Dashboard extends Component {
             index={this.state.index}
             description={this.state.description}
             onApproveRental={this.approveRental}
-          // onClick={() => this.openModal(result)}
+            rentalForCard={this.state.rentalForCard}
           />
         </Modal>
 
-      </div>
+      </div >
     );
   }
 }

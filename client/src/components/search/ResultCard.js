@@ -11,32 +11,32 @@ function ResultCard(props) {
 
     function heart() {
         isHearted = false
-        if(hearted) {
+        if (hearted) {
             for (let item of hearted) {
-                if(item === id) {
+                if (item === id) {
                     isHearted = true
                 }
             }
         }
     }
     heart()
-    
+
 
     return (
-        <div className="col offset-s2 s8 m3 l2 resultCardContainer"  style={{
+        <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
             padding: "0px",
             "margin-bottom": "10px",
         }}>
             < div className="resultCard z-depth-2">
                 <div className="cardImageContainer">
                     <img className="cardImage" onClick={() => clickRouter(props, false)} src={img} alt={name} />
-                    {isHearted ? <div className="littleSquareSelected" style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div> : 
-                    <div className="littleSquare" onClick={() => clickRouter(props, true)} style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>}
+                    {isHearted ? <div className="littleSquareSelected" style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div> :
+                        <div className="littleSquare" onClick={() => clickRouter(props, true)} style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>}
                 </div>
                 <div className="cardInfoContainer" onClick={() => clickRouter(props, false)}>
                     <h6 className="cardName">{name}</h6>
                     <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>location</p>
-                    <div className="row">
+                    <div className="row" style={{ marginBottom: "0px" }}>
                         <p className="col s3 cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
                         <p className="col s3 perDayText" style={{ padding: "0px" }}>{' '}/ day</p>
 

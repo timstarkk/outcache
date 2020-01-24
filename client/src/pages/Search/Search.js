@@ -33,7 +33,7 @@ Modal.setAppElement('#root')
 // const itemName = "tent"
 
 class Search extends Component {
-       state = {
+    state = {
         startDate: "",
         endDate: "",
         renterId: "",
@@ -145,26 +145,26 @@ class Search extends Component {
         } else {
             this.loadItems();
         }
-        console.log(this.state.results)  
-        this.getUser(this.props.auth.user.id)      
+        console.log(this.state.results)
+        this.getUser(this.props.auth.user.id)
     };
 
     getUser = id => {
         API.getUser(id)
-          .then(res => {
-            console.log(res.data)
-            if (res.data !== []) {
-              this.setState({
-                userInfo: res.data,
-                rentals: res.data[0].rentals,
-                rentalIds: res.data[0].rentalId,
-                hearted: res.data[0].hearted
-              })
-              console.log(this.state.hearted)
-            //   console.log(this.state.rentalIds)
-              // console.log(this.state.rentals)
-            }
-          })
+            .then(res => {
+                console.log(res.data)
+                if (res.data !== []) {
+                    this.setState({
+                        userInfo: res.data,
+                        rentals: res.data[0].rentals,
+                        rentalIds: res.data[0].rentalId,
+                        hearted: res.data[0].hearted
+                    })
+                    console.log(this.state.hearted)
+                    //   console.log(this.state.rentalIds)
+                    // console.log(this.state.rentals)
+                }
+            })
     }
 
     loadItems = () => {
@@ -266,9 +266,10 @@ class Search extends Component {
         }
     }
 
-    
 
-    heartedItem = modalInfo =>  {
+
+
+    heartedItem = modalInfo => {
         console.log(modalInfo)
         console.log(this.props.auth.user.id)
         const heartInfo = {
@@ -276,16 +277,16 @@ class Search extends Component {
             userId: this.props.auth.user.id
         }
 
-        
-            
+
+
         API.saveHeart(heartInfo)
             .then(res => {
                 console.log(res.data)
                 this.getUser(this.props.auth.user.id)
             })
             .catch(err => console.log(err))
-        
-        
+
+
         console.log("hearted")
     }
 
@@ -335,7 +336,7 @@ class Search extends Component {
                                         img={result.img}
                                         clickRouter={this.clickRouter}
                                         hearted={this.state.hearted}
-                                        // heartClick={this.heartedItem}
+                                    // heartClick={this.heartedItem}
                                     />
                                 </div>
                             ))}
@@ -390,7 +391,7 @@ class Search extends Component {
                                                 placeholder="When day would you like to rent this item"
                                                 type="date"
                                             />
-                                            { this.props.auth.user.id != undefined &&
+                                            {this.props.auth.user.id != undefined &&
                                                 <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
                                             }
                                         </form>
