@@ -49,7 +49,13 @@ const Navbar = (logoutUser) => {
 
   const location = useLocation();
   const auth = useSelector(state => state.auth);
-  const { pathname } = location;
+  let { pathname } = location;
+  let substringSearch = pathname.substr(0,7);
+  console.log(substringSearch)
+
+  if (substringSearch === '/search') {
+    pathname = '/search';
+  }
 
   const [slider, setSlider] = useState(false);
   const size = useWindowSize();

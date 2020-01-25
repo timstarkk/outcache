@@ -16,6 +16,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Form from "./pages/Form/Form"
 import Search from "./pages/Search/Search";
+import About from "./pages/About/About";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -52,6 +53,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/about" component={About} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/search/:term" component={Search} />
             <Route exact path="/search/:term/:zip" component={Search} />
