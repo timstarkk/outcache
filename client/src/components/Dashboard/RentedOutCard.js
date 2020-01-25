@@ -18,7 +18,7 @@ function ResultCard(props) {
     console.log(rented)
 
     const renderPendingRentals = () => rented.map((pendingRental, subIndex) => (
-        <div style={{ border: "1px solid black", padding: "20px", overflow: "auto" }}>
+        <div style={{ border: "1px solid black", marginTop: "5px", padding: "20px", overflow: "auto" }}>
             <div className="row">
                 <p className="col s3" style={{ padding: "0px" }}>Start Date: <Moment format="MM/DD/YYYY">{pendingRental.startDate}</Moment></p>
                 <p className="col s3" style={{ padding: "0px" }}>End Date: <Moment format="MM/DD/YYYY">{pendingRental.endDate}</Moment></p>
