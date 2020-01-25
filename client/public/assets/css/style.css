@@ -243,7 +243,6 @@ input::placeholder {
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center;
     overflow: contain;
     position: relative;
 }
@@ -253,11 +252,9 @@ input::placeholder {
     max-height: 340px;
     display: block;
     height: 100%;
-    width: 100%;
     object-fit: cover;
     position: absolute;
     top: 0;
-    margin: auto;
     left: 0;
 }
 
