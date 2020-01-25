@@ -36,8 +36,8 @@ function ResultCard(props) {
                 <div className="cardInfoContainer" onClick={() => clickRouter(props, false)}>
                     <h6 className="cardName">{name}</h6>
                     <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>location</p>
-                    <div className="row" style={{ marginBottom: "0px" }}>
-                        <p className="col s3 cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
+                    <div className="row" style={{ marginBottom: "0px", width: "100%" }}>
+                        <p className="col s5 cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
                         <p className="col s3 perDayText" style={{ padding: "0px" }}>{' '}/ day</p>
 
                     </div>
