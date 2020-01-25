@@ -243,6 +243,7 @@ input::placeholder {
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: contain;
     position: relative;
 }
@@ -252,10 +253,11 @@ input::placeholder {
     max-height: 340px;
     display: block;
     height: 100%;
-    width: auto;
+    width: 100%;
     object-fit: cover;
     position: absolute;
     top: 0;
+    margin: auto;
     left: 0;
 }
 
@@ -466,4 +468,11 @@ img {
     background-color: white;
     border: 2px solid black;
     color: black;
+}
+
+.requestStatusBox {
+    border: 1px solid black;
+    margin-top: 5px;
+    position: relative;
+    top: 30px;
 }
