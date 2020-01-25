@@ -295,8 +295,8 @@ class Search extends Component {
 
 
         return (
-            <div className="" id="searchContainer">
-                <div className="row" style={{ height: "100%", "margin-bottom": "0px" }}>
+            <div className="" id="searchContainer" style={{}}>
+                <div className="row container" style={{ height: "100%", "margin-bottom": "0px" }}>
                     <div className="col s12" id="resultsBox">
                         {/* will pass the search terms/parameters into Results*/}
                         <div className="container">

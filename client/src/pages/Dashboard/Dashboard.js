@@ -268,7 +268,7 @@ class Dashboard extends Component {
 
     return (
       <div className="" id="searchContainer" style={{ height: "100%" }}>
-        <div className="row" style={{ height: "100%", marginBottom: "0px" }}>
+        <div className="row container" style={{ height: "100%", marginBottom: "0px" }}>
           <div className="col s12" id="resultsBox" style={{ height: "100%" }}>
             {/* <div className="container">
               <div>
