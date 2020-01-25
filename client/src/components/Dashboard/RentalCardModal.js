@@ -10,7 +10,7 @@ function StatusOfRequests(props) {
 
     for (const [index, value] of rentalForCard.entries()) {
         items.push(
-            <div key={index} style={{ border: "2px solid gold" }}>
+            <div key={index} className="requestStatusBox">
                 <p>Start Date: <Moment format="MM/DD/YYYY">{value.startDate}</Moment></p>
                 <p>End Date: <Moment format="MM/DD/YYYY">{value.endDate}</Moment></p>
                 <p>Approved: {value.approved ? "approved" : "unapproved"}</p>
