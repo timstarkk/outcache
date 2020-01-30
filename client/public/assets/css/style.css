@@ -1,5 +1,5 @@
 html { 
-    background: url('../images/dayCamp3.jpg') no-repeat center center fixed; 
+    background: url('../images/dayCamp3.jpg') no-repeat center bottom fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -252,7 +252,6 @@ input::placeholder {
     max-height: 340px;
     display: block;
     height: 100%;
-    width: auto;
     object-fit: cover;
     position: absolute;
     top: 0;
@@ -262,6 +261,7 @@ input::placeholder {
 .cardPrice {
     font-weight: bold;
     margin-top: 0px;
+    margin-bottom: 0px;
     font-size: 14px;
 }
 
@@ -276,6 +276,7 @@ input::placeholder {
 .perDayText {
     color: gray;
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 img {
@@ -464,4 +465,11 @@ img {
     background-color: white;
     border: 2px solid black;
     color: black;
+}
+
+.requestStatusBox {
+    border: 1px solid black;
+    margin-top: 5px;
+    position: relative;
+    top: 30px;
 }

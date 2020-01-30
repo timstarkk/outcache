@@ -260,7 +260,7 @@ const Navbar = (logoutUser) => {
             style={{
               margin: "0px 15px"
             }}
-            className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+            className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
             onClick={() => setSlider(s => !s)}
           >
             Search
@@ -272,7 +272,7 @@ const Navbar = (logoutUser) => {
             style={{
               margin: "0px 15px"
             }}
-            className={`btn btn-large waves-effect waves-light ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+            className={`btn btn-large waves-effect waves-light ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
             onClick={() => setSlider(s => !s)}
             id="registerButton"
           >
@@ -285,7 +285,7 @@ const Navbar = (logoutUser) => {
             style={{
               margin: "0px 15px"
             }}
-            className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+            className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
             onClick={() => setSlider(s => !s)}
           >
             Log In
