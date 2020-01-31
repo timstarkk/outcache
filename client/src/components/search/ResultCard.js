@@ -3,9 +3,9 @@ import React from "react";
 
 function ResultCard(props) {
     const { id, name, price, img, hearted, clickRouter } = props;
-    console.log(props)
-
-    console.log(hearted)
+    console.log(props);
+    console.log(name);
+    console.log(hearted);
 
     let isHearted
 

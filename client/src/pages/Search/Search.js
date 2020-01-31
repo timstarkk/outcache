@@ -113,7 +113,7 @@ class Search extends Component {
     openModal = modalInfo => {
         console.log(modalInfo)
         this.setState({
-            itemName: modalInfo.itemName,
+            itemName: modalInfo.name,
             itemId: modalInfo.id,
             img: modalInfo.img,
             price: modalInfo.price,
@@ -260,7 +260,7 @@ class Search extends Component {
             console.log(route)
             console.log("sent to hearted route")
             this.heartedItem(modalInfo)
-        } else if(route === "openModal"){
+        } else if (route === "openModal") {
             console.log("sent to open modal")
             this.openModal(modalInfo)
         } else {
@@ -270,21 +270,21 @@ class Search extends Component {
     }
 
     removeHeart = modalInfo => {
-            console.log(modalInfo)
-            const removeHeartInfo = {
-                itemId: modalInfo.id,
-                userId: this.props.auth.user.id
-            }
+        console.log(modalInfo)
+        const removeHeartInfo = {
+            itemId: modalInfo.id,
+            userId: this.props.auth.user.id
+        }
 
-            API.removeHeart(removeHeartInfo)
-                .then(res => {
-                    console.log(res.data)
-                    this.getUser(this.props.auth.user.id)
-                })
+        API.removeHeart(removeHeartInfo)
+            .then(res => {
+                console.log(res.data)
+                this.getUser(this.props.auth.user.id)
+            })
 
     }
-    
-    heartedItem = modalInfo =>  {
+
+    heartedItem = modalInfo => {
         console.log(modalInfo)
         console.log(this.props.auth.user.id)
         const heartInfo = {

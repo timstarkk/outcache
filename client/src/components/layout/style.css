@@ -246,6 +246,8 @@ input::placeholder {
 .cardName {
     font-weight: bold;
     /* margin-top: 0px; */
+
+    color: black;
     font-size: 14px;
     margin: 0px;
     padding: 0px;

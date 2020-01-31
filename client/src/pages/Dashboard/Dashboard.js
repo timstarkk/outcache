@@ -32,7 +32,7 @@ function ModalCondition(props) {
   const { isRentalCard, key, id, name, category, price, img, rented, index, description, onApproveRental, rentalForCard } = props;
 
   console.log()
-  console.log(rentalForCard);
+  console.log(name);
   if (isRentalCard) {
     return (< RentalCardModal
       key={key}
@@ -52,7 +52,7 @@ function ModalCondition(props) {
     return (< RentedOutCard
       key={key}
       id={id}
-      name={Dashboard.itemName}
+      name={name}
       category={category}
       price={price}
       img={img}
