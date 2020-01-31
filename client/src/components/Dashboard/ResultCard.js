@@ -2,40 +2,39 @@ import React from "react";
 // import { FormBtn } from "../Form";
 
 function ResultCard(props) {
-    const { id, name, price, img, hearted, clickRouter } = props;
-    console.log(props);
-    console.log(name);
-    console.log(hearted);
+    const { id, name, price, img, onClick, hearted, clickRouter } = props;
+    console.log(props)
+
+    console.log(hearted)
 
     let isHearted
 
     function heart() {
-        isHearted = "addHeart"
+        isHearted = false
         if (hearted) {
             for (let item of hearted) {
                 if (item === id) {
-                    isHearted = "removeHeart"
+                    isHearted = true
                 }
             }
         }
     }
     heart()
 
-    console.log(isHearted);
 
     return (
         <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
             padding: "0px",
             "margin-bottom": "10px",
         }}>
-            < div className="resultCard z-depth-2" onClick={() => clickRouter(props, "openModal")}>
+            < div className="resultCard z-depth-2">
                 <div className="cardImageContainer">
-                    <img className="cardImage" src={img} alt={name} />
+                    <img className="cardImage" onClick={() => clickRouter(props, false)} src={img} alt={name} />
                     {isHearted ? <div className="littleSquareSelected" style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div> :
                         <div className="littleSquare" onClick={() => clickRouter(props, true)} style={{ "paddingTop": "5px", "padding-bottom": "5px" }}></div>}
 
                 </div>
-                <div className="cardInfoContainer">
+                <div className="cardInfoContainer" onClick={() => clickRouter(props, "openModal")}>
                     <h6 className="cardName">{name}</h6>
                     <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>location</p>
                     <div className="row" style={{ marginBottom: "0px", width: "100%" }}>
