@@ -6,7 +6,7 @@ import { logoutUser } from "../../actions/authActions";
 import API from "../../utils/API";
 import email from "../../email/ses_sendemail";
 // import { List, ListItem } from "../../components/List";
-import ResultCard from "../../components/search/ResultCard"
+import ResultCard from "../../components/Dashboard/ResultCard"
 import RentedOutCard from "../../components/Dashboard/RentedOutCard";
 import RentalCardModal from "../../components/Dashboard/RentalCardModal";
 import RentalCard from "../../components/Dashboard/RentalCard";
@@ -166,20 +166,20 @@ class Dashboard extends Component {
       rentedIndex: subIndex,
       rentalId: rentedItems[index].rented[subIndex]._id
     }
-    // API.getUser(rentalInfo.renterId)
-    //   .then(res => {
-    //     console.log(res.data[0].name);
-    //     console.log(res.data[0].email);
-    //     console.log(email);
-    //     console.log({
-    //       firstName: `${res.data[0].name}`,
-    //       emailAddress: `${res.data[0].email}`
-    //     })
-    //     email({
-    //       firstName: `${res.data[0].name}`,
-    //       emailAddress: `${res.data[0].email}`
-    //     })
-    //   })
+      // API.getUser(rentalInfo.renterId)
+      //   .then(res => {
+      //     console.log(res.data[0].name);
+      //     console.log(res.data[0].email);
+      //     console.log(email);
+      //     console.log({
+      //       firstName: `${res.data[0].name}`,
+      //       emailAddress: `${res.data[0].email}`
+      //     })
+      //     email({
+      //       firstName: `${res.data[0].name}`,
+      //       emailAddress: `${res.data[0].email}`
+      //     })
+      //   })
       .catch(err => console.log(err));
     API.approveRental(rentalInfo)
       .then(res => {
