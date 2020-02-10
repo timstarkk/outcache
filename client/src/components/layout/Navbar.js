@@ -73,7 +73,7 @@ const Navbar = (logoutUser) => {
               OutCache
 
               </Link>
-            <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
+            <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" id="hamburger" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
                 <Link
@@ -201,7 +201,7 @@ const Navbar = (logoutUser) => {
             OutCache
 
             </Link>
-          <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
+          <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" id="hamburger" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
               <Link

@@ -117,6 +117,7 @@ input::placeholder {
 #cardParent {
     width: 90%;
     padding-top: 40px;
+    padding-left: 30px;
 }
 
 #cardHeader {
@@ -458,3 +459,35 @@ img {
       width: 85%;
     }
   }
+
+/* MEDIA QUERIES
+MEDIA QUERIES
+MEDIA QUERIES
+MEDIA QUERIES  */
+
+/* iphone 6, 6S, 7 and 8 */
+@media only screen 
+and (min-device-width: 375px) 
+and (max-device-width: 667px) 
+and (-webkit-min-device-pixel-ratio: 2) { 
+
+  #theNavbar {
+    left: 90px;
+  }
+
+  #cardboxParent {
+    display: flex;
+    justify-content: center;
+  }
+
+  #cardParent {
+    padding: 0px;
+    margin: 50px 0px 0px 0px;
+  }
+
+  #landingCard {
+    padding: 15px;
+    width: 90vw;
+    height: 458px;
+  }
+}
