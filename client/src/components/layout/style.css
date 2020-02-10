@@ -467,6 +467,32 @@ MEDIA QUERIES  */
 
 /* iphone 6, 6S, 7 and 8 */
 @media only screen 
+and (max-device-width: 375px) 
+and (-webkit-min-device-pixel-ratio: 2) { 
+
+  #theNavbar {
+    left: 90px;
+  }
+
+  #cardboxParent {
+    display: flex;
+    justify-content: center;
+  }
+
+  #cardParent {
+    padding: 0px;
+    margin: 20px 0px 10px 0px;
+  }
+
+  #landingCard {
+    padding: 15px;
+    width: 90vw;
+    height: 500px;
+  }
+}
+
+/* iphone 6, 6S, 7 and 8 */
+@media only screen 
 and (min-device-width: 375px) 
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) { 
