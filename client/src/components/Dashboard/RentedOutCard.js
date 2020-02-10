@@ -3,17 +3,8 @@ import React from "react";
 import Moment from "react-moment"
 
 function ResultCard(props) {
-    const { name, price, img, rented, onApproveRental, index, description } = props;
+    const { name, price, img, rented, onApproveRental, index, description, closeModal } = props;
     console.log(props)
-
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // I'm trying to add one space to price.
-    // price += " "
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     console.log(rented)
 
@@ -55,33 +46,36 @@ function ResultCard(props) {
         //     </div>
         // </div >
 
-        <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
-            <div className="col s6" style={{}}>
-                <div className="detailsImageContainer">
-                    <img src={`${img}`} />
+        <>
+            <div className="closeButton" onClick={closeModal}></div>
+            <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
+                <div className="col s6" style={{}}>
+                    <div className="detailsImageContainer">
+                        <img src={`${img}`} />
+                    </div>
                 </div>
-            </div>
-            <div className="col s6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
-                <div className="row" style={{ margin: "0px" }}>
-                    <h4 style={{ "margin-top": "0px" }}>{name}</h4>
-                </div>
-                <div className="row" style={{ margin: "0px" }}>
-                    <p>${price} / day</p>
-                </div>
-                <div className="row" style={{ margin: "0px" }}>
-                    <p className="descriptionText" style={{ margin: "0px" }}>Description: </p>
-                    <p style={{ marginTop: "0px" }}>{description}</p>
-                </div>
-                <div className="row" style={{}}>
-                    <div className="col s12">
-                        <div className="formContainer" style={{}}>
-                            <p className="descriptionText" style={{ margin: "0px" }}>Requests: </p>
-                            {renderPendingRentals()}
+                <div className="col s6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
+                    <div className="row" style={{ margin: "0px" }}>
+                        <h4 style={{ "margin-top": "0px" }}>{name}</h4>
+                    </div>
+                    <div className="row" style={{ margin: "0px" }}>
+                        <p>${price} / day</p>
+                    </div>
+                    <div className="row" style={{ margin: "0px" }}>
+                        <p className="descriptionText" style={{ margin: "0px" }}>Description: </p>
+                        <p style={{ marginTop: "0px" }}>{description}</p>
+                    </div>
+                    <div className="row" style={{}}>
+                        <div className="col s12">
+                            <div className="formContainer" style={{}}>
+                                <p className="descriptionText" style={{ margin: "0px" }}>Requests: </p>
+                                {renderPendingRentals()}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
