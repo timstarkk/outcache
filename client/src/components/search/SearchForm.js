@@ -10,7 +10,7 @@ function SearchForm(props) {
                     value={props.value}
                     name={props.name}
                     type="text"
-                    className="form-control col offset-s1 s10 m9"
+                    className="form-control col offset-s1 s10 offset-m1 m7"
                     id="search"
                 />
                 <button onClick={props.handleFormSubmit} className="btn btn-primary col offset-s1 s10 offset-m1 m2" id="searchButton">
