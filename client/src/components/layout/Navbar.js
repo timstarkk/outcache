@@ -50,7 +50,7 @@ const Navbar = (logoutUser) => {
   const location = useLocation();
   const auth = useSelector(state => state.auth);
   let { pathname } = location;
-  let substringSearch = pathname.substr(0,7);
+  let substringSearch = pathname.substr(0, 7);
   console.log(substringSearch)
 
   if (substringSearch === '/search') {
@@ -143,7 +143,7 @@ const Navbar = (logoutUser) => {
               style={{
                 margin: "0px 15px"
               }}
-              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
               onClick={() => setSlider(s => !s)}
             >
               Dashboard
