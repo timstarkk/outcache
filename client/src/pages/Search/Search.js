@@ -365,7 +365,7 @@ class Search extends Component {
 
                     {/* <h2>hello {this.props.auth.user.name}</h2>
                     <p>Rent {this.state.itemName}</p> */}
-
+                    <div className="closeButton" onClick={this.closeModal}></div>
                     <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
                         <div className="col s12 m12 l6" style={{}}>
                             <div className="detailsImageContainer">
