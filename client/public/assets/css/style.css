@@ -445,22 +445,6 @@ img {
     background-color: black;
 }
 
-/* .landingButton {
-    width: 100%;
-    background-color: black;
-    letter-spacing: 1.5px;
-}
-
-.landingButton:hover {
-    background-color: black;
-    opacity: 85%;
-}
-
-.landingButton:focus {
-    background-color: black;
-} */
-
-
 .dashboardButton:focus {
     background-color: white;
     border: 2px solid black;
@@ -473,3 +457,34 @@ img {
     position: relative;
     top: 30px;
 }
+
+.closeButton {
+    background-image: url('../images/blackX.png');
+    /* background: green; */
+    height: 25px;
+    max-height: 25px;
+    width: 25px;
+    max-width: 25px;
+    /* border: 1px solid black;  */
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 8px;
+    margin-right: 8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.closeButton:hover {
+    /* border: 2px solid red; */
+    cursor: pointer;
+}
+
+/* 
+MEDIA QUERIES 
+MEDIA QUERIES 
+MEDIA QUERIES 
+MEDIA QUERIES 
+MEDIA QUERIES  */
+

@@ -7,6 +7,8 @@ function ResultCard(props) {
 
     console.log(hearted)
 
+    console.log(id);
+
     let isHearted
 
     function heart() {

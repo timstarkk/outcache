@@ -50,7 +50,7 @@ const Navbar = (logoutUser) => {
   const location = useLocation();
   const auth = useSelector(state => state.auth);
   let { pathname } = location;
-  let substringSearch = pathname.substr(0,7);
+  let substringSearch = pathname.substr(0, 7);
   console.log(substringSearch)
 
   if (substringSearch === '/search') {
@@ -73,7 +73,7 @@ const Navbar = (logoutUser) => {
               OutCache
 
               </Link>
-            <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
+            <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" id="hamburger" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
                 <Link
@@ -143,7 +143,7 @@ const Navbar = (logoutUser) => {
               style={{
                 margin: "0px 15px"
               }}
-              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton`}
+              className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
               onClick={() => setSlider(s => !s)}
             >
               Dashboard
@@ -201,7 +201,7 @@ const Navbar = (logoutUser) => {
             OutCache
 
             </Link>
-          <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
+          <a href="#" data-target="slide-out" onClick={() => setSlider(s => !s)} className="right sidenav-trigger"><i className="material-icons" id="hamburger" style={{ fontSize: "40px", color: "#424242" }}>menu</i></a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
               <Link

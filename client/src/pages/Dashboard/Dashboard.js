@@ -29,7 +29,7 @@ const customStyles = {
 Modal.setAppElement('#root')
 
 function ModalCondition(props) {
-  const { isRentalCard, key, id, name, category, price, img, rented, index, description, onApproveRental, rentalForCard } = props;
+  const { isRentalCard, key, id, name, category, price, img, rented, index, description, onApproveRental, rentalForCard, closeModal } = props;
 
   console.log()
   console.log(name);
@@ -46,6 +46,7 @@ function ModalCondition(props) {
       description={description}
       onApproveRental={onApproveRental}
       rentalForCard={rentalForCard}
+      closeModal={closeModal}
     // onClick={() => this.openModal(result)}
     />)
   } else {
@@ -60,6 +61,7 @@ function ModalCondition(props) {
       index={index}
       description={description}
       onApproveRental={onApproveRental}
+      closeModal={closeModal}
     // onClick={() => this.openModal(result)}
     />)
   }
@@ -152,6 +154,7 @@ class Dashboard extends Component {
 
 
   display = value => {
+    console.log(this.state.rentalItemsArray);
     this.setState({
       display: value
     })
@@ -354,7 +357,7 @@ class Dashboard extends Component {
                 ))
               }
               {display === 2 &&
-                //  console.log(this.state.rentalItemsArray),
+                // console.log(this.state.rentalItemsArray)
                 this.state.rentalItemsArray.map((result, index) => (
                   <div>
                     <RentalCard
@@ -399,6 +402,7 @@ class Dashboard extends Component {
             description={this.state.description}
             onApproveRental={this.approveRental}
             rentalForCard={this.state.rentalForCard}
+            closeModal={this.closeModal}
           />
         </Modal>
 
