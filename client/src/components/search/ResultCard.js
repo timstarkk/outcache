@@ -21,7 +21,7 @@ function ResultCard(props) {
     console.log(isHearted);
 
     return (
-        <div className="col offset-s1 s10 m3 l3 xl2 resultCardContainer" style={{
+        <div className="col offset-s2 s8 m3 l3 xl2 resultCardContainer" style={{
             padding: "0px",
             "margin-bottom": "10px",
         }}>
