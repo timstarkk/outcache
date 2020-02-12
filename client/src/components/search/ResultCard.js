@@ -3,9 +3,6 @@ import React from "react";
 
 function ResultCard(props) {
     const { id, name, price, img, hearted, clickRouter } = props;
-    console.log(props);
-    console.log(name);
-    console.log(hearted);
 
     let isHearted
 
@@ -24,7 +21,7 @@ function ResultCard(props) {
     console.log(isHearted);
 
     return (
-        <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
+        <div className="col offset-s1 s10 m3 l3 xl2 resultCardContainer" style={{
             padding: "0px",
             "margin-bottom": "10px",
         }}>
@@ -36,11 +33,12 @@ function ResultCard(props) {
 
                 </div>
                 <div className="cardInfoContainer">
-                    <h6 className="cardName">{name}</h6>
+                    <p className="cardName">{name}</p>
                     <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>location</p>
                     <div className="row" style={{ marginBottom: "0px", width: "100%" }}>
-                        <p className="col s5 cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
-                        <p className="col s3 perDayText" style={{ padding: "0px" }}>{' '}/ day</p>
+                        <p className="cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
+                        <span> </span>
+                        <p className="perDayText" style={{ padding: "0px" }}>{' '}/ day</p>
 
                     </div>
                 </div>

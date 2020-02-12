@@ -36,7 +36,7 @@ function RentalCardModal(props) {
                         <img src={`${img}`} />
                     </div>
                 </div>
-                <div className="col s6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
+                <div className="col s6 productDetailsBox" style={{ padding: "20px", height: "100%", }}>
                     <div className="row" style={{ margin: "0px" }}>
                         <h4 style={{ "margin-top": "0px" }}>{name}</h4>
                     </div>

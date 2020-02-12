@@ -383,7 +383,7 @@ img {
 
 .littleSquareSelected {
     background-image: url('../images/filledHeart.png');
-    z-index: 10;
+    /* z-index: 10; */
     position: absolute;
     top: 0;
     right: 0;

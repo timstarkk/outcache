@@ -173,9 +173,15 @@ input::placeholder {
     padding: 20px;
 }
 
+#resultsBoxContainer {
+    display: flex;
+    justify-content: center;
+}
+
 #resultsBox {
     min-height: 100vh;
     height: 100%;
+    width: 95vw;
     background: white;
     /* border: 1px solid black; */
     padding: 20px; 
@@ -213,6 +219,11 @@ input::placeholder {
     cursor: pointer;
 }
 
+#hamburger {
+    position: absolute;
+    right: 10px;
+}
+
 .cardImageContainer {
     width: 100%;
     max-width: 100%;
@@ -242,12 +253,14 @@ input::placeholder {
     font-weight: bold;
     margin-top: 0px;
     font-size: 14px;
+    width: auto;
+    display: inline-block;
 }
 
 .cardName {
     font-weight: bold;
     /* margin-top: 0px; */
-
+    font-size: 10.72px;
     color: black;
     font-size: 14px;
     margin: 0px;
@@ -257,6 +270,8 @@ input::placeholder {
 .perDayText {
     color: gray;
     margin-top: 0px;
+    width: auto;
+    display: inline-block
 }
 
 img {
@@ -348,7 +363,7 @@ img {
 
 .littleSquare {
     /* background-image: url('../images/heart.png'); */
-    z-index: 10;
+    /* z-index: 10; */
     position: absolute;
     top: 0;
     right: 0;
@@ -380,6 +395,7 @@ img {
 
 .productDetails {
     height: 450px;
+    padding: 30px;
 }
 
 .rentalButton {
@@ -465,18 +481,27 @@ MEDIA QUERIES
 MEDIA QUERIES
 MEDIA QUERIES  */
 
-/* iphone 6, 6S, 7 and 8 */
+/* iphone 5 */
 @media only screen 
 and (max-device-width: 375px) 
-and (-webkit-min-device-pixel-ratio: 2) { 
+and (-webkit-min-device-pixel-ratio: 2) {
 
   #theNavbar {
     left: 90px;
   }
 
+  #theSearchNavbar {
+      left: 90px;
+  }
+
+  #theDashboardNavbar {
+      left: 90px;
+  }
+
   #cardboxParent {
     display: flex;
     justify-content: center;
+    width: 105vw;
   }
 
   #cardParent {
@@ -515,5 +540,36 @@ and (-webkit-min-device-pixel-ratio: 2) {
     padding: 15px;
     width: 90vw;
     height: 458px;
+  }
+
+  .closeButton {
+      margin-top: 5px;
+      margin-right: 5px;
+  }
+
+  .productDetails {
+      padding: 5px;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0px;
+      margin-top: 10px;
+      padding-bottom: 0px;
+  }
+
+  .productDetailsBox {
+      padding-bottom: 0px;
+  }
+
+  #resultsBox {
+      margin-left: 0px;
+      width: 100vw;
+  }
+
+  #imageContainerContainer {
+      padding: 0px;
+  }
+
+  #cardName {
+      font-size: 20px;
   }
 }

@@ -308,7 +308,7 @@ class Search extends Component {
 
         return (
             <div className="" id="searchContainer" style={{}}>
-                <div className="row container" style={{ height: "100%", "margin-bottom": "0px" }}>
+                <div className="row container" id="resultsBoxContainer" style={{ height: "100%", "margin-bottom": "0px" }}>
                     <div className="col s12" id="resultsBox">
                         {/* will pass the search terms/parameters into Results*/}
                         <div className="container">
@@ -334,7 +334,7 @@ class Search extends Component {
                         </div> */}
 
                         <div className="row">
-                            <p className="col s7">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>
+                            <p className="col offset-s1 s12">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>
                         </div>
                         <div className="row">
                             {this.state.results.map((result, index) => (
@@ -366,13 +366,13 @@ class Search extends Component {
                     {/* <h2>hello {this.props.auth.user.name}</h2>
                     <p>Rent {this.state.itemName}</p> */}
                     <div className="closeButton" onClick={this.closeModal}></div>
-                    <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
-                        <div className="col s12 m12 l6" style={{}}>
+                    <div className="productDetails row">
+                        <div className="col s12 m12 l6" id="imageContainerContainer" style={{}}>
                             <div className="detailsImageContainer">
                                 <img src={`${this.state.img}`} />
                             </div>
                         </div>
-                        <div className="col s12 m12 l6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
+                        <div className="col s12 m12 l6 productDetailsBox" style={{ padding: "20px 20px 0px 20px", height: "100%" }}>
                             <div className="row" style={{ margin: "0px" }}>
                                 <h4 style={{ "margin-top": "0px" }}>{this.state.itemName}</h4>
                             </div>
