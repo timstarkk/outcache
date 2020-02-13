@@ -572,4 +572,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
   #cardName {
       font-size: 20px;
   }
+
+  .dashboardButton {
+      margin-bottom: 5px;
+  }
 }

@@ -334,7 +334,7 @@ class Search extends Component {
                         </div> */}
 
                         <div className="row">
-                            <p className="col offset-s1 s12">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>
+                            <p className="col offset-s1 s11">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>
                         </div>
                         <div className="row">
                             {this.state.results.map((result, index) => (

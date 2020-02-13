@@ -56,8 +56,6 @@ body:before {
 
 #theDashboardNavbar {
     font-family: monospace;
-    position: absolute;
-    left: 120px;
 }
 
 #theLoginNavbar {
@@ -193,6 +191,11 @@ input::placeholder {
     background: white;
     border: 1px solid black;
     padding: 20px;
+}
+
+#resultsBoxContainer {
+    display: flex;
+    justify-content: center;
 }
 
 #resultsBox {
