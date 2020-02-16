@@ -219,11 +219,6 @@ input::placeholder {
     cursor: pointer;
 }
 
-#hamburger {
-    position: absolute;
-    right: 10px;
-}
-
 .cardImageContainer {
     width: 100%;
     max-width: 100%;
@@ -324,6 +319,7 @@ img {
 .navButton {
     background: transparent;
     border: 0px;
+    border-radius: 0px;
     height: 64px;
     font-size: 12px;
     border-bottom: 2px solid transparent;
@@ -476,6 +472,19 @@ img {
     }
   }
 
+#modalItemName {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.ReactModal__Overlay {
+    z-index: 998;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    background-color: rgba(0, 0, 0, 0.0) !important;
+}
+
 /* MEDIA QUERIES
 MEDIA QUERIES
 MEDIA QUERIES
@@ -485,18 +494,6 @@ MEDIA QUERIES  */
 @media only screen 
 and (max-device-width: 375px) 
 and (-webkit-min-device-pixel-ratio: 2) {
-
-  #theNavbar {
-    left: 90px;
-  }
-
-  #theSearchNavbar {
-      left: 90px;
-  }
-
-  #theDashboardNavbar {
-      left: 90px;
-  }
 
   #cardboxParent {
     display: flex;
@@ -522,9 +519,9 @@ and (min-device-width: 375px)
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) { 
 
-  #theNavbar {
+  /* #theNavbar {
     left: 90px;
-  }
+  } */
 
   #cardboxParent {
     display: flex;
@@ -557,7 +554,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .productDetailsBox {
-      padding-bottom: 0px;
+      padding: 10px 10px 0px 10px;
   }
 
   #resultsBox {
@@ -576,4 +573,14 @@ and (-webkit-min-device-pixel-ratio: 2) {
   .dashboardButton {
       margin-bottom: 5px;
   }
+
+  #modalPriceArea {
+      margin-top: 5px;
+      margin-bottom: 5px;
+  }
+
+  #modalItemName {
+    margin-bottom: 0px;
+  }
+  
 }

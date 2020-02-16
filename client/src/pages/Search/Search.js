@@ -372,12 +372,12 @@ class Search extends Component {
                                 <img src={`${this.state.img}`} />
                             </div>
                         </div>
-                        <div className="col s12 m12 l6 productDetailsBox" style={{ padding: "20px 20px 0px 20px", height: "100%" }}>
+                        <div className="col s12 m12 l6 productDetailsBox" style={{ height: "100%" }}>
                             <div className="row" style={{ margin: "0px" }}>
-                                <h4 style={{ "margin-top": "0px" }}>{this.state.itemName}</h4>
+                                <p className="flow-text" id="modalItemName" style={{ "margin-top": "0px" }}>{this.state.itemName}</p>
                             </div>
                             <div className="row" style={{ margin: "0px" }}>
-                                <p>${this.state.price} / day</p>
+                                <p id="modalPriceArea">${this.state.price} / day</p>
                             </div>
                             <div className="row" style={{ margin: "0px" }}>
                                 <p className="descriptionText" style={{ margin: "0px" }}>Description: </p>
