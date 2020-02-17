@@ -22,7 +22,7 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         width: '70%',
-        height: 'auto'
+        height: '80%'
     }
 
 };
@@ -372,7 +372,7 @@ class Search extends Component {
                                 <img src={`${this.state.img}`} />
                             </div>
                         </div>
-                        <div className="col s12 m12 l6 productDetailsBox" style={{ height: "100%" }}>
+                        <div className="col s12 m12 l6 productDetailsBox" style={{ height: "auto" }}>
                             <div className="row" style={{ margin: "0px" }}>
                                 <p className="flow-text" id="modalItemName" style={{ "margin-top": "0px" }}>{this.state.itemName}</p>
                             </div>
