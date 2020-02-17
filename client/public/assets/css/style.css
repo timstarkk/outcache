@@ -88,6 +88,8 @@ body:before {
 #banner {
     background: url('../images/dayCamp2.jpeg');
     background-position: 50% 75%;
+    background-repeat: none;
+    /* background-size: cover; */
 }
 
 #landingCard {

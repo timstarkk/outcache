@@ -203,7 +203,7 @@ input::placeholder {
 #resultsBox {
     min-height: 100vh;
     height: 100%;
-    width: 95vw;
+    width: 100%;
     background: white;
     margin-left: 0px;
     /* border: 1px solid black; */
