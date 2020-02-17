@@ -205,6 +205,7 @@ input::placeholder {
     height: 100%;
     width: 95vw;
     background: white;
+    margin-left: 0px;
     /* border: 1px solid black; */
     padding: 20px; 
 }

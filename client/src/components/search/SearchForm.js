@@ -9,10 +9,10 @@ function SearchForm(props) {
                     value={props.value}
                     name={props.name}
                     type="text"
-                    className="form-control browser-default col offset-s1 s10 offset-m2 m7"
+                    className="form-control browser-default col offset-s2 s6 offset-m2 m7"
                     id="searchBar"
                 />
-                <button onClick={props.handleFormSubmit} className="btn btn-primary browser-default col offset-s1 s10 m1" id="searchButton">
+                <button onClick={props.handleFormSubmit} className="btn btn-primary browser-default col s2 m1" id="searchButton">
                     <i class="material-icons icon-color" style={{ fontSize: "1.8rem" }}>search</i>
                 </button>
             </div>
