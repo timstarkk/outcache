@@ -1,3 +1,8 @@
+/* fix for materialize text input style removal */
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    border-bottom: none;
+}
+
 html { 
     background: url('../images/dayCamp3.jpg') no-repeat center bottom fixed; 
     -webkit-background-size: cover;
@@ -78,6 +83,11 @@ body:before {
     font-family: monospace;
     position: absolute;
     left: 120px;
+}
+
+#banner {
+    background: url('../images/dayCamp2.jpeg');
+    background-position: 50% 75%;
 }
 
 #landingCard {
@@ -311,16 +321,8 @@ img {
 }
 
 #searchButton {
-    position: relative;
-    top: 8px;
-    background-color: black;
+    background-color: white;
     margin-bottom: 8px;
-    letter-spacing: 1.5px;
-}
-
-#searchButton:hover {
-    background-color: black;
-    opacity: 85%;
 }
 
 #registerButton {
