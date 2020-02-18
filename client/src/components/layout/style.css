@@ -509,6 +509,10 @@ i.icon-color {
     background-color: rgba(0, 0, 0, 0.0) !important;
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
 /* MEDIA QUERIES
 MEDIA QUERIES
 MEDIA QUERIES
