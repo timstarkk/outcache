@@ -22,7 +22,7 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         width: '70%',
-        height: 'auto'
+        height: '80%'
     }
 
 };
@@ -307,22 +307,25 @@ class Search extends Component {
 
 
         return (
-            <div className="" id="searchContainer" style={{}}>
-                <div className="row container" style={{ height: "100%", "margin-bottom": "0px" }}>
-                    <div className="col s12" id="resultsBox">
-                        {/* will pass the search terms/parameters into Results*/}
-                        <div className="container">
-                            <div>
-                                {/* <input className="col s9" type="text" placeholder="Search..."></input> */}
-                                <SearchForm
-                                    value={this.state.searchTerm}
-                                    name="searchTerm"
-                                    handleInputChange={this.handleInputChange}
-                                    handleFormSubmit={this.handleFormSubmit} />
-                            </div>
+            <>
+                <div id="banner">
+                    <div className="container" style={{ height: "36px" }}>
+                        <div style={{ height: "100%" }}>
+                            {/* <input className="col s9" type="text" placeholder="Search..."></input> */}
+                            <SearchForm
+                                value={this.state.searchTerm}
+                                name="searchTerm"
+                                handleInputChange={this.handleInputChange}
+                                handleFormSubmit={this.handleFormSubmit} />
                         </div>
+                    </div>
+                </div>
+                <div className="" id="searchContainer">
+                    <div className="row container" id="resultsBoxContainer" style={{ height: "100%", "margin-bottom": "0px" }}>
+                        <div className="col s12" id="resultsBox">
+                            {/* will pass the search terms/parameters into Results*/}
 
-                        {/* <div className="container">
+                            {/* <div className="container">
                             <div>
                                 <input className="col s9" type="text" placeholder="Search..."></input>
                                 <SearchForm
@@ -333,89 +336,92 @@ class Search extends Component {
                             </div>
                         </div> */}
 
-                        <div className="row">
-                            <p className="col s7">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>
-                        </div>
-                        <div className="row">
-                            {this.state.results.map((result, index) => (
-                                < div >
-                                    <ResultCard
-                                        key={result.key + index}
-                                        id={result._id}
-                                        name={result.itemName}
-                                        category={result.category}
-                                        price={result.price}
-                                        img={result.img}
-                                        clickRouter={this.clickRouter}
-                                        hearted={this.state.hearted}
-                                    // heartClick={this.heartedItem}
-                                    />
-                                </div>
-                            ))}
+                            <div className="row">
+                                <p className="col offset-s1 s11">Showing results 1-{this.state.results.length} of ({this.state.results.length}):</p>
+                            </div>
+                            <div className="row">
+                                {this.state.results.map((result, index) => (
+                                    < div >
+                                        <ResultCard
+                                            key={result.key + index}
+                                            id={result._id}
+                                            name={result.itemName}
+                                            category={result.category}
+                                            price={result.price}
+                                            img={result.img}
+                                            clickRouter={this.clickRouter}
+                                            hearted={this.state.hearted}
+                                        // heartClick={this.heartedItem}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                </div>
-                <Modal
-                    isOpen={this.state.modalIsOpen}
-                    onAfterOpen={this.afterOpenModal}
-                    onRequestClose={this.closeModal}
-                    style={customStyles}
-                    contentLabel="Example Modal"
-                >
+                    <Modal
+                        isOpen={this.state.modalIsOpen}
+                        onAfterOpen={this.afterOpenModal}
+                        onRequestClose={this.closeModal}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                    >
 
-                    {/* <h2>hello {this.props.auth.user.name}</h2>
+                        {/* <h2>hello {this.props.auth.user.name}</h2>
                     <p>Rent {this.state.itemName}</p> */}
-                    <div className="closeButton" onClick={this.closeModal}></div>
-                    <div className="productDetails row" style={{ padding: "30px", overflow: "none" }}>
-                        <div className="col s12 m12 l6" style={{}}>
-                            <div className="detailsImageContainer">
-                                <img src={`${this.state.img}`} />
+                        <div className="closeButton" onClick={this.closeModal}></div>
+                        <div className="productDetails row">
+                            <div className="col s12 m12 l6" id="imageContainerContainer" style={{}}>
+                                <div className="detailsImageContainer">
+                                    <img src={`${this.state.img}`} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="col s12 m12 l6 productDetailsBox" style={{ padding: "20px", height: "100%" }}>
-                            <div className="row" style={{ margin: "0px" }}>
-                                <h4 style={{ "margin-top": "0px" }}>{this.state.itemName}</h4>
-                            </div>
-                            <div className="row" style={{ margin: "0px" }}>
-                                <p>${this.state.price} / day</p>
-                            </div>
-                            <div className="row" style={{ margin: "0px" }}>
-                                <p className="descriptionText" style={{ margin: "0px" }}>Description: </p>
-                                <p style={{ marginTop: "0px" }}>{this.state.description}</p>
-                            </div>
-                            <div className="row" style={{}}>
-                                <div className="col s12">
-                                    <div className="formContainer" style={{}}>
-                                        <form>
-                                            <Input
-                                                value={this.state.startDate}
-                                                onChange={this.handleInputChange}
-                                                name="startDate"
-                                                label="Start Date"
-                                                placeholder="When day would you like to rent this item"
-                                                type="date"
-                                            />
-                                            <Input
-                                                value={this.state.endDate}
-                                                onChange={this.handleInputChange}
-                                                name="endDate"
-                                                label="End Date"
-                                                placeholder="When day would you like to rent this item"
-                                                type="date"
-                                            />
-                                            {this.props.auth.user.id != undefined &&
-                                                <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
-                                            }
-                                        </form>
+                            <div className="col s12 m12 l6 productDetailsBox" style={{ height: "auto" }}>
+                                <div className="row" style={{ margin: "0px" }}>
+                                    <p className="flow-text" id="modalItemName" style={{ "margin-top": "0px" }}>{this.state.itemName}</p>
+                                </div>
+                                <div className="row" style={{ margin: "0px" }}>
+                                    <p id="modalPriceArea">${this.state.price} / day</p>
+                                </div>
+                                <div className="row" style={{ margin: "0px" }}>
+                                    <p className="descriptionText" style={{ margin: "0px" }}>Description: </p>
+                                    <p style={{ marginTop: "0px" }}>{this.state.description}</p>
+                                </div>
+                                <div className="row" style={{}}>
+                                    <div className="col s12">
+                                        <div className="formContainer" style={{}}>
+                                            <form>
+                                                <Input
+                                                    value={this.state.startDate}
+                                                    onChange={this.handleInputChange}
+                                                    name="startDate"
+                                                    label="Start Date"
+                                                    placeholder="When day would you like to rent this item"
+                                                    type="date"
+                                                />
+                                                <Input
+                                                    value={this.state.endDate}
+                                                    onChange={this.handleInputChange}
+                                                    name="endDate"
+                                                    label="End Date"
+                                                    placeholder="When day would you like to rent this item"
+                                                    type="date"
+                                                />
+                                                {this.props.auth.user.id != undefined &&
+                                                    <button className="btn rentalButton" onClick={this.handleRentalSubmit}>Request Rental</button>
+                                                }
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </Modal>
-            </div >
+                    </Modal>
+                </div >
+                {/* <footer id="theFooter">
 
+                </footer> */}
+            </>
         )
     }
 }

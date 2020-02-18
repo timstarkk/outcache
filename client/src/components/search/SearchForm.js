@@ -2,22 +2,21 @@ import React from "react";
 
 function SearchForm(props) {
     return (
-        <form className="">
-            <label htmlFor="search">Search:</label>
-            <div className="form-group row">
+        <form className="" style={{ height: "100%" }}>
+            <div className="form-group row" style={{ height: "100%" }}>
                 <input
                     onChange={props.handleInputChange}
                     value={props.value}
                     name={props.name}
                     type="text"
-                    className="form-control col offset-s1 s10 offset-m1 m7"
-                    id="search"
+                    className="form-control browser-default col offset-s2 s6 offset-m3 m5 offset-l3 l5"
+                    id="searchBar"
                 />
-                <button onClick={props.handleFormSubmit} className="btn btn-primary col offset-s1 s10 offset-m1 m2" id="searchButton">
-                    Search
+                <button onClick={props.handleFormSubmit} className="btn btn-primary browser-default col s2 m1" id="searchButton">
+                    <i class="material-icons icon-color" style={{ fontSize: "1.8rem" }}>search</i>
                 </button>
             </div>
-        </form>
+        </form >
     );
 }
 

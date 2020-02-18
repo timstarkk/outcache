@@ -292,35 +292,33 @@ class Dashboard extends Component {
                 <h4 className="center">{`Welcome, ${user.name}`}</h4>
               </div>
               <div classname="row">
-                <div className="col offset-s2 s2">
-                  <a onClick={() => this.display(0)} className="btn btn-primary dashboardButton">All Items</a>
-                </div>
-                <div className="col offset-s1 s2">
-                  <a onClick={() => this.display(1)} className="btn btn-primary dashboardButton">Requested Items</a>
-                </div>
-                <div className="col offset-s1 s2">
-                  <a onClick={() => this.display(2)} className="btn btn-primary dashboardButton">Your Rentals</a>
-                </div>
+                {/* <div className="col offset-s1 s10 offset-m2 m2"> */}
+                <a onClick={() => this.display(0)} className="col offset-s1 s10 offset-m2 m2 btn btn-primary dashboardButton">All Items</a>
+                {/* </div> */}
+                {/* <div className="col offset-s1 s10 offset-m1 m2"> */}
+                <a onClick={() => this.display(1)} className="col offset-s1 s10 offset-m1 m2 btn btn-primary dashboardButton">Requested Items</a>
+                {/* </div> */}
+                {/* <div className="col offset-s1 s10 offset-m1 m2"> */}
+                <a onClick={() => this.display(2)} className="col offset-s1 s10 offset-m1 m2 btn btn-primary dashboardButton">Your Rentals</a>
+                {/* </div> */}
               </div>
               {/* <!-- Grey navigation panel --> */}
             </div>
 
 
             <div className="row">
-              <p className="col s7">
-                {(this.state.display === 0) &&
-                  <>
-                    <p className="col s7">Showing results 1-{this.state.items.length} of {this.state.items.length}:</p></>
-                }
-                {display === 1 &&
-                  <>
-                    <p className="col s7">Showing results 1-{this.state.rentedItems.length} of {this.state.rentedItems.length}:</p></>
-                }
-                {display === 2 &&
-                  <>
-                    <p className="col s7">Showing results 1-{this.state.rentalItemsArray.length} of {this.state.rentalItemsArray.length}:</p></>
-                }
-              </p>
+              {(this.state.display === 0) &&
+                <>
+                  <p className="col offset-s1 s11">Showing results 1-{this.state.items.length} of {this.state.items.length}:</p></>
+              }
+              {display === 1 &&
+                <>
+                  <p className="col offset-s1 s11">Showing results 1-{this.state.rentedItems.length} of {this.state.rentedItems.length}:</p></>
+              }
+              {display === 2 &&
+                <>
+                  <p className="col offset-s1 s11">Showing results 1-{this.state.rentalItemsArray.length} of {this.state.rentalItemsArray.length}:</p></>
+              }
             </div>
 
             <div className="row">

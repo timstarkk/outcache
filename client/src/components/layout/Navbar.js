@@ -64,7 +64,7 @@ const Navbar = (logoutUser) => {
     return (
       <div className="navbar-fixed">
         <nav className={`z-depth-0 ${navMap[pathname]}`}>
-          <div className="nav-wrapper navbarFlex">
+          <div className="nav-wrapper">
             <Link
               to="/"
               className={`col s5 brand-logo center ${logoMap[pathname]}-text text-darken-3`}
@@ -192,7 +192,7 @@ const Navbar = (logoutUser) => {
   return (
     <div className="navbar-fixed">
       <nav className={`z-depth-0 ${navMap[pathname]}`}>
-        <div className="nav-wrapper navbarFlex">
+        <div className="nav-wrapper">
           <Link
             to="/"
             className={`col s5 brand-logo center ${logoMap[pathname]}-text text-darken-3`}

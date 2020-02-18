@@ -69,6 +69,20 @@ body {
     left: 120px;
 }
 
+#banner {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#theFooter {
+    height: 100px;
+    width: 100%;
+    background: grey;
+}
+
 #landingCard {
     height: 500px;
     width: 400px;
@@ -160,6 +174,14 @@ input::placeholder {
     padding: 30px;
 }
 
+#searchBar {
+    background-color: rgba(255,255,255,0.9);
+    height: 36px;
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
 #searchContainer {
     width: 100%;
     height: 100%;
@@ -173,10 +195,17 @@ input::placeholder {
     padding: 20px;
 }
 
+#resultsBoxContainer {
+    display: flex;
+    justify-content: center;
+}
+
 #resultsBox {
     min-height: 100vh;
     height: 100%;
+    width: 100%;
     background: white;
+    margin-left: 0px;
     /* border: 1px solid black; */
     padding: 20px; 
 }
@@ -242,12 +271,14 @@ input::placeholder {
     font-weight: bold;
     margin-top: 0px;
     font-size: 14px;
+    width: auto;
+    display: inline-block;
 }
 
 .cardName {
     font-weight: bold;
     /* margin-top: 0px; */
-
+    font-size: 10.72px;
     color: black;
     font-size: 14px;
     margin: 0px;
@@ -257,6 +288,8 @@ input::placeholder {
 .perDayText {
     color: gray;
     margin-top: 0px;
+    width: auto;
+    display: inline-block
 }
 
 img {
@@ -288,16 +321,17 @@ img {
 }
 
 #searchButton {
-    position: relative;
-    top: 8px;
-    background-color: black;
+    background-color: rgba(255,255,255,0.9);
     margin-bottom: 8px;
-    letter-spacing: 1.5px;
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
-#searchButton:hover {
-    background-color: black;
-    opacity: 85%;
+i.icon-color {
+    color: #5a5a5a;
 }
 
 #registerButton {
@@ -309,6 +343,7 @@ img {
 .navButton {
     background: transparent;
     border: 0px;
+    border-radius: 0px;
     height: 64px;
     font-size: 12px;
     border-bottom: 2px solid transparent;
@@ -348,7 +383,7 @@ img {
 
 .littleSquare {
     /* background-image: url('../images/heart.png'); */
-    z-index: 10;
+    /* z-index: 10; */
     position: absolute;
     top: 0;
     right: 0;
@@ -380,6 +415,7 @@ img {
 
 .productDetails {
     height: 450px;
+    padding: 30px;
 }
 
 .rentalButton {
@@ -460,23 +496,33 @@ img {
     }
   }
 
+#modalItemName {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.ReactModal__Overlay {
+    z-index: 998;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    background-color: rgba(0, 0, 0, 0.0) !important;
+}
+
 /* MEDIA QUERIES
 MEDIA QUERIES
 MEDIA QUERIES
 MEDIA QUERIES  */
 
-/* iphone 6, 6S, 7 and 8 */
+/* iphone 5 */
 @media only screen 
 and (max-device-width: 375px) 
-and (-webkit-min-device-pixel-ratio: 2) { 
-
-  #theNavbar {
-    left: 90px;
-  }
+and (-webkit-min-device-pixel-ratio: 2) {
 
   #cardboxParent {
     display: flex;
     justify-content: center;
+    width: 105vw;
   }
 
   #cardParent {
@@ -497,9 +543,9 @@ and (min-device-width: 375px)
 and (max-device-width: 667px) 
 and (-webkit-min-device-pixel-ratio: 2) { 
 
-  #theNavbar {
+  /* #theNavbar {
     left: 90px;
-  }
+  } */
 
   #cardboxParent {
     display: flex;
@@ -516,4 +562,49 @@ and (-webkit-min-device-pixel-ratio: 2) {
     width: 90vw;
     height: 458px;
   }
+
+  .closeButton {
+      margin-top: 5px;
+      margin-right: 5px;
+  }
+
+  .productDetails {
+      padding: 5px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 0px;
+      margin-top: 10px;
+      padding-bottom: 0px;
+  }
+
+  .productDetailsBox {
+      padding: 10px 10px 0px 10px;
+  }
+
+  #resultsBox {
+      margin-left: 0px;
+      width: 100vw;
+  }
+
+  #imageContainerContainer {
+      padding: 0px;
+  }
+
+  #cardName {
+      font-size: 20px;
+  }
+
+  .dashboardButton {
+      margin-bottom: 5px;
+  }
+
+  #modalPriceArea {
+      margin-top: 5px;
+      margin-bottom: 5px;
+  }
+
+  #modalItemName {
+    margin-bottom: 0px;
+  }
+  
 }
