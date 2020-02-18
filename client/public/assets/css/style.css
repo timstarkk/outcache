@@ -86,7 +86,8 @@ body:before {
 }
 
 #banner {
-    background: url('../images/dayCamp2.jpeg');
+    background-color: white;
+    background-image: url('../images/dayCamp2.jpeg');
     background-position: 50% 75%;
     background-repeat: none;
     background-size: cover;
@@ -488,6 +489,7 @@ img {
     /* border: 2px solid red; */
     cursor: pointer;
 }
+
 
 /* 
 MEDIA QUERIES 
