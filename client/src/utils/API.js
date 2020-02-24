@@ -45,6 +45,10 @@ export default {
     saveHeart: function (itemId) {
         console.log(itemId)
         return axios.post("/heart", itemId)
+    },
+    sendEmail: function (userData) {
+        console.log(userData)
+        return axios.post("/email", userData)
     }
     // findRentalIdInUser: function (userId) {
     //     console.log(userId)

@@ -7,24 +7,27 @@ const handlebars = require('handlebars');
 require('dotenv').config();
 
 // Set the region 
-AWS.config.update({region: 'us-east-1'});
-
-// var credentials = new AWS.SharedIniFileCredentials({profile: 'personal'});
-// AWS.config.credentials = credentials;
+AWS.config = new AWS.Config();
+AWS.config.accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+AWS.config.secretAccessKey = process.env.AWS_SECRET_KEY_ID;
+AWS.config.region = "us-east-1";
 
 // const sendEmail = async(userData) => {
 exports.sendEmail = async (userData) => {
     return new Promise((resolve) => {
         try {
-            let emailTemplate = fs.readFileSync(path.resolve(__dirname, './confirmation.html'), 'utf8');
+            let emailTemplate = fs.readFileSync(path.resolve(__dirname, '../email_templates/confirmation.html'), 'utf8');
             let emailSubject = 'Outcache Rental Approved';
-            let sourceAddress = 'info@outcache.com';
+            let sourceAddress = 'outcachetech@gmail.com';
 
             console.log(userData);
 
             // Prepare data for template placeholders
             let emailData = {
-                name: userData.firstName,
+                name: userData.body.firstName,
+                itemName: userData.body.itemName,
+                beginDate: userData.body.beginDate,
+                endDate: userData.body.endDate
             };
 
             let templateHtml = handlebars.compile(emailTemplate.toString());
@@ -33,7 +36,7 @@ exports.sendEmail = async (userData) => {
             let params = {
                 Destination: {
                     ToAddresses: [
-                        userData.emailAddress
+                        userData.body.emailAddress
                     ]
                 },
                 Message: {
