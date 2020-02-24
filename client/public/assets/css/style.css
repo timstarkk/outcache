@@ -1,5 +1,10 @@
+/* fix for materialize text input style removal */
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    border-bottom: none;
+}
+
 html { 
-    background: url('../images/dayCamp3.jpg') no-repeat center center fixed; 
+    background: url('../images/dayCamp3.jpg') no-repeat center bottom fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -56,8 +61,6 @@ body:before {
 
 #theDashboardNavbar {
     font-family: monospace;
-    position: absolute;
-    left: 120px;
 }
 
 #theLoginNavbar {
@@ -80,6 +83,14 @@ body:before {
     font-family: monospace;
     position: absolute;
     left: 120px;
+}
+
+#banner {
+    background-color: white;
+    background-image: url('../images/dayCamp2.jpeg');
+    background-position: 50% 75%;
+    background-repeat: none;
+    background-size: cover;
 }
 
 #landingCard {
@@ -195,9 +206,15 @@ input::placeholder {
     padding: 20px;
 }
 
+#resultsBoxContainer {
+    display: flex;
+    justify-content: center;
+}
+
 #resultsBox {
     min-height: 100%;
     background: white;
+    margin-left: 0px;
     /* border: 1px solid black; */
     padding: 20px; 
 }
@@ -252,7 +269,6 @@ input::placeholder {
     max-height: 340px;
     display: block;
     height: 100%;
-    width: auto;
     object-fit: cover;
     position: absolute;
     top: 0;
@@ -262,6 +278,7 @@ input::placeholder {
 .cardPrice {
     font-weight: bold;
     margin-top: 0px;
+    margin-bottom: 0px;
     font-size: 14px;
 }
 
@@ -276,6 +293,7 @@ input::placeholder {
 .perDayText {
     color: gray;
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 img {
@@ -307,16 +325,8 @@ img {
 }
 
 #searchButton {
-    position: relative;
-    top: 8px;
-    background-color: black;
+    background-color: white;
     margin-bottom: 8px;
-    letter-spacing: 1.5px;
-}
-
-#searchButton:hover {
-    background-color: black;
-    opacity: 85%;
 }
 
 #registerButton {
@@ -382,7 +392,7 @@ img {
 
 .littleSquareSelected {
     background-image: url('../images/filledHeart.png');
-    z-index: 10;
+    /* z-index: 10; */
     position: absolute;
     top: 0;
     right: 0;
@@ -444,24 +454,47 @@ img {
     background-color: black;
 }
 
-/* .landingButton {
-    width: 100%;
-    background-color: black;
-    letter-spacing: 1.5px;
-}
-
-.landingButton:hover {
-    background-color: black;
-    opacity: 85%;
-}
-
-.landingButton:focus {
-    background-color: black;
-} */
-
-
 .dashboardButton:focus {
     background-color: white;
     border: 2px solid black;
     color: black;
 }
+
+.requestStatusBox {
+    border: 1px solid black;
+    margin-top: 5px;
+    position: relative;
+    top: 30px;
+}
+
+.closeButton {
+    background-image: url('../images/blackX.png');
+    /* background: green; */
+    height: 25px;
+    max-height: 25px;
+    width: 25px;
+    max-width: 25px;
+    /* border: 1px solid black;  */
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 8px;
+    margin-right: 8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.closeButton:hover {
+    /* border: 2px solid red; */
+    cursor: pointer;
+}
+
+
+/* 
+MEDIA QUERIES 
+MEDIA QUERIES 
+MEDIA QUERIES 
+MEDIA QUERIES 
+MEDIA QUERIES  */
+

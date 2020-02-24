@@ -49,6 +49,10 @@ export default {
     sendEmail: function (userData) {
         console.log(userData)
         return axios.post("/email", userData)
+    },
+    removeHeart: function (removeInfo) {
+        console.log(removeInfo)
+        return axios.post("/removeHeart", removeInfo)
     }
     // findRentalIdInUser: function (userId) {
     //     console.log(userId)

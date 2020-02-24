@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const handlebars = require('handlebars');
 
-require('dotenv').config();
+// const dotenv = require('dotenv');
+// console.log(process.env.AWS_ACCESS_KEY_ID)
 
 // Set the region 
 AWS.config = new AWS.Config();
@@ -13,7 +14,7 @@ AWS.config.secretAccessKey = process.env.AWS_SECRET_KEY_ID;
 AWS.config.region = "us-east-1";
 
 // const sendEmail = async(userData) => {
-exports.sendEmail = async (userData) => {
+const sendEmail = async (userData) => {
     return new Promise((resolve) => {
         try {
             let emailTemplate = fs.readFileSync(path.resolve(__dirname, '../email_templates/confirmation.html'), 'utf8');
@@ -77,8 +78,9 @@ exports.sendEmail = async (userData) => {
                 });
         } catch (error) {
             resolve(false);
+            console.log(error);
         }
     });
 };
 
-// sendEmail({firstName: 'Tommy', emailAddress: 'tpvinyard@gmail.com'})
+export default sendEmail;

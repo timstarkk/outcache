@@ -35,6 +35,9 @@ const emailController = require("../../controllers/emailController");
 
   router.route("/heart")
   .post(itemsController.saveHeart)
+  
+  router.route("/removeHeart")
+  .post(itemsController.removeHeart)
 
   router.route("/email")
   .post(emailController.sendEmail)

@@ -23,8 +23,8 @@ class Landing extends Component {
 
   render() {
     return (
-      <div style={{ height: "75vh" }} className=" valign-wrapper" id="cardboxParent">
-        <div className="row" id="cardParent">
+      <div style={{ height: "75vh" }} className="valign-wrapper" id="cardboxParent">
+        <div className="row container" id="cardParent">
           <div className="col s12 center-align z-depth-2" id="landingCard">
             {/* <h4>
               <b>Build</b> a login/auth app with the{" "}
