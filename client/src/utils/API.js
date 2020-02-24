@@ -46,6 +46,10 @@ export default {
         console.log(itemId)
         return axios.post("/heart", itemId)
     },
+    sendEmail: function (userData) {
+        console.log(userData)
+        return axios.post("/email", userData)
+    },
     removeHeart: function (removeInfo) {
         console.log(removeInfo)
         return axios.post("/removeHeart", removeInfo)

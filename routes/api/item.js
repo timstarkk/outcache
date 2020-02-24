@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const itemsController = require("../../controllers/itemsController");
-const rentedController = require("../../controllers/rentedController")
-const userController = require("../../controllers/userController")
+const rentedController = require("../../controllers/rentedController");
+const userController = require("../../controllers/userController");
+const emailController = require("../../controllers/emailController");
 
 
   router.route("/user/:id")
@@ -37,6 +38,9 @@ const userController = require("../../controllers/userController")
   
   router.route("/removeHeart")
   .post(itemsController.removeHeart)
+
+  router.route("/email")
+  .post(emailController.sendEmail)
 
   // router.route("/rentalId/:userId")
   // .get(rentedController.saveRentalIdInUser)
