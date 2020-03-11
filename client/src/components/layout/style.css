@@ -45,7 +45,7 @@ body {
 #theNavbar {
     font-family: monospace;
     position: absolute;
-    left: 120px;
+    left: 3.25em;
 }
 
 #theDashboardNavbar {
