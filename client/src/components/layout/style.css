@@ -1,3 +1,7 @@
+html {
+    overflow-x: hidden;
+}
+
 body {
     /* background-image: url('../images/dayCamp3.jpg'); */
     /* background-size: cover;  */
@@ -9,6 +13,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
+    overflow-x: hidden;
 }
 
 .theNavbar {
@@ -564,7 +569,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
   #landingCard {
     padding: 15px;
     width: 90vw;
-    height: 458px;
   }
 
   .closeButton {
