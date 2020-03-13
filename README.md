@@ -14,12 +14,12 @@ run the following to start the application:
 4. from dedicated CLI window/tab: 'mongod'
 5. run 'npm start' from both the root directory and '/client'
 
-### Prerequisites
+## Prerequisites
 
 1. Node.js (required)
 2. MongoDB (required for database functionality)
 
-how to install from CLI using Homebrew:
+#### How to install prerequisites from CLI using Homebrew:
 1. Update Homebrew
 2. Node.js: 'brew install node'
 3. MongoDB: 'brew instal mongodb'
