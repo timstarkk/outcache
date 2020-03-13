@@ -352,6 +352,7 @@ class Search extends Component {
                                             clickRouter={this.clickRouter}
                                             hearted={this.state.hearted}
                                             location={result.zipcode}
+                                            description={result.description}
                                         // heartClick={this.heartedItem}
                                         />
                                     </div>
