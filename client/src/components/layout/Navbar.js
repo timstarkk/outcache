@@ -113,7 +113,7 @@ const Navbar = (logoutUser) => {
                   onClick={logoutUser.logoutUser}
                   to="/"
                   style={{
-                    margin: "0px 15px"
+                    margin: "0px 30px 0px 15px",
                   }}
                   className={`btn btn-large btn-flat ${logoMap[pathname]}-text ${buttonMap[pathname]} navButton text-darken-3`}
                 >
