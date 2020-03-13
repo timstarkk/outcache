@@ -1,4 +1,4 @@
-![](https://github.com/timstarkk/bamazon/blob/master/gifs/outcacheDemo.gif)
+![](https://github.com/timstarkk/bamazon/gifs/outcacheDemo.gif)
 
 # OutCache
 
