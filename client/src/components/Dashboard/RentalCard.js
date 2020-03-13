@@ -2,7 +2,7 @@ import React from "react";
 // import { FormBtn } from "../Form";
 
 function RentalCard(props) {
-    const { result, index, id, name, price, img, rentalId, rentals, clickRouter } = props;
+    const { result, index, id, name, price, img, rentalId, rentals, clickRouter, location } = props;
 
     return (
         <div className="col offset-s2 s8 m3 l2 resultCardContainer" style={{
@@ -17,7 +17,7 @@ function RentalCard(props) {
                 </div>
                 <div className="cardInfoContainer">
                     <h6 className="cardName">{name}</h6>
-                    <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>location</p>
+                    <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>{location}</p>
                     <div className="row">
                         <p className="col s3 cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
                         <p className="col s3 perDayText" style={{ padding: "0px" }}>{' '}/ day</p>

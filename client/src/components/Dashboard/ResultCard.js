@@ -2,12 +2,7 @@ import React from "react";
 // import { FormBtn } from "../Form";
 
 function ResultCard(props) {
-    const { id, name, price, img, onClick, hearted, clickRouter } = props;
-    console.log(props)
-
-    console.log(hearted)
-
-    console.log(id);
+    const { id, name, price, img, onClick, hearted, clickRouter, location } = props;
 
     let isHearted
 
@@ -38,7 +33,7 @@ function ResultCard(props) {
                 </div>
                 <div className="cardInfoContainer" onClick={() => clickRouter(props, "openModal")}>
                     <h6 className="cardName">{name}</h6>
-                    <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>location</p>
+                    <p className="cardLocation" style={{ padding: "0px", margin: "0px" }}>{location}</p>
                     <div className="row" style={{ marginBottom: "0px", width: "100%" }}>
                         <p className="cardPrice" style={{ padding: "0px", "padding-left": "15px" }}>${price}</p>
                         <span> </span>
