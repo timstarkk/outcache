@@ -4,6 +4,8 @@
 
 A peer-to-peer online rental website for outdoor/camping equipment.
 
+* [View Project](https://www.outcache.com)
+
 ## Getting Started
 
 run the following to start the application:
