@@ -2,7 +2,7 @@ import React from "react";
 // import { FormBtn } from "../Form";
 
 function ResultCard(props) {
-    const { id, name, price, img, hearted, clickRouter, location } = props;
+    const { id, name, price, img, hearted, clickRouter, location, description } = props;
 
     let isHearted
 
