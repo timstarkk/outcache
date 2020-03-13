@@ -351,6 +351,7 @@ class Search extends Component {
                                             img={result.img}
                                             clickRouter={this.clickRouter}
                                             hearted={this.state.hearted}
+                                            location={result.zipcode}
                                         // heartClick={this.heartedItem}
                                         />
                                     </div>
