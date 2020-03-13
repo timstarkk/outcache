@@ -334,6 +334,7 @@ class Dashboard extends Component {
                       img={result.img}
                       onClick={() => this.openModal(result, index)}
                       clickRouter={() => this.openModal(result, index, false)}
+                      location={result.zipcode}
                     />
                   </div>
                 ))
@@ -350,6 +351,7 @@ class Dashboard extends Component {
                       price={result.price}
                       img={result.img}
                       clickRouter={() => this.openModal(result, index, false)}
+                      location={result.zipcode}
                     />
                   </div>
                 ))
@@ -371,6 +373,7 @@ class Dashboard extends Component {
                       rentals={result.rented}
                       onClick={() => this.openModal(result, index)}
                       clickRouter={this.openModal}
+                      location={result.zipcode}
                     />
                   </div>
                 ))
